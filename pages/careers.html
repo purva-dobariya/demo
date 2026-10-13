@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<!-- @dsCard group="UI Kit, Website" name="Careers" subtitle="Careers page — the invitation: culture, then the open seats, inside the shared ONDC header and footer" -->
+<html lang="en">
+
+<head>
+  <script src="../src/scripts/analytics.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Careers, ONDC</title>
+  <link rel="icon" href="/public/assets/ondc_top_logo_transparent.png" type="image/png">
+  <meta name="description"
+    content="Build what matters. Open roles across Technology, Product, Architecture, Data and Business at ONDC — India's open network for digital commerce.">
+  <link rel="stylesheet" href="../src/styles/category-chrome.css">
+  <link rel="stylesheet" href="../src/styles/fx.css">
+  <link rel="stylesheet" href="../src/styles/scale.css">
+  <link rel="stylesheet" href="../src/styles/type-boost.css">
+  <link rel="stylesheet" href="../src/styles/beckn.css">
+  <!-- fx.js drives the shared navbar's "ONDC Participants" dropdown. -->
+  <script src="../src/scripts/fx.js" defer></script>
+  <script src="../src/scripts/beckn.js" defer></script>
+<!-- Mobile layer. Must load last: every rule is inside a max-width
+     query, and several of them intentionally override earlier files. -->
+<link rel="stylesheet" href="../src/styles/mobile.css">
+</head>
+
+<body>
+  <!-- SCROLL PROGRESS -->
+  <div class="scroll-progress"><span id="progBar"></span></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html#site-top" class="nav-logo">
+        <img src="../public/assets/ondc-logo.svg" alt="ONDC — Open Network for Digital Commerce" class="nav-logo-img">
+      </a>
+      <div class="nav-links">
+        <a href="../index.html#site-top" class="nav-link">Home</a>
+        <a href="about-us.html" class="nav-link">About</a>
+
+        <a href="../index.html#find-your-place" class="nav-link">Roles You Can Play</a>
+        <a href="https://portal.ondc.org/" class="nav-link" target="_blank" rel="noopener">How To Join</a>
+        <a href="resources.html" class="nav-link">Resources</a>
+        <a href="complaint.html" class="nav-link">Complaints</a>
+        <details class="nav-drop">
+          <summary class="nav-link">ONDC Participants
+            <svg class="nav-drop-chev" width="8" height="5" viewBox="0 0 8 5" fill="none" stroke="currentColor"
+              stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M1 1l3 3 3-3"></path>
+            </svg>
+          </summary>
+          <div class="nav-drop-menu">
+            <a href="network-participants.html">Network Participants</a>
+            <a href="ecosystem-participants.html">Ecosystem Participants</a>
+          </div>
+        </details>
+        <a href="rfp.html" class="nav-link">RFPs/RFQs</a>
+        <a href="contact-us.html" class="nav-link">Contact</a>
+        <a href="careers.html" class="nav-link active">Careers</a>
+      </div>
+      <div class="nav-right">
+        <button class="nav-cta" onclick="window.open('https://ondc.zohorecruit.in/', '_blank')">View open roles</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="bk">
+
+    <!-- ═══ HERO — the team photograph dissolved into the paper ════════════ -->
+    <section class="bk-hero bk-hero-about" data-screen-label="Hero">
+      <div class="bk-hero-photo" style="background-image: url('../public/assets/careers/ondc-team.webp');"
+        aria-hidden="true"></div>
+      <div class="bk-hero-veil" aria-hidden="true"></div>
+
+      <div class="bk-hero-body">
+        <div class="bk-eyebrow" data-bk-intro>Careers at ONDC</div>
+        <h1 data-bk-intro>Build what <em>matters</em></h1>
+        <p class="bk-hero-sub" data-bk-intro>Some opportunities offer a job. Others offer the chance to shape what's
+          next. We are looking for talent across Technology, Product, Architecture, Data and Business to solve complex
+          challenges, build at scale, and create lasting impact.</p>
+      </div>
+
+      <div class="bk-hero-actions" data-bk-intro>
+        <a class="bk-btn bk-btn-solid" href="https://ondc.zohorecruit.in/" target="_blank" rel="noopener">See the open seats</a>
+        <a class="bk-btn bk-btn-ghost" href="#life">Life at ONDC</a>
+      </div>
+
+    </section>
+
+    <!-- ═══ OUR PEOPLE — scrub copy beside the culture rows ════════════════
+         id="bk-mech" is borrowed so beckn.js initialises the [data-bk-scrub]
+         block; there is no spine here and the spine code bails safely. -->
+    <section class="bk-culture" id="bk-mech" data-screen-label="Our people">
+      <div class="bk-culture-lead">
+        <div class="bk-eyebrow bk-rv">Our people, our foundation</div>
+        <h2 class="bk-h2 bk-rv">We pair mission-driven purpose with <em>the people who can realize it</em></h2>
+        <p data-bk-scrub>When you embrace a growth mindset, your best is always ahead of you. Count on your colleagues
+          to help you find new passions, unlock new possibilities, and work with purpose each and every day — because
+          we're not just building India, we're building better lives for each other.</p>
+      </div>
+      <div class="bk-barriers bk-rv bk-rv-d1">
+        <div class="bk-barrier">
+          <span class="bk-barrier-n">01</span>
+          <span class="bk-barrier-t">Workspaces built for collaboration</span>
+        </div>
+        <div class="bk-barrier">
+          <span class="bk-barrier-n">02</span>
+          <span class="bk-barrier-t">Access to learning through real-time projects and peer coaching</span>
+        </div>
+        <div class="bk-barrier">
+          <span class="bk-barrier-n">03</span>
+          <span class="bk-barrier-t">Teams across roles and regions with diverse backgrounds and experiences</span>
+        </div>
+        <div class="bk-barrier">
+          <span class="bk-barrier-n">04</span>
+          <span class="bk-barrier-t">Opportunities to contribute to missions that matter</span>
+        </div>
+        <div class="bk-barrier">
+          <span class="bk-barrier-n">05</span>
+          <span class="bk-barrier-t">Smart colleagues who elevate the work through shared momentum</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ LIFE AT ONDC — blurbs beside photos melting into the panel ═════ -->
+    <section class="bk-panel" id="life" data-screen-label="Life at ONDC">
+      <div class="bk-life">
+        <div>
+          <div class="bk-eyebrow bk-rv">Life at ONDC</div>
+          <h2 class="bk-h2 bk-rv">Building India — and <em>better lives for each other</em></h2>
+          <div class="bk-life-block bk-rv">
+            <h3>Growth culture</h3>
+            <p>When you embrace a growth mindset, your best is always ahead of you. Count on your Essentials to help
+              you find new passions, unlock new possibilities, and work with purpose each and every day.</p>
+          </div>
+          <div class="bk-life-block bk-rv bk-rv-d1">
+            <h3>Wellbeing</h3>
+            <p>With countless ways to support your and your dependents' physical, mental, emotional and financial
+              wellbeing, we have your holistic health covered.</p>
+          </div>
+          <div class="bk-life-block bk-rv bk-rv-d2">
+            <h3>Diversity and inclusion</h3>
+            <p>We are committed to celebrating the diversity around us and its power to drive us forward together.</p>
+          </div>
+        </div>
+        <div class="bk-life-media">
+          <img class="bk-fade-b bk-rv" src="../public/assets/careers/team-lunch.webp"
+            alt="The ONDC team sharing lunch together at the Delhi office">
+          <img class="bk-fade-b bk-rv bk-rv-d1" src="../public/assets/careers/hero-digital-india.webp"
+            alt="ONDC teams at work on India's open commerce network">
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ THE OPEN SEATS — the constellation and the ledger ══════════════ -->
+    <!-- Open roles now live on Zoho Recruit (https://ondc.zohorecruit.in/); the in-page seats section below is disabled.
+    <section class="bk-seats" id="open-seats" data-screen-label="Open roles">
+      <div class="bk-seats-head">
+        <div class="bk-seats-lead">
+          <div class="bk-eyebrow bk-rv">Open roles</div>
+          <h2 class="bk-h2 bk-rv">The open <em>seats</em></h2>
+          <p class="bk-rv bk-rv-d1">Every hollow node is a seat on the network waiting to be filled. If you are driven
+            by curiosity, ownership and the ambition to build something bigger than yourself, one of them is yours.</p>
+        </div>
+        <svg class="bk-const bk-rv bk-rv-d1" viewBox="0 0 520 360" aria-hidden="true">
+          <line x1="40" y1="80" x2="90" y2="40"></line>
+          <line x1="90" y1="40" x2="150" y2="90"></line>
+          <line x1="150" y1="90" x2="170" y2="140"></line>
+          <line x1="170" y1="140" x2="130" y2="200"></line>
+          <line x1="70" y1="110" x2="150" y2="90"></line>
+          <line x1="200" y1="50" x2="240" y2="80"></line>
+          <line x1="240" y1="80" x2="250" y2="120"></line>
+          <line x1="250" y1="120" x2="310" y2="200"></line>
+          <line x1="310" y1="200" x2="280" y2="250"></line>
+          <line x1="300" y1="60" x2="330" y2="90"></line>
+          <line x1="330" y1="90" x2="330" y2="150"></line>
+          <line x1="330" y1="150" x2="390" y2="140"></line>
+          <line x1="390" y1="140" x2="420" y2="90"></line>
+          <line x1="420" y1="90" x2="450" y2="110"></line>
+          <line x1="390" y1="140" x2="460" y2="180"></line>
+          <line x1="460" y1="180" x2="440" y2="240"></line>
+          <line x1="130" y1="200" x2="140" y2="260"></line>
+          <line x1="140" y1="260" x2="200" y2="240"></line>
+          <line x1="200" y1="240" x2="280" y2="250"></line>
+          <line x1="280" y1="250" x2="260" y2="300"></line>
+          <circle class="bk-const-seat" cx="40" cy="80" r="5"></circle>
+          <circle class="bk-const-seat" cx="90" cy="40" r="5"></circle>
+          <circle class="bk-const-seat" cx="150" cy="90" r="5"></circle>
+          <circle class="bk-const-seat" cx="60" cy="170" r="5"></circle>
+          <circle class="bk-const-seat" cx="130" cy="200" r="5"></circle>
+          <circle class="bk-const-seat" cx="200" cy="50" r="5"></circle>
+          <circle class="bk-const-seat" cx="250" cy="120" r="5"></circle>
+          <circle class="bk-const-seat" cx="210" cy="190" r="5"></circle>
+          <circle class="bk-const-seat" cx="300" cy="60" r="5"></circle>
+          <circle class="bk-const-seat" cx="330" cy="150" r="5"></circle>
+          <circle class="bk-const-seat" cx="280" cy="250" r="5"></circle>
+          <circle class="bk-const-seat" cx="370" cy="220" r="5"></circle>
+          <circle class="bk-const-seat" cx="420" cy="90" r="5"></circle>
+          <circle class="bk-const-seat" cx="460" cy="180" r="5"></circle>
+          <circle class="bk-const-seat" cx="400" cy="300" r="5"></circle>
+          <circle class="bk-const-seat" cx="180" cy="300" r="5"></circle>
+          <circle class="bk-const-seat" cx="100" cy="280" r="5"></circle>
+          <circle class="bk-const-seat" cx="480" cy="280" r="5"></circle>
+          <circle class="bk-const-seat" cx="350" cy="40" r="5"></circle>
+          <circle class="bk-const-seat" cx="470" cy="40" r="5"></circle>
+          <circle class="bk-const-open" data-track="leadership" cx="70" cy="110" r="7"></circle>
+          <circle class="bk-const-open" data-track="leadership" cx="170" cy="140" r="7"></circle>
+          <circle class="bk-const-open" data-track="product" cx="240" cy="80" r="7"></circle>
+          <circle class="bk-const-open" data-track="engineering" cx="310" cy="200" r="7"></circle>
+          <circle class="bk-const-open" data-track="engineering" cx="390" cy="140" r="7"></circle>
+          <circle class="bk-const-open" data-track="architecture" cx="440" cy="240" r="7"></circle>
+          <circle class="bk-const-open" data-track="architecture" cx="140" cy="260" r="7"></circle>
+          <circle class="bk-const-open" data-track="security" cx="260" cy="300" r="7"></circle>
+          <circle class="bk-const-open" data-track="security" cx="450" cy="110" r="7"></circle>
+          <circle class="bk-const-open" data-track="business" cx="60" cy="230" r="7"></circle>
+          <circle class="bk-const-open" data-track="business" cx="330" cy="90" r="7"></circle>
+          <circle class="bk-const-open" data-track="communications" cx="200" cy="240" r="7"></circle>
+        </svg>
+      </div>
+
+      <div class="bk-tabs bk-rv" role="group" aria-label="Filter roles by track">
+        <button type="button" class="bk-seat-filter" data-track="all" aria-pressed="true">All</button>
+        <button type="button" class="bk-seat-filter" data-track="leadership" aria-pressed="false">Leadership</button>
+        <button type="button" class="bk-seat-filter" data-track="product" aria-pressed="false">Product</button>
+        <button type="button" class="bk-seat-filter" data-track="engineering" aria-pressed="false">Engineering</button>
+        <button type="button" class="bk-seat-filter" data-track="architecture" aria-pressed="false">Architecture &amp;
+          Data</button>
+        <button type="button" class="bk-seat-filter" data-track="security" aria-pressed="false">Security &amp;
+          Trust</button>
+        <button type="button" class="bk-seat-filter" data-track="business" aria-pressed="false">Business &amp;
+          Growth</button>
+        <button type="button" class="bk-seat-filter" data-track="communications"
+          aria-pressed="false">Communications</button>
+      </div>
+
+      <div class="bk-seat-ledger">
+
+        <details class="bk-seat" name="bk-seat" data-track="leadership">
+          <summary class="bk-seat-row">
+            <span class="bk-seat-node" aria-hidden="true"></span>
+            <span class="bk-seat-title">Senior Vice President – Product (Product Head)</span>
+            <span class="bk-seat-meta">Leadership · 18+ yrs · South Delhi</span>
+          </summary>
+          <div class="bk-seat-jd">
+            <div class="bk-eyebrow">What we're looking for</div>
+            <p>A visionary product leader with 18+ years of experience in product leadership, platform strategy,
+              digital commerce, marketplaces, or technology ecosystems, and a proven track record of building and
+              scaling complex products, leading high-performing product teams, and driving business and ecosystem
+              impact. You bring deep expertise in platform products, APIs, open networks, interoperability, and
+              ecosystem-led growth, with experience across Logistics, Travel &amp; Tourism, Financial
+              Services/FinTech, Retail, or Digital Commerce.</p>
+            <div class="bk-eyebrow">What you'll do</div>
+            <p>Own ONDC's product vision, strategy, and roadmap, shaping the future of India's open digital commerce
+              ecosystem. Lead the development of scalable platform capabilities, open network specifications, and
+              API-driven solutions in partnership with Engineering, Technology, Policy, Business, and ecosystem
+              stakeholders. Drive adoption and network growth, build and mentor a world-class product organisation,
+              and serve as a key advisor to leadership on product direction and innovation.</p>
+            <div class="bk-eyebrow">Why ONDC</div>
+            <p>Lead product strategy for one of India's most transformative Digital Public Infrastructure initiatives.
+              Build open, interoperable digital commerce platforms that empower millions of businesses and consumers,
+              while solving complex challenges with national-scale impact.</p>
+            <div class="bk-eyebrow">Location</div>
+            <p>ONDC Headquarters, South Delhi (Work From Office)</p>
+            <a class="bk-btn bk-btn-solid"
+              href="mailto:careers@ondc.org?subject=Application%20-%20SVP%20Product%20(Product%20Head)">Apply for this
+              role</a>
+          </div>
+        </details>
+
+        <details class="bk-seat" name="bk-seat" data-track="leadership">
+          <summary class="bk-seat-row">
+            <span class="bk-seat-node" aria-hidden="true"></span>
+            <span class="bk-seat-title">SVP – Ecommerce, Retail &amp; B2B Growth</span>
+            <span class="bk-seat-meta">Leadership · 16+ yrs · South Delhi</span>
+          </summary>
+          <div class="bk-seat-jd">
+            <div class="bk-eyebrow">What we're looking for</div>
+            <p>A seasoned business leader with 16+ years of experience in Ecommerce, Retail, B2B Commerce, Marketplace
+              Growth, or Platform Businesses. You have successfully owned business growth or P&amp;L
+              responsibilities, scaled marketplace ecosystems, and built strategic partnerships across multiple
+              commerce categories. Exposure to open digital ecosystems, network-based business models, government or
+              industry collaborations, and inclusive commerce initiatives (MSMEs, FPOs, artisan ecosystems) will be
+              highly valued.</p>
+            <div class="bk-eyebrow">What you'll do</div>
+            <p>Lead the business strategy and growth agenda for Ecommerce, Retail, B2B, and Impact Retail on the ONDC
+              Network. Drive onboarding, activation, and long-term success of Buyer and Seller Network Participants,
+              define category-specific go-to-market strategies, and build strategic partnerships that increase
+              transaction volumes and ecosystem adoption. Represent ONDC with industry leaders, government bodies, and
+              ecosystem partners while mentoring a high-performing category team.</p>
+            <div class="bk-eyebrow">Why ONDC</div>
+            <p>Lead one of India's most transformative Digital Public Infrastructure initiatives and shape the future
+              of open digital commerce. Drive growth across multiple high-impact commerce categories and build an
+              inclusive, interoperable ecosystem that empowers businesses of every size.</p>
+            <div class="bk-eyebrow">Location</div>
+            <p>ONDC Headquarters, South Delhi (Work From Office)</p>
+            <a class="bk-btn bk-btn-solid"
+              href="mailto:careers@ondc.org?subject=Application%20-%20SVP%20Ecommerce%2C%20Retail%20%26%20B2B%20Growth">Apply
+              for this role</a>
+          </div>
+        </details>
+
+        <details class="bk-seat" name="bk-seat" data-track="product">
+          <summary class="bk-seat-row">
+            <span class="bk-seat-node" aria-hidden="true"></span>
+            <span class="bk-seat-title">Product Lead / Principal Product Manager</span>
+            <span class="bk-seat-meta">Product · 8–15 yrs · South Delhi</span>
+          </summary>
+          <div class="bk-seat-jd">
+            <div class="bk-eyebrow">What we're looking for</div>
+            <p>An accomplished product leader with 8–15 years of experience in Product Management and a proven track
+              record of building and scaling complex platform, marketplace, API-driven, or network-based products.
+              Experience in Logistics, Travel &amp; Tourism, Financial Services, Digital Commerce, or Digital Public
+              Infrastructure is highly preferred. You have a strong understanding of APIs, platform architectures, and
+              interoperability, and are comfortable working at the intersection of technology, business, and
+              policy.</p>
+            <div class="bk-eyebrow">What you'll do</div>
+            <p>Define and drive the product vision, strategy, and roadmap for one or more strategic domains across the
+              ONDC Network, building platform capabilities that accelerate ecosystem adoption, interoperability, and
+              network growth. Own the evolution of open APIs, network specifications, and digital products; work
+              closely with Network Participants and ecosystem stakeholders to shape category-defining experiences;
+              mentor Product Managers and champion a culture of innovation and customer obsession.</p>
+            <div class="bk-eyebrow">Why ONDC</div>
+            <p>Shape the future of one of India's most transformative Digital Public Infrastructure initiatives by
+              building products that power an open, interoperable digital commerce ecosystem, and create products that
+              deliver meaningful impact for businesses, consumers, and the broader digital economy.</p>
+            <div class="bk-eyebrow">Location</div>
+            <p>ONDC Headquarters, South Delhi (Work From Office)</p>
+            <a class="bk-btn bk-btn-solid"
+              href="mailto:careers@ondc.org?subject=Application%20-%20Product%20Lead%20%2F%20Principal%20Product%20Manager">Apply
+              for this role</a>
+          </div>
+        </details>
+
+        <details class="bk-seat" name="bk-seat" data-track="engineering">
+          <summary class="bk-seat-row">
+            <span class="bk-seat-node" aria-hidden="true"></span>
+            <span class="bk-seat-title">Engineering Manager – Platform</span>
+            <span class="bk-seat-meta">Engineering · 8+ yrs · Delhi</span>
+          </summary>
+          <div class="bk-seat-jd">
+            <div class="bk-eyebrow">What we're looking for</div>
+            <p>An Engineering Manager – Platform with 8+ years of experience in software engineering, distributed
+              systems, and platform development, including hands-on coding and team leadership. You have experience
+              building and scaling platform services, shared infrastructure, APIs, and distributed systems used across
+              multiple teams, with strong expertise in cloud-native architectures, event-driven systems, streaming,
+              and data platforms.</p>
+            <div class="bk-eyebrow">What you'll do</div>
+            <p>Own the engineering of ONDC's core platform foundations, building scalable, reliable, and reusable
+              services that power India's open commerce ecosystem. Drive platform architecture, engineering standards,
+              and build-vs-reuse decisions while partnering with Architects and Engineering Leadership. Stay hands-on
+              with design, coding, reviews, and problem-solving while mentoring engineers — and champion modern
+              engineering practices, including AI-assisted development.</p>
+            <div class="bk-eyebrow">Why ONDC</div>
+            <p>Build the technology foundation powering India's open digital commerce ecosystem. Solve large-scale
+              distributed systems challenges, drive AI-enabled engineering practices, and create platforms with
+              nationwide impact.</p>
+            <div class="bk-eyebrow">Location</div>
+            <p>Delhi (Work From Office)</p>
+            <a class="bk-btn bk-btn-solid"
+              href="mailto:careers@ondc.org?subject=Application%20-%20Engineering%20Manager%20(Platform)">Apply for
+              this role</a>
+          </div>
+        </details>
+
+        <details class="bk-seat" name="bk-seat" data-track="engineering">
+          <summary class="bk-seat-row">
+            <span class="bk-seat-node" aria-hidden="true"></span>
+            <span class="bk-seat-title">Engineering Manager – Application</span>
+            <span class="bk-seat-meta">Engineering · 8+ yrs · Delhi</span>
+          </summary>
+          <div class="bk-seat-jd">
+            <div class="bk-eyebrow">What we're looking for</div>
+            <p>An Engineering Manager – Application with 8+ years of experience in software engineering, application
+              development, and team leadership. You have experience building and scaling web applications, APIs, SDKs,
+              and developer platforms, with strong expertise in frontend, backend, microservices, cloud platforms, and
+              CI/CD — a hands-on engineering leader who can mentor teams, drive execution, and deliver high-quality
+              products at scale.</p>
+            <div class="bk-eyebrow">What you'll do</div>
+            <p>Lead engineering teams building ONDC applications, SDKs, and developer tools that enable India's open
+              digital commerce ecosystem. Drive product delivery, engineering excellence, code quality, and scalable
+              architecture while partnering with Architects and Engineering Leadership. Mentor engineers, improve
+              development practices, and champion AI-assisted engineering to accelerate innovation and
+              productivity.</p>
+            <div class="bk-eyebrow">Why ONDC</div>
+            <p>Build applications and developer platforms powering India's open digital commerce ecosystem. Solve
+              meaningful engineering challenges at national scale and create technology that impacts millions of
+              businesses and consumers.</p>
+            <div class="bk-eyebrow">Location</div>
+            <p>ONDC Headquarters, Delhi (Work From Office)</p>
+            <a class="bk-btn bk-btn-solid"
+              href="mailto:careers@ondc.org?subject=Application%20-%20Engineering%20Manager%20(Application)">Apply for
+              this role</a>
+          </div>
+        </details>
+
+        <details class="bk-seat" name="bk-seat" data-track="architecture">
+          <summary class="bk-seat-row">
+            <span class="bk-seat-node" aria-hidden="true"></span>
+            <span class="bk-seat-title">AI Architect – Intelligent Systems</span>
+            <span class="bk-seat-meta">Architecture &amp; Data · 8–12 yrs · Delhi</span>
+          </summary>
+          <div class="bk-seat-jd">
+            <div class="bk-eyebrow">What we're looking for</div>
+            <p>An AI Architect with 8–12 years of experience in AI engineering, software architecture, and distributed
+              systems, with a proven track record of designing scalable intelligent platforms. You bring deep
+              expertise in LLMs, Small Language Models (SLMs), agentic systems, knowledge architectures, AI
+              infrastructure, model optimisation, and production-scale AI systems that balance scalability,
+              performance, reliability, privacy, and cost.</p>
+            <div class="bk-eyebrow">What you'll do</div>
+            <p>Architect ONDC's next generation of AI-powered commerce intelligence platforms, designing scalable
+              solutions across agentic systems, multilingual AI, knowledge platforms, and intelligent automation.
+              Define AI system architectures covering model pipelines, fine-tuning frameworks, inference platforms,
+              knowledge systems, agent orchestration, and distributed AI infrastructure, working closely with the CTO,
+              AI leadership, and engineering teams.</p>
+            <div class="bk-eyebrow">Why ONDC</div>
+            <p>Shape the future of AI-powered Digital Public Infrastructure by building intelligent systems for
+              India's open commerce ecosystem. Work on cutting-edge AI, agentic platforms, and large-scale technology
+              challenges that create meaningful impact for millions of businesses and consumers.</p>
+            <div class="bk-eyebrow">Location</div>
+            <p>ONDC Headquarters, Delhi (Work From Office)</p>
+            <a class="bk-btn bk-btn-solid"
+              href="mailto:careers@ondc.org?subject=Application%20-%20AI%20Architect%20(Intelligent%20Systems)">Apply
+              for this role</a>
+          </div>
+        </details>
+
+        <details class="bk-seat" name="bk-seat" data-track="architecture">
+          <summary class="bk-seat-row">
+            <span class="bk-seat-node" aria-hidden="true"></span>
+            <span class="bk-seat-title">Data Architect</span>
+            <span class="bk-seat-meta">Architecture &amp; Data · 8–12 yrs · Delhi</span>
+          </summary>
+          <div class="bk-seat-jd">
+            <div class="bk-eyebrow">What we're looking for</div>
+            <p>A Data Architect with 8–12 years of experience in data architecture, platform engineering, or
+              distributed systems, with expertise in building and scaling large-scale data platforms. You bring strong
+              experience in data lakehouse architecture, cloud platforms, streaming systems, data governance,
+              analytics platforms, and distributed data processing — hands-on with technologies such as Spark, Kafka,
+              Snowflake, SQL, and cloud-native architectures.</p>
+            <div class="bk-eyebrow">What you'll do</div>
+            <p>Design and evolve ONDC's data platform architecture, enabling scalable analytics, real-time processing,
+              and trusted data access across the open commerce ecosystem. Build and optimise data pipelines, lakehouse
+              architectures, streaming platforms, schema governance, and analytical systems while driving best
+              practices in reliability, performance, security, and cost optimisation.</p>
+            <div class="bk-eyebrow">Why ONDC</div>
+            <p>Build the data foundation of one of India's most transformative Digital Public Infrastructure
+              initiatives. Work on internet-scale systems, solve complex data challenges, and innovate at the
+              intersection of data engineering, AI, and open networks.</p>
+            <div class="bk-eyebrow">Location</div>
+            <p>ONDC Headquarters, Delhi (Work From Office)</p>
+            <a class="bk-btn bk-btn-solid"
+              href="mailto:careers@ondc.org?subject=Application%20-%20Data%20Architect">Apply for this role</a>
+          </div>
+        </details>
+
+        <details class="bk-seat" name="bk-seat" data-track="security">
+          <summary class="bk-seat-row">
+            <span class="bk-seat-node" aria-hidden="true"></span>
+            <span class="bk-seat-title">Information Security Officer (CISO)</span>
+            <span class="bk-seat-meta">Security &amp; Trust · 12–18 yrs · South Delhi</span>
+          </summary>
+          <div class="bk-seat-jd">
+            <div class="bk-eyebrow">What we're looking for</div>
+            <p>A seasoned cybersecurity leader with 12–18 years of experience in Information Security or Cybersecurity
+              and a proven track record of leading enterprise security programmes. You bring expertise in ISO 27001,
+              ISO 27701, cloud security, DevSecOps, security operations, and cyber risk management, with a strong
+              understanding of frameworks such as NIST. CISSP, CISM, or ISO 27001 Lead Implementer/Auditor
+              certifications are preferred.</p>
+            <div class="bk-eyebrow">What you'll do</div>
+            <p>Define and lead ONDC's enterprise cybersecurity strategy, building a secure, resilient, and trusted
+              technology ecosystem. Drive security architecture across cloud, applications, APIs, and infrastructure
+              while leading cyber risk management, security operations, and incident response. Own ISO 27001
+              certification, security governance, and regulatory compliance, and embed security by design across
+              products and engineering.</p>
+            <div class="bk-eyebrow">Why ONDC</div>
+            <p>Lead cybersecurity for one of India's most significant Digital Public Infrastructure initiatives,
+              shaping secure and resilient digital commerce at national scale, with real public impact.</p>
+            <div class="bk-eyebrow">Location</div>
+            <p>ONDC Headquarters, South Delhi (Work From Office)</p>
+            <a class="bk-btn bk-btn-solid"
+              href="mailto:careers@ondc.org?subject=Application%20-%20Information%20Security%20Officer%20(CISO)">Apply
+              for this role</a>
+          </div>
+        </details>
+
+        <details class="bk-seat" name="bk-seat" data-track="security">
+          <summary class="bk-seat-row">
+            <span class="bk-seat-node" aria-hidden="true"></span>
+            <span class="bk-seat-title">Data Protection Officer</span>
+            <span class="bk-seat-meta">Security &amp; Trust · 10–14 yrs · South Delhi</span>
+          </summary>
+          <div class="bk-seat-jd">
+            <div class="bk-eyebrow">What we're looking for</div>
+            <p>An experienced privacy leader with 10–14 years of experience in Data Protection, Privacy, Information
+              Governance, or Regulatory Compliance and a proven track record of leading enterprise privacy programmes.
+              You bring deep expertise in the Digital Personal Data Protection (DPDP) Act, 2023, privacy governance,
+              Data Protection Impact Assessments (DPIAs), regulatory compliance, incident management, and privacy risk
+              management. CIPP, CIPM, CIPT, or equivalent certifications are preferred.</p>
+            <div class="bk-eyebrow">What you'll do</div>
+            <p>Lead ONDC's enterprise-wide privacy and data protection function, serving as the designated Data
+              Protection Officer under the DPDP Act, 2023. Define and strengthen privacy governance frameworks,
+              policies, and controls, embed privacy by design across products and technology, and lead DPIAs, privacy
+              audits, breach response, and regulatory engagement while fostering a privacy-first culture.</p>
+            <div class="bk-eyebrow">Why ONDC</div>
+            <p>Lead privacy and data protection for one of India's most significant Digital Public Infrastructure
+              initiatives, shaping trusted digital commerce at national scale.</p>
+            <div class="bk-eyebrow">Location</div>
+            <p>ONDC Headquarters, South Delhi (Work From Office)</p>
+            <a class="bk-btn bk-btn-solid"
+              href="mailto:careers@ondc.org?subject=Application%20-%20Data%20Protection%20Officer">Apply for this
+              role</a>
+          </div>
+        </details>
+
+        <details class="bk-seat" name="bk-seat" data-track="business">
+          <summary class="bk-seat-row">
+            <span class="bk-seat-node" aria-hidden="true"></span>
+            <span class="bk-seat-title">Lead – D2C Demand &amp; Partner Growth</span>
+            <span class="bk-seat-meta">Business &amp; Growth · 9+ yrs · South Delhi</span>
+          </summary>
+          <div class="bk-seat-jd">
+            <div class="bk-eyebrow">What we're looking for</div>
+            <p>A strategic, data-driven growth hacker with 9+ years of experience in D2C Growth, E-commerce,
+              Marketplace Growth, Category Management, or Commercial Strategy, with a proven track record of scaling
+              digital businesses, managing strategic partnerships, and driving commercial outcomes through customer
+              acquisition, conversion optimisation, and performance marketing. Hands-on knowledge of GA4, SQL, Power
+              BI, Tableau, or similar analytics tools is highly preferred.</p>
+            <div class="bk-eyebrow">What you'll do</div>
+            <p>Own the growth strategy and commercial performance of Buyer Network Participants, driving demand,
+              revenue, and customer acquisition across ONDC's digital commerce ecosystem. Build strategic
+              partnerships, optimise end-to-end customer journeys, lead data-driven growth initiatives, and strengthen
+              merchandising and marketplace performance through data, experimentation, and ecosystem
+              collaboration.</p>
+            <div class="bk-eyebrow">Why ONDC</div>
+            <p>Shape the future of digital commerce by driving growth for one of India's most significant Digital
+              Public Infrastructure initiatives, building growth strategies that create meaningful impact for millions
+              of businesses and consumers across India.</p>
+            <div class="bk-eyebrow">Location</div>
+            <p>ONDC Headquarters, South Delhi (Work From Office)</p>
+            <a class="bk-btn bk-btn-solid"
+              href="mailto:careers@ondc.org?subject=Application%20-%20Lead%20D2C%20Demand%20%26%20Partner%20Growth">Apply
+              for this role</a>
+          </div>
+        </details>
+
+        <details class="bk-seat" name="bk-seat" data-track="business">
+          <summary class="bk-seat-row">
+            <span class="bk-seat-node" aria-hidden="true"></span>
+            <span class="bk-seat-title">Category Manager – Cross-Border &amp; Export</span>
+            <span class="bk-seat-meta">Business &amp; Growth · 10+ yrs · South Delhi</span>
+          </summary>
+          <div class="bk-seat-jd">
+            <div class="bk-eyebrow">What we're looking for</div>
+            <p>A category leader with 10+ years of experience in Cross-Border Ecommerce, Export/Import Category
+              Management, or Global Marketplace Growth. You have owned category P&amp;L or business growth charters,
+              scaled exporter and logistics partner ecosystems, and built cross-border supply chains spanning
+              sourcing, freight, and trade compliance. Exposure to multi-market partner ecosystems (India plus
+              US/UK/EU/SEA) will be highly valued.</p>
+            <div class="bk-eyebrow">What you'll do</div>
+            <p>Own the business strategy and growth agenda for the Cross-Border &amp; Export category on the ONDC
+              Network. Drive onboarding, activation, and scaled adoption of exporter, seller, and logistics/3PL
+              participants, define category-specific go-to-market strategy, and build the international supply chain
+              backbone — customs, freight, and trade compliance — that underpins performance.</p>
+            <div class="bk-eyebrow">Why ONDC</div>
+            <p>Shape the future of open, cross-border digital commerce. Build the export and logistics partner
+              ecosystem that connects Indian sellers to global markets, and help redefine how cross-border trade
+              operates at population scale.</p>
+            <div class="bk-eyebrow">Location</div>
+            <p>ONDC Headquarters, South Delhi (Work From Office)</p>
+            <a class="bk-btn bk-btn-solid"
+              href="mailto:careers@ondc.org?subject=Application%20-%20Category%20Manager%20Cross-Border%20%26%20Export">Apply
+              for this role</a>
+          </div>
+        </details>
+
+        <details class="bk-seat" name="bk-seat" data-track="communications">
+          <summary class="bk-seat-row">
+            <span class="bk-seat-node" aria-hidden="true"></span>
+            <span class="bk-seat-title">Manager – Strategic Communications (CEO's Office)</span>
+            <span class="bk-seat-meta">Communications · 6–10 yrs · South Delhi</span>
+          </summary>
+          <div class="bk-seat-jd">
+            <div class="bk-eyebrow">What we're looking for</div>
+            <p>A strong storyteller and strategic communicator with 6–10 years of experience in executive
+              communications, corporate communications, consulting, public policy, or Chief of Staff roles, with a
+              proven ability to transform complex ideas into compelling narratives. Exceptional writing, stakeholder
+              management, and sound judgment in handling confidential information are essential; experience with
+              government, public policy, DPI, or technology-led organisations is an advantage.</p>
+            <div class="bk-eyebrow">What you'll do</div>
+            <p>Partner closely with the CEO's Office and senior leadership to craft strategic communications for
+              internal and external engagements. Drive thought leadership, translate complex cross-functional inputs
+              into clear, compelling narratives, support leadership during government and stakeholder interactions,
+              and ensure consistency across executive communications.</p>
+            <div class="bk-eyebrow">Why ONDC</div>
+            <p>Shape the narrative of one of India's most significant Digital Public Infrastructure initiatives. Work
+              alongside senior leadership and help communicate the vision transforming the future of digital commerce
+              in India.</p>
+            <div class="bk-eyebrow">Location</div>
+            <p>ONDC Headquarters, South Delhi (Work From Office)</p>
+            <a class="bk-btn bk-btn-solid"
+              href="mailto:careers@ondc.org?subject=Application%20-%20Manager%20Strategic%20Communications">Apply for
+              this role</a>
+          </div>
+        </details>
+
+      </div>
+    </section>
+    -->
+
+    <!-- ═══ CLOSING — the invitation, centred ══════════════════════════════ -->
+    <section class="bk-about-close" data-screen-label="Closing">
+      <h2 class="bk-h2 bk-rv">Don't see your <em>seat</em>?</h2>
+      <div class="bk-hero-actions bk-rv bk-rv-d1">
+        <a class="bk-btn bk-btn-solid"
+          href="mailto:careers@ondc.org?subject=Application%20-%20Open%20Application">Write to us anyway</a>
+        <a class="bk-btn bk-btn-ghost" href="about-us.html">About ONDC</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MORE SECTORS + FOOTER -->
+  <nav class="more-sectors" aria-label="Explore other sectors">
+    <div class="container">
+      <div class="more-lbl">Explore other sectors</div>
+      <div class="pill-row">
+        <a class="pill" href="d2c-retail.html">D2C Retail</a>
+        <a class="pill" href="digidukaan.html">DigiDukaan</a>
+        <a class="pill" href="food-and-beverages.html">Food &amp; Beverages</a>
+        <a class="pill" href="impact-retail.html">Amazing India</a>
+        <a class="pill" href="hyperlocal-logistics.html">Hyperlocal Logistics</a>
+        <a class="pill" href="public-transport.html">Public Transport</a>
+        <a class="pill" href="shared-mobility.html">Shared Mobility</a>
+        <a class="pill" href="tourism.html">Tourism</a>
+        <a class="pill" href="credit.html">Credit</a>
+        <a class="pill" href="investments.html">Investments</a>
+        <a class="pill" href="coming-soon.html#insurance">Insurance</a>
+        <a class="pill" href="about-us.html">About ONDC</a>
+      </div>
+    </div>
+  </nav>
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="../public/assets/ondc-logo.svg" alt="ONDC — Open Network for Digital Commerce"
+            class="footer-logo-img">
+          <p>India's open network for commerce — not an app, not a platform. Infrastructure for everyone.</p>
+        </div>
+        <div>
+          <div class="footer-col-head">About ONDC</div>
+          <a class="footer-link" href="about-us.html">Overview</a>
+          <a class="footer-link" href="about-us.html#board-of-directors">Board Of Directors</a>
+          <a class="footer-link" href="careers.html">Careers</a>
+          <a class="footer-link" href="https://ondc-static-web-bucket.s3.ap-south-1.amazonaws.com/res/daea2fs3n/image/upload/ondc-website/files/ONDCStrategyPaper_ucvfjm/1659889490.pdf" target="_blank" rel="noopener">Download the Strategy Paper</a>
+          <a class="footer-link" href="https://ondc-static-web-bucket.s3.ap-south-1.amazonaws.com/res/daea2fs3n/image/upload/ondc-website/files/ONDC_Building_Trust_Consultation_Vf_utbodw/1664541553.pdf" target="_blank" rel="noopener">Download the Public Consultation Paper</a>
+          <a class="footer-link" href="../public/assets/newsletters/ondc-fy25-26-in-focus.pdf" target="_blank" rel="noopener">Annual Newsletter — FY25-26 in Focus</a>
+          <a class="footer-link" href="../public/assets/newsletters/ondc-pulse-2026-27-q1.pdf" target="_blank" rel="noopener">Quarterly Newsletter — ONDC Pulse FY26-27 Q1</a>
+        </div>
+
+        <div>
+          <div class="footer-col-head">Roles you can play</div>
+          <a class="footer-link" href="buyer-network-participants.html">Buyer Network Participant</a>
+          <a class="footer-link" href="seller-network-participants.html">Seller Network Participant</a>
+          <a class="footer-link" href="gateway.html">Gateway</a>
+          <a class="footer-link" href="technology-service-provider.html">Technology Service Provider</a>
+        </div>
+        <div>
+          <div class="footer-col-head">Help &amp; Support</div>
+          <a class="footer-link" href="resources.html">Resources</a>
+          <a class="footer-link" href="contact-us.html">Contact Us</a>
+          <a class="footer-link" href="complaint.html">Complaint</a>
+          <a class="footer-link" href="network-participants.html">Network Participants</a>
+          <a class="footer-link" href="ecosystem-participants.html">Ecosystem Participants</a>
+          <a class="footer-link" href="payment-assurance-program.html">Payment Assurance Program</a>
+          <a class="footer-link" href="rfp.html">RFPs/RFQs</a>
+          <a class="footer-link" href="privacy-policy.html">Privacy Policy</a>
+          <a class="footer-link" href="cookie-policy.html">Cookie Policy</a>
+          <a class="footer-link" href="terms-and-conditions.html">Terms and Conditions</a>
+        </div>
+
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">&#169; 2026 ONDC</div>
+        <div class="footer-social">
+          <a class="footer-social-link" href="https://www.linkedin.com/company/open-network-for-digital-commerce" target="_blank" rel="noopener noreferrer" aria-label="ONDC on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <a class="footer-social-link" href="https://www.instagram.com/ondc_official/" target="_blank" rel="noopener noreferrer" aria-label="ONDC on Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.741 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.741 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.259 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06L12 2.16zm0 3.678a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm7.846-10.405a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/></svg></a>
+          <a class="footer-social-link" href="https://www.youtube.com/@ondc1300" target="_blank" rel="noopener noreferrer" aria-label="ONDC on YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+          <a class="footer-social-link" href="https://www.facebook.com/profile.php?id=100076520217598" target="_blank" rel="noopener noreferrer" aria-label="ONDC on Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a class="footer-social-link" href="https://x.com/ONDC_Official" target="_blank" rel="noopener noreferrer" aria-label="ONDC on X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll progress bar.
+    (function () {
+      var bar = document.getElementById('progBar');
+      if (!bar) return;
+      var doc = document.documentElement;
+      window.addEventListener('scroll', function () {
+        var max = doc.scrollHeight - window.innerHeight;
+        bar.style.transform = 'scaleX(' + (max > 0 ? window.scrollY / max : 0) + ')';
+      }, { passive: true });
+    })();
+
+    // Track filter: pills toggle `hidden` on the seat rows and dim the
+    // constellation nodes whose track doesn't match. Without JS the pills are
+    // inert and every seat stays visible and openable.
+    (function () {
+      var pills = document.querySelectorAll('.bk-seat-filter');
+      if (!pills.length) return;
+      var seats = document.querySelectorAll('.bk-seat');
+      var dots = document.querySelectorAll('.bk-const [data-track]');
+      pills.forEach(function (pill) {
+        pill.addEventListener('click', function () {
+          var track = pill.getAttribute('data-track');
+          pills.forEach(function (p) { p.setAttribute('aria-pressed', String(p === pill)); });
+          seats.forEach(function (seat) {
+            var hide = track !== 'all' && seat.getAttribute('data-track') !== track;
+            seat.hidden = hide;
+            if (hide) seat.open = false;
+          });
+          dots.forEach(function (dot) {
+            dot.classList.toggle('bk-dim', track !== 'all' && dot.getAttribute('data-track') !== track);
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+
+</html>

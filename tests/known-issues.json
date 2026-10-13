@@ -1,0 +1,12 @@
+{
+  "_comment": [
+    "Pre-existing defects this suite found on the day it was written, accepted so",
+    "that CI can gate on NEW breakage instead of being red from birth. This is a",
+    "debt ledger, not a mute button: every entry names the defect, why it is",
+    "tolerated for now, and what fixing it means. Delete an entry when it is fixed",
+    "-- the suite will then guard it.",
+    "",
+    "Matching is by page + substring. Anything not listed here still fails."
+  ],
+  "localRequestFailures": []
+}

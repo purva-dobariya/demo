@@ -1,0 +1,34 @@
+[
+    {
+        "name_of_agencies": "Suma Soft Private Limited",
+        "role": "Buyer Application",
+        "domains_enabled": "RET10, RET11, RET12, RET13, RET14, RET15, RET16, RET17, RET18",
+        "contact_name":"Ms. Snehal Basale",
+        "contact_number":"9545861122",
+        "contact_email":"snehal.basale@sumasoft.net"
+    },
+    {
+        "name_of_agencies": "Suma Soft Private Limited",
+        "role": "Seller Application",
+        "domains_enabled": "RET10, RET11, RET12, RET13, RET14, RET15, RET16, RET17, RET18",
+        "contact_name":"Ms. Snehal Basale",
+        "contact_number":"9545861122",
+        "contact_email":"snehal.basale@sumasoft.net"
+    },
+    {
+        "name_of_agencies": "AQM Technologies Pvt. Ltd.",
+        "role": "Buyer Application",
+        "domains_enabled": "RET10, RET11, RET12, RET13, RET14, RET15, RET16, RET17, RET18",
+        "contact_name":"Mr. Vikas Dwivedi",
+        "contact_number":"9819384527",
+        "contact_email":"vikas.dwivedi@aqmtechnologies.com"
+    },
+    {
+        "name_of_agencies": "AQM Technologies Pvt. Ltd.",
+        "role": "Seller Application",
+        "domains_enabled": "RET10, RET11, RET12, RET13, RET14, RET15, RET16, RET17, RET18",
+        "contact_name":"Mr. Vikas Dwivedi",
+        "contact_number":"9819384527",
+        "contact_email":"vikas.dwivedi@aqmtechnologies.com"
+    }
+]

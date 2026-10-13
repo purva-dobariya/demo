@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="46f6a7e6-fc0b-4750-9732-e50f9838bd13"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Careers Page" description="ONDC careers page — hero, benefits grid, hiring philosophy, join CTA" -->
+<div style="font-family:'Inter',system-ui,sans-serif;color:#1F1F1F;background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden">
+<helmet>
+<style>/* ============================================================
+   ONDC Design System — Core Tokens
+   Colors + Type, drawn directly from the ONDC homepage build.
+   Use these as the single source of truth across mocks, slides,
+   UI kits and prototypes.
+   ============================================================ */
+
+/* ── Fonts: Inter (already system standard; mirrored locally) ─ */
+/* Inter — one face per (weight, style). Latin + latin-ext subsets are
+   shipped as fallback url()s in a single src so coverage stays broad
+   without declaring the same weight/style twice. */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("3331084a-f504-482e-8466-ff34d3cc89f5") format("woff2"),
+       url("ef12f7fe-6671-4c43-99ff-fc9a5f1a669a") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("16ba2833-e3b0-4fc9-8a43-23d2a131c496") format("woff2");
+}
+
+:root {
+  /* ── BRAND COLORS ─────────────────────────────────────── */
+  --ondc-blue:        #1C75BB;   /* Primary blue — buttons, links, callouts */
+  --ondc-cyan:        #00AEEF;   /* Accent cyan — eyebrows, dots, highlights */
+  --ondc-navy:        #001D33;   /* Deep navy — dark band foundations */
+  --ondc-footer:      #033356;   /* Footer ground */
+  --ondc-cta-dark:    #044273;   /* Bottom stop of primary button gradient */
+  --ondc-yellow:      #FDC700;   /* Tertiary accent (rare, govt / national) */
+
+  /* Brand gradients */
+  --grad-mark:    linear-gradient(180deg, #1C75BC 0%, #00AEEF 100%);            /* @kind color */
+  --grad-btn:     linear-gradient(rgba(28,117,187,.9) 0%, rgba(4,66,115,.9) 100%); /* @kind color */
+  --grad-hero:    linear-gradient(135deg, #1A1A2E 0%, #1a2744 50%, #2D3748 100%);  /* @kind color */
+  --grad-dpi:     linear-gradient(135deg, #0a1a35 0%, #0e2a52 45%, #1c4a82 100%);  /* @kind color */
+  --grad-cta:     linear-gradient(135deg, #1C75BB, #044273);                   /* @kind color */
+
+  /* ── NEUTRALS (warm cream + cool grays) ──────────────── */
+  --cream:        #FAF6EE;   /* Page background */
+  --cream-2:      #F3EEE2;   /* Alt section background, util bar */
+  --border-cream: #E5DDC9;   /* Cream-toned borders (nav/util) */
+  --border:       #E5E7EB;   /* Card / divider border */
+  --border-str:   #E0E0E0;   /* Slightly stronger divider */
+  --gray-50:      #FAF6EE;   /* Alias of cream */
+  --gray-100:    #F3EEE2;
+
+  /* Tints */
+  --blue-tint:    #E5F0FF;   /* Soft blue tint — pills, icon wells */
+
+  /* ── TEXT ────────────────────────────────────────────── */
+  --fg1:          #1F1F1F;   /* Primary text — headings, body */
+  --fg-headline:  #1A1A2E;   /* Section h2 — slightly deeper than fg1 */
+  --fg2:          #3B3B3B;   /* Body / paragraph in cards */
+  --fg-muted:     #606161;   /* Secondary, captions, metadata */
+  --fg-on-dark:   #FFFFFF;
+  --fg-on-dark-2: rgba(255,255,255,.78);
+  --fg-on-dark-3: rgba(255,255,255,.55);
+  --fg-on-dark-4: rgba(255,255,255,.4);
+
+  /* ── SEMANTIC TYPE ──────────────────────────────────── */
+  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Roboto, sans-serif;
+  --font-serif-quote: Georgia, "Times New Roman", serif;  /* used only for giant " glyphs */
+
+  --fs-display:   clamp(30px, 3.6vw, 46px);   /* @kind font */
+  --fs-h1:        clamp(28px, 3.2vw, 42px);   /* @kind font */
+  --fs-h2:        clamp(24px, 2.8vw, 36px);   /* @kind font */
+  --fs-h3:        22px;                       /* @kind font */
+  --fs-card-h:    17px;                       /* @kind font */
+  --fs-body:      16px;                       /* @kind font */
+  --fs-body-sm:   15px;                       /* @kind font */
+  --fs-meta:      14px;                       /* @kind font */
+  --fs-micro:     13px;                       /* @kind font */
+  --fs-eyebrow:   11px;                       /* @kind font */
+  --fs-num:       clamp(26px, 3vw, 36px);     /* @kind font */
+
+  --lh-tight:     1.15;                       /* @kind font */
+  --lh-snug:      1.3;                        /* @kind font */
+  --lh-body:      1.65;                       /* @kind font */
+  --lh-loose:     1.7;                        /* @kind font */
+
+  /* Eyebrow / label tracking */
+  --ls-eyebrow:   .08em;                      /* @kind font */
+  --ls-eyebrow-strong: .12em;                 /* @kind font */
+  --ls-tag:       .14em;                       /* @kind font */
+  --ls-tight:     -0.01em;                     /* @kind font */
+
+  /* Font weights actually used */
+  --fw-medium:    500;                        /* @kind font */
+  --fw-semi:      600;                        /* @kind font */
+  --fw-bold:      700;                        /* @kind font */
+  --fw-heavy:     800;                        /* @kind font */
+
+  /* ── SPACING / RADII / SHADOWS ──────────────────────── */
+  --radius:        10px;
+  --radius-lg:     14px;
+  --radius-xl:     18px;
+  --radius-pill:   999px;
+
+  --shadow-sm:     0 1px 3px rgba(0,0,0,.06);
+  --shadow-md:     0 4px 6px -4px rgba(0,0,0,.1), 0 10px 15px -3px rgba(0,0,0,.1);
+  --shadow-lg:     0 8px 24px rgba(0,0,0,.12);
+  --shadow-card:   0 24px 60px -24px rgba(0,0,0,.5);   /* used on dark glass */
+  --shadow-deep:   0 20px 50px -20px rgba(0,0,0,.6);   /* hero stats panel */
+
+  --max-w:         1216px;                    /* @kind spacing */
+  --px:            clamp(20px, 4vw, 64px);    /* @kind spacing */
+
+  /* ── EASING ─────────────────────────────────────────── */
+  --ease:          cubic-bezier(.2,.7,.2,1);  /* @kind other */
+  --t-fast:        .18s;                      /* @kind other */
+  --t-base:        .2s;                       /* @kind other */
+}
+
+/* ============================================================
+   SEMANTIC ELEMENTS — apply these defaults to any page that
+   pulls in this file. Match the homepage's vertical rhythm.
+   ============================================================ */
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--fg1);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  color: var(--fg-headline);
+  text-wrap: balance;
+}
+
+h2 {
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+  color: var(--fg-headline);
+  text-wrap: balance;
+}
+
+h3 {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  line-height: 1.25;
+  color: var(--fg1);
+}
+
+p {
+  font-size: var(--fs-body);
+  line-height: var(--lh-loose);
+  color: var(--fg-muted);
+}
+
+/* The "section eyebrow" pattern used everywhere */
+.eyebrow {
+  font-size: var(--fs-eyebrow);
+  font-weight: var(--fw-semi);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--ondc-blue);
+}
+
+/* Eyebrow with the trailing cyan dash (used on dark / DPI band) */
+.eyebrow--rule {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ondc-cyan);
+  letter-spacing: var(--ls-eyebrow-strong);
+}
+.eyebrow--rule::before {
+  content: "";
+  width: 22px;
+  height: 1.5px;
+  background: currentColor;
+}
+
+a {
+  color: var(--ondc-blue);
+  text-decoration: none;
+  font-weight: var(--fw-semi);
+}
+a:hover { text-decoration: underline; }
+
+code, pre { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+</style>
+<style>/* ============================================================
+   ONDC Design System — root entry stylesheet
+   Link THIS file from any consuming artifact:
+     <link rel="stylesheet" href="styles.css">
+   It pulls in the single source of truth for tokens + fonts.
+   ============================================================ */
+/* ============================================================
+   ONDC Design System — Core Tokens
+   Colors + Type, drawn directly from the ONDC homepage build.
+   Use these as the single source of truth across mocks, slides,
+   UI kits and prototypes.
+   ============================================================ */
+
+/* ── Fonts: Inter (already system standard; mirrored locally) ─ */
+/* Inter — one face per (weight, style). Latin + latin-ext subsets are
+   shipped as fallback url()s in a single src so coverage stays broad
+   without declaring the same weight/style twice. */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("3331084a-f504-482e-8466-ff34d3cc89f5") format("woff2"),
+       url("ef12f7fe-6671-4c43-99ff-fc9a5f1a669a") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("16ba2833-e3b0-4fc9-8a43-23d2a131c496") format("woff2");
+}
+
+:root {
+  /* ── BRAND COLORS ─────────────────────────────────────── */
+  --ondc-blue:        #1C75BB;   /* Primary blue — buttons, links, callouts */
+  --ondc-cyan:        #00AEEF;   /* Accent cyan — eyebrows, dots, highlights */
+  --ondc-navy:        #001D33;   /* Deep navy — dark band foundations */
+  --ondc-footer:      #033356;   /* Footer ground */
+  --ondc-cta-dark:    #044273;   /* Bottom stop of primary button gradient */
+  --ondc-yellow:      #FDC700;   /* Tertiary accent (rare, govt / national) */
+
+  /* Brand gradients */
+  --grad-mark:    linear-gradient(180deg, #1C75BC 0%, #00AEEF 100%);            /* @kind color */
+  --grad-btn:     linear-gradient(rgba(28,117,187,.9) 0%, rgba(4,66,115,.9) 100%); /* @kind color */
+  --grad-hero:    linear-gradient(135deg, #1A1A2E 0%, #1a2744 50%, #2D3748 100%);  /* @kind color */
+  --grad-dpi:     linear-gradient(135deg, #0a1a35 0%, #0e2a52 45%, #1c4a82 100%);  /* @kind color */
+  --grad-cta:     linear-gradient(135deg, #1C75BB, #044273);                   /* @kind color */
+
+  /* ── NEUTRALS (warm cream + cool grays) ──────────────── */
+  --cream:        #FAF6EE;   /* Page background */
+  --cream-2:      #F3EEE2;   /* Alt section background, util bar */
+  --border-cream: #E5DDC9;   /* Cream-toned borders (nav/util) */
+  --border:       #E5E7EB;   /* Card / divider border */
+  --border-str:   #E0E0E0;   /* Slightly stronger divider */
+  --gray-50:      #FAF6EE;   /* Alias of cream */
+  --gray-100:    #F3EEE2;
+
+  /* Tints */
+  --blue-tint:    #E5F0FF;   /* Soft blue tint — pills, icon wells */
+
+  /* ── TEXT ────────────────────────────────────────────── */
+  --fg1:          #1F1F1F;   /* Primary text — headings, body */
+  --fg-headline:  #1A1A2E;   /* Section h2 — slightly deeper than fg1 */
+  --fg2:          #3B3B3B;   /* Body / paragraph in cards */
+  --fg-muted:     #606161;   /* Secondary, captions, metadata */
+  --fg-on-dark:   #FFFFFF;
+  --fg-on-dark-2: rgba(255,255,255,.78);
+  --fg-on-dark-3: rgba(255,255,255,.55);
+  --fg-on-dark-4: rgba(255,255,255,.4);
+
+  /* ── SEMANTIC TYPE ──────────────────────────────────── */
+  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Roboto, sans-serif;
+  --font-serif-quote: Georgia, "Times New Roman", serif;  /* used only for giant " glyphs */
+
+  --fs-display:   clamp(30px, 3.6vw, 46px);   /* @kind font */
+  --fs-h1:        clamp(28px, 3.2vw, 42px);   /* @kind font */
+  --fs-h2:        clamp(24px, 2.8vw, 36px);   /* @kind font */
+  --fs-h3:        22px;                       /* @kind font */
+  --fs-card-h:    17px;                       /* @kind font */
+  --fs-body:      16px;                       /* @kind font */
+  --fs-body-sm:   15px;                       /* @kind font */
+  --fs-meta:      14px;                       /* @kind font */
+  --fs-micro:     13px;                       /* @kind font */
+  --fs-eyebrow:   11px;                       /* @kind font */
+  --fs-num:       clamp(26px, 3vw, 36px);     /* @kind font */
+
+  --lh-tight:     1.15;                       /* @kind font */
+  --lh-snug:      1.3;                        /* @kind font */
+  --lh-body:      1.65;                       /* @kind font */
+  --lh-loose:     1.7;                        /* @kind font */
+
+  /* Eyebrow / label tracking */
+  --ls-eyebrow:   .08em;                      /* @kind font */
+  --ls-eyebrow-strong: .12em;                 /* @kind font */
+  --ls-tag:       .14em;                       /* @kind font */
+  --ls-tight:     -0.01em;                     /* @kind font */
+
+  /* Font weights actually used */
+  --fw-medium:    500;                        /* @kind font */
+  --fw-semi:      600;                        /* @kind font */
+  --fw-bold:      700;                        /* @kind font */
+  --fw-heavy:     800;                        /* @kind font */
+
+  /* ── SPACING / RADII / SHADOWS ──────────────────────── */
+  --radius:        10px;
+  --radius-lg:     14px;
+  --radius-xl:     18px;
+  --radius-pill:   999px;
+
+  --shadow-sm:     0 1px 3px rgba(0,0,0,.06);
+  --shadow-md:     0 4px 6px -4px rgba(0,0,0,.1), 0 10px 15px -3px rgba(0,0,0,.1);
+  --shadow-lg:     0 8px 24px rgba(0,0,0,.12);
+  --shadow-card:   0 24px 60px -24px rgba(0,0,0,.5);   /* used on dark glass */
+  --shadow-deep:   0 20px 50px -20px rgba(0,0,0,.6);   /* hero stats panel */
+
+  --max-w:         1216px;                    /* @kind spacing */
+  --px:            clamp(20px, 4vw, 64px);    /* @kind spacing */
+
+  /* ── EASING ─────────────────────────────────────────── */
+  --ease:          cubic-bezier(.2,.7,.2,1);  /* @kind other */
+  --t-fast:        .18s;                      /* @kind other */
+  --t-base:        .2s;                       /* @kind other */
+}
+
+/* ============================================================
+   SEMANTIC ELEMENTS — apply these defaults to any page that
+   pulls in this file. Match the homepage's vertical rhythm.
+   ============================================================ */
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--fg1);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  color: var(--fg-headline);
+  text-wrap: balance;
+}
+
+h2 {
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+  color: var(--fg-headline);
+  text-wrap: balance;
+}
+
+h3 {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  line-height: 1.25;
+  color: var(--fg1);
+}
+
+p {
+  font-size: var(--fs-body);
+  line-height: var(--lh-loose);
+  color: var(--fg-muted);
+}
+
+/* The "section eyebrow" pattern used everywhere */
+.eyebrow {
+  font-size: var(--fs-eyebrow);
+  font-weight: var(--fw-semi);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--ondc-blue);
+}
+
+/* Eyebrow with the trailing cyan dash (used on dark / DPI band) */
+.eyebrow--rule {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ondc-cyan);
+  letter-spacing: var(--ls-eyebrow-strong);
+}
+.eyebrow--rule::before {
+  content: "";
+  width: 22px;
+  height: 1.5px;
+  background: currentColor;
+}
+
+a {
+  color: var(--ondc-blue);
+  text-decoration: none;
+  font-weight: var(--fw-semi);
+}
+a:hover { text-decoration: underline; }
+
+code, pre { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+
+</style>
+<script src="e7a459fc-6c42-409a-b496-10b12b497df6"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<style>/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("3aab92bd-57a5-46e5-9130-b7a3c4c25fb2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("02a46dda-5027-4afc-98ca-bec3a5e96b9d") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("279a05e7-f2ab-44ce-b5b9-0a8706e66024") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("9c71e907-2c8f-474e-9e5b-41ed60d1bd6d") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("72c84b7f-0206-41b2-87f3-952f55a7e27c") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("2ebae8ac-0c37-49e7-aa58-dbba2917997d") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("80c098f4-4c22-45ae-8da2-4865f28738af") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("20df581b-fdaa-46e6-8d1e-f4278a8642f2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("7729458a-5663-4fac-8079-1845b6f5aa95") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("eef86d4b-7781-4626-98fa-8c592f7cc122") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("c16db70f-e89f-4852-84ea-a749056b980a") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("bb37a205-d2d9-4d63-85dd-6a7219748f8d") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("3caf5979-304f-48a7-a77f-0ef98a897470") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("75ce7ae3-cefa-47a2-bc62-83df0597b241") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("20df581b-fdaa-46e6-8d1e-f4278a8642f2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("7729458a-5663-4fac-8079-1845b6f5aa95") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("eef86d4b-7781-4626-98fa-8c592f7cc122") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("c16db70f-e89f-4852-84ea-a749056b980a") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("bb37a205-d2d9-4d63-85dd-6a7219748f8d") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("3caf5979-304f-48a7-a77f-0ef98a897470") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("75ce7ae3-cefa-47a2-bc62-83df0597b241") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("20df581b-fdaa-46e6-8d1e-f4278a8642f2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("7729458a-5663-4fac-8079-1845b6f5aa95") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("eef86d4b-7781-4626-98fa-8c592f7cc122") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("c16db70f-e89f-4852-84ea-a749056b980a") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("bb37a205-d2d9-4d63-85dd-6a7219748f8d") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("3caf5979-304f-48a7-a77f-0ef98a897470") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("75ce7ae3-cefa-47a2-bc62-83df0597b241") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("20df581b-fdaa-46e6-8d1e-f4278a8642f2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("7729458a-5663-4fac-8079-1845b6f5aa95") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("eef86d4b-7781-4626-98fa-8c592f7cc122") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("c16db70f-e89f-4852-84ea-a749056b980a") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("bb37a205-d2d9-4d63-85dd-6a7219748f8d") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("3caf5979-304f-48a7-a77f-0ef98a897470") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("75ce7ae3-cefa-47a2-bc62-83df0597b241") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("20df581b-fdaa-46e6-8d1e-f4278a8642f2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("7729458a-5663-4fac-8079-1845b6f5aa95") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("eef86d4b-7781-4626-98fa-8c592f7cc122") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("c16db70f-e89f-4852-84ea-a749056b980a") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("bb37a205-d2d9-4d63-85dd-6a7219748f8d") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("3caf5979-304f-48a7-a77f-0ef98a897470") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("75ce7ae3-cefa-47a2-bc62-83df0597b241") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>*{box-sizing:border-box}body{margin:0}a{text-decoration:none}</style>
+</helmet>
+
+<nav style="background:rgba(0,29,51,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08);height:76px;position:sticky;top:0;z-index:100">
+<div style="max-width:1216px;margin:0 auto;padding:0 clamp(20px,4vw,64px);height:100%;display:flex;align-items:center;justify-content:space-between;gap:16px">
+<a href="index.html" style="display:block"><img src="a27b4b30-c799-403b-8935-33fdef55ce15" alt="ONDC — Open Network for Digital Commerce" style="height:40px;width:auto;display:block"></a>
+<div style="display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.65)"><span>ONDC</span><span style="color:rgba(255,255,255,.28)">/</span><span>Organisation</span><span style="color:rgba(255,255,255,.28)">/</span><span style="color:#00AEEF;font-weight:600">Careers</span></div>
+<div style="display:flex;align-items:center;gap:14px;flex-shrink:0">
+<a href="index.html" style="display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600;color:rgba(255,255,255,.75)" style-hover="color:#00AEEF"><svg width="14" height="14" sc-camel-view-box="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M10 3l-5 5 5 5"></path></svg>Back to home</a>
+<button style="height:40px;padding:0 20px;border-radius:8px;background:#00AEEF;color:#001D33;font-weight:700;font-size:13px;box-shadow:0 2px 4px rgba(0,0,0,.2),0 4px 12px rgba(0,174,239,.28);border:none;cursor:pointer" style-hover="filter:brightness(1.1)">Write to us</button>
+</div>
+</div>
+</nav>
+
+<section style="position:relative;background:#fff;overflow:hidden;padding:84px 0 72px">
+<div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 55% 70% at 82% 30%,rgba(0,174,239,.10) 0%,transparent 62%),radial-gradient(ellipse 45% 60% at 2% 0%,rgba(28,117,187,.09) 0%,transparent 62%)"></div>
+<div style="max-width:1216px;margin:0 auto;padding:0 clamp(20px,4vw,64px);position:relative;z-index:1">
+<div style="display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center">
+<div>
+<div style="display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border-radius:20px;background:#E5F0FF;border:1px solid rgba(28,117,187,.2);color:#1C75BB;font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;margin-bottom:24px"><span style="width:6px;height:6px;border-radius:50%;background:#00AEEF"></span>Careers @ ONDC</div>
+<h1 style="font-size:clamp(34px,4.4vw,58px);font-weight:800;color:#1A1A2E;line-height:1.08;letter-spacing:-.022em;margin:0 0 22px;text-wrap:balance">Help shape the future of <span style="color:#1C75BB">digital commerce</span> in India</h1>
+<p style="font-size:clamp(15px,1.25vw,17.5px);color:#606161;line-height:1.7;max-width:52ch;margin:0 0 14px">The future of commerce will be built by people who enjoy solving difficult problems, working across disciplines, and creating systems that expand opportunity for millions of businesses.</p>
+<p style="font-size:clamp(15px,1.25vw,17.5px);color:#3B3B3B;line-height:1.7;font-weight:500;margin:0 0 32px">If that excites you, we'd love to hear from you.</p>
+<div style="display:flex;gap:12px;flex-wrap:wrap">
+<a href="mailto:careers@ondc.org" style="display:inline-flex;align-items:center;gap:8px;padding:0 26px;height:48px;border-radius:10px;font-weight:700;font-size:15px;background:linear-gradient(rgba(28,117,187,.9) 0%,rgba(4,66,115,.9) 100%);color:#fff;box-shadow:0 4px 6px -4px rgba(0,0,0,.1),0 10px 15px -3px rgba(0,0,0,.1)" style-hover="filter:brightness(1.08)">Write to careers@ondc.org</a>
+<a href="#benefits" style="display:inline-flex;align-items:center;gap:8px;padding:0 26px;height:48px;border-radius:10px;font-weight:700;font-size:15px;color:#1C75BB;border:1.5px solid rgba(28,117,187,.35)" style-hover="background:#E5F0FF">See benefits →</a>
+</div>
+</div>
+<div><img src="d6979dff-3011-4b46-8f3a-96fb3db1724b" alt="Illustration: building a digital India, together" style="width:100%;height:auto;mix-blend-mode:multiply"></div>
+</div>
+</div>
+</section>
+
+<section style="padding:92px 0;background:#F5F7FA;border-top:1px solid #E5E7EB;border-bottom:1px solid #E5E7EB">
+<div style="max-width:1216px;margin:0 auto;padding:0 clamp(20px,4vw,64px)">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+<div style="border-radius:16px;overflow:hidden;background:#fff;border:1px solid #E5E7EB;box-shadow:0 4px 6px -4px rgba(0,0,0,.1),0 10px 15px -3px rgba(0,0,0,.1)"><img src="0ae4ead8-418a-4dc9-8ee3-08ce92d8fcb6" alt="Illustration: people building a growth chart" style="width:100%;height:auto"></div>
+<div>
+<div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:#1C75BB;display:inline-flex;align-items:center;gap:10px"><span style="width:22px;height:1.5px;background:#1C75BB;display:inline-block"></span>Build What Matters</div>
+<h2 style="font-size:clamp(26px,3.2vw,42px);font-weight:700;line-height:1.16;letter-spacing:-.016em;color:#1A1A2E;margin:12px 0 18px;text-wrap:balance">Your work won't shape a single product. It will help shape an ecosystem.</h2>
+<p style="font-size:16px;line-height:1.74;color:#606161;margin:0 0 16px;max-width:54ch">Every line of code, policy, partnership, product decision, and operational improvement contributes to infrastructure that helps businesses across India participate in digital commerce.</p>
+<p style="font-size:16px;line-height:1.74;color:#606161;margin:0 0 16px;max-width:54ch">At ONDC, you'll collaborate with policymakers, engineers, economists, designers, product thinkers, marketers, and ecosystem partners to solve challenges that operate at population scale.</p>
+<div style="margin-top:24px;padding:18px 22px;background:#fff;border:1px solid #E5E7EB;border-left:3px solid #1C75BB;border-radius:12px;font-size:16.5px;line-height:1.55;color:#1A1A2E;font-weight:600">Work that operates at the scale of a country, not a category.</div>
+</div>
+</div>
+</div>
+</section>
+
+<section style="padding:92px 0;background:#fff">
+<div style="max-width:1216px;margin:0 auto;padding:0 clamp(20px,4vw,64px)">
+<div style="max-width:760px;margin-bottom:40px">
+<div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:#1C75BB;display:inline-flex;align-items:center;gap:10px"><span style="width:22px;height:1.5px;background:#1C75BB;display:inline-block"></span>Who Builds ONDC</div>
+<h2 style="font-size:clamp(26px,3.2vw,42px);font-weight:700;line-height:1.16;letter-spacing:-.016em;color:#1A1A2E;margin:12px 0 16px;text-wrap:balance">The kind of people who build ONDC</h2>
+<p style="font-size:16px;line-height:1.72;color:#606161">We look for people who are curious enough to question assumptions, humble enough to keep learning, and ambitious enough to build systems that create lasting impact.</p>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start">
+<div>
+<div style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#1A1A2E;margin-bottom:14px">People who thrive at ONDC often</div>
+<div style="display:grid;gap:10px">
+<sc-for list="{{ traits }}" as="t" hint-placeholder-count="7">
+<div style="display:flex;gap:13px;align-items:flex-start;padding:14px 18px;background:#fff;border:1px solid #E5E7EB;border-radius:12px;font-size:14.5px;line-height:1.55;color:#3B3B3B" style-hover="border-color:rgba(28,117,187,.3);transform:translateX(4px)">
+<span style="width:24px;height:24px;border-radius:7px;background:#E5F0FF;color:#1C75BB;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px"><svg width="12" height="12" sc-camel-view-box="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 5"></path></svg></span>{{ t }}
+</div>
+</sc-for>
+</div>
+</div>
+<div>
+<img src="150bfc5d-040c-4cf7-946f-98e132f28c53" alt="Illustration of the ONDC team" style="width:100%;height:auto;mix-blend-mode:multiply">
+<div style="margin-top:28px;font-size:20px;font-weight:700;color:#1C75BB;letter-spacing:-.01em;text-align:center">Experience is valuable. Mindset is indispensable.</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="benefits" style="padding:92px 0;background:#F4F9FF;border-top:1px solid #E5E7EB;border-bottom:1px solid #E5E7EB">
+<div style="max-width:1216px;margin:0 auto;padding:0 clamp(20px,4vw,64px)">
+<div style="display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start">
+<div>
+<div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:#1C75BB;display:inline-flex;align-items:center;gap:10px"><span style="width:22px;height:1.5px;background:#1C75BB;display:inline-block"></span>Benefits &amp; Wellbeing</div>
+<h2 style="font-size:clamp(28px,3.4vw,44px);font-weight:700;line-height:1.14;letter-spacing:-.018em;color:#1A1A2E;margin:12px 0 18px">Our benefits</h2>
+<p style="font-size:16px;line-height:1.74;color:#606161;max-width:38ch">We believe meaningful work is supported by an environment that enables people to do their best.</p>
+<div style="margin-top:36px;max-width:380px"><img src="8004442a-9ade-4acb-801f-762d8ecbddd7" alt="Illustration of ONDC teammates sharing lunch together" style="width:100%;height:auto;mix-blend-mode:multiply"></div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:36px 40px">
+<sc-for list="{{ benGroups }}" as="g" hint-placeholder-count="4">
+<div>
+<div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1C75BB;padding-bottom:10px;margin-bottom:18px;border-bottom:1px solid rgba(28,117,187,.22)">{{ g.head }}</div>
+<div style="display:grid;gap:20px">
+<sc-for list="{{ g.items }}" as="it" hint-placeholder-count="2">
+<div style="display:grid;grid-template-columns:40px 1fr;gap:14px;align-items:start">
+<div style="width:40px;height:40px;color:#1C75BB;display:flex;align-items:center;justify-content:center">{{ it.iconEl }}</div>
+<div style="font-size:14.5px;line-height:1.5;color:#3B3B3B;font-weight:500;padding-top:8px">{{ it.txt }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+
+<section style="padding:92px 0;background:#fff">
+<div style="max-width:1216px;margin:0 auto;padding:0 clamp(20px,4vw,64px)">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+<div>
+<div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:#1C75BB;display:inline-flex;align-items:center;gap:10px"><span style="width:22px;height:1.5px;background:#1C75BB;display:inline-block"></span>Our Hiring Philosophy</div>
+<h2 style="font-size:clamp(26px,3.2vw,42px);font-weight:700;line-height:1.16;letter-spacing:-.016em;color:#1A1A2E;margin:12px 0 18px;text-wrap:balance">Every hire shapes the future of the organisation</h2>
+<p style="font-size:16px;line-height:1.74;color:#606161;margin:0 0 16px;max-width:52ch">We hire thoughtfully because the people who join ONDC influence the systems, partnerships, and infrastructure that millions of businesses rely on.</p>
+<div style="margin-top:26px;padding:24px 26px;background:#E5F0FF;border:1px solid rgba(28,117,187,.2);border-radius:14px">
+<div style="font-size:17px;font-weight:700;color:#1A1A2E;margin-bottom:8px">We're always interested in meeting exceptional people.</div>
+<p style="font-size:15px;line-height:1.66;color:#3B3B3B;margin:0">Sometimes the right person arrives before the right role. When that happens, we'd rather start a conversation than miss the opportunity to work together.</p>
+</div>
+</div>
+<div><img src="150bfc5d-040c-4cf7-946f-98e132f28c53" alt="Illustration of people at ONDC" style="width:100%;height:auto;mix-blend-mode:multiply"></div>
+</div>
+</div>
+</section>
+
+<section style="padding:88px 0 96px;background:linear-gradient(135deg,#1C75BB 0%,#044273 100%);color:#fff;position:relative;overflow:hidden;text-align:center">
+<div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 50% 70% at 100% 0%,rgba(0,174,239,.22) 0%,transparent 60%),radial-gradient(ellipse 40% 60% at 0% 100%,rgba(255,255,255,.07) 0%,transparent 60%)"></div>
+<div style="max-width:1216px;margin:0 auto;padding:0 clamp(20px,4vw,64px);position:relative;z-index:1">
+<div style="display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#00AEEF"><span style="width:22px;height:1.5px;background:#00AEEF;display:inline-block"></span>Join Us<span style="width:22px;height:1.5px;background:#00AEEF;display:inline-block"></span></div>
+<h2 style="font-size:clamp(30px,3.8vw,48px);font-weight:800;line-height:1.12;letter-spacing:-.02em;color:#fff;margin:14px 0 18px;text-wrap:balance">Be part of India's next digital infrastructure story</h2>
+<p style="font-size:17px;color:rgba(255,255,255,.78);line-height:1.66;max-width:60ch;margin:0 auto 34px">Whether you're an engineer, designer, economist, policy specialist, marketer, operator, researcher, or strategist, we'd love to hear from people who want to help build the future of digital commerce in India.</p>
+<div style="display:inline-flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:30px">
+<a href="mailto:careers@ondc.org" style="font-size:clamp(22px,2.6vw,32px);font-weight:800;color:#fff;letter-spacing:-.01em;border-bottom:2px solid rgba(255,255,255,.4);padding-bottom:4px" style-hover="border-bottom-color:#00AEEF">careers@ondc.org</a>
+<span style="font-size:14px;color:rgba(255,255,255,.66)">Share your resume and tell us how you'd like to contribute.</span>
+</div>
+<div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><a href="index.html" style="display:inline-flex;align-items:center;gap:8px;padding:0 26px;height:48px;border-radius:10px;font-weight:700;font-size:15px;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.3)" style-hover="background:rgba(255,255,255,.22)">Explore the network</a></div>
+</div>
+</section>
+
+<footer style="background:#033356;color:#fff;padding:56px 0 0">
+<div style="max-width:1216px;margin:0 auto;padding:0 clamp(20px,4vw,64px)">
+<div style="display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:32px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.1)">
+<div>
+<img src="a27b4b30-c799-403b-8935-33fdef55ce15" alt="ONDC" style="height:40px;width:auto;display:block;margin-bottom:16px;filter:brightness(0) invert(1);opacity:.96">
+<p style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.72;max-width:234px">Open Network for Digital Commerce. Building open, inclusive and equitable digital commerce for India.</p>
+</div>
+<sc-for list="{{ footerCols }}" as="col" hint-placeholder-count="4">
+<div>
+<div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:16px">{{ col.head }}</div>
+<sc-for list="{{ col.links }}" as="lk" hint-placeholder-count="4">
+<a href="{{ lk.href }}" style="font-size:13px;color:rgba(255,255,255,.5);line-height:2.2;display:block" style-hover="color:#fff">{{ lk.label }}</a>
+</sc-for>
+</div>
+</sc-for>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:20px 0;flex-wrap:wrap;gap:12px">
+<div style="font-size:12px;color:rgba(255,255,255,.38)">2025 ONDC. All rights reserved.</div>
+<div style="display:flex;gap:24px;flex-wrap:wrap">
+<a href="#" style="font-size:12px;color:rgba(255,255,255,.38)" style-hover="color:#fff">Privacy Policy</a>
+<a href="#" style="font-size:12px;color:rgba(255,255,255,.38)" style-hover="color:#fff">Terms of Use</a>
+<a href="#" style="font-size:12px;color:rgba(255,255,255,.38)" style-hover="color:#fff">Accessibility</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="">
+class Component extends DCLogic {
+  icon(paths, vb) {
+    return React.createElement('svg', {viewBox: vb || '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round', width: 30, height: 30},
+      paths.map((d, i) => React.createElement('path', {key: i, d: d})));
+  }
+  renderVals() {
+    const traits = [
+      "Take ownership beyond their job description.",
+      "Solve complex problems with clarity and curiosity.",
+      "Think in systems and long-term outcomes.",
+      "Work comfortably across disciplines and perspectives.",
+      "Communicate openly and collaborate generously.",
+      "Stay curious, even when the answer isn't immediately obvious.",
+      "Care deeply about building solutions that serve millions."
+    ];
+    const iconPaths = [
+      ["M12 3l7.5 3v5.2c0 4.6-3.2 8.4-7.5 9.8-4.3-1.4-7.5-5.2-7.5-9.8V6z","M12 9v6M9 12h6"],
+      ["M3 8h18v12H3z","M8.5 8V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v2","M12 11.5v5M9.5 14h5"],
+      ["M6.5 21v-1.5a5.5 5.5 0 0 1 11 0V21"],
+      ["M5 13l1.6-4.6A2 2 0 0 1 8.5 7h7a2 2 0 0 1 1.9 1.4L19 13","M3.5 13h17v5h-17z"],
+      ["M12 3l9 5H3z","M5.5 10v9M9.5 10v9M14.5 10v9M18.5 10v9","M3 21h18"],
+      ["M8.4 13.2L7 21l5-2.8L17 21l-1.4-7.8"],
+      ["M16 20v-1.6a3.4 3.4 0 0 0-3.4-3.4H6.4A3.4 3.4 0 0 0 3 18.4V20","M21 20v-1.6a3.4 3.4 0 0 0-2.6-3.3M15.5 4.8a3.4 3.4 0 0 1 0 6.5"],
+      ["M3 12h18","M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"],
+      ["M12 6.6S10 4.6 4 4.6v13c6 0 8 1.9 8 1.9s2-1.9 8-1.9v-13c-6 0-8 2-8 2z","M12 6.6v13"]
+    ];
+    const benGroups = [
+      { head: "Health & Wellness", items: [
+        { txt: "Comprehensive health insurance" },
+        { txt: "Group medical insurance for dependants" }
+      ]},
+      { head: "Family Support", items: [
+        { txt: "Maternity leave" }
+      ]},
+      { head: "Financial Benefits", items: [
+        { txt: "Car lease programme" },
+        { txt: "Retirement and statutory benefits" },
+        { txt: "Performance-linked rewards" }
+      ]},
+      { head: "Learning & Growth", items: [
+        { txt: "Work across multidisciplinary teams" },
+        { txt: "Exposure to public digital infrastructure at national scale" },
+        { txt: "Continuous learning through cross-functional collaboration" }
+      ]}
+    ];
+    let pi = 0;
+    benGroups.forEach(g => g.items.forEach(it => { it.iconEl = this.icon(iconPaths[pi]); pi++; }));
+    const footerCols = [
+      { head: "Solutions", links: [
+        { label: "D2C Retail", href: "#" }, { label: "Food and Beverages", href: "#" },
+        { label: "Mobility", href: "#" }, { label: "Financial Services", href: "#" }
+      ]},
+      { head: "Get Started", links: [
+        { label: "List your brand", href: "#" }, { label: "Integrate services", href: "#" },
+        { label: "Build on ONDC", href: "#" }, { label: "API Documentation", href: "#" }
+      ]},
+      { head: "Resources", links: [
+        { label: "Network overview", href: "#" }, { label: "Policy framework", href: "#" },
+        { label: "Media centre", href: "#" }, { label: "Reports", href: "#" }
+      ]},
+      { head: "Organisation", links: [
+        { label: "About ONDC", href: "About Us.html" }, { label: "Leadership", href: "#" },
+        { label: "Careers", href: "Careers.dc.html" }, { label: "Contact", href: "#" }
+      ]}
+    ];
+    return { traits, benGroups, footerCols };
+  }
+}
+</script>
+
+
+</body></html>

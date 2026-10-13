@@ -1,0 +1,275 @@
+{
+  "outputDirectory": ".",
+  "redirects": [
+    {
+      "source": "/governance-and-policies",
+      "destination": "/pages/resources-governance.html",
+      "permanent": false
+    },
+    {
+      "source": "/governance-and-policies/",
+      "destination": "/pages/resources-governance.html",
+      "permanent": false
+    },
+    {
+      "source": "/ondc-network-policy",
+      "destination": "/pages/resources-network-policy.html",
+      "permanent": false
+    },
+    {
+      "source": "/ondc-network-policy/",
+      "destination": "/pages/resources-network-policy.html",
+      "permanent": false
+    },
+    {
+      "source": "/advisories1",
+      "destination": "/pages/resources-advisories.html",
+      "permanent": false
+    },
+    {
+      "source": "/advisories1/",
+      "destination": "/pages/resources-advisories.html",
+      "permanent": false
+    },
+    {
+      "source": "/notifications",
+      "destination": "/pages/resources-notifications.html",
+      "permanent": false
+    },
+    {
+      "source": "/notifications/",
+      "destination": "/pages/resources-notifications.html",
+      "permanent": false
+    },
+    {
+      "source": "/compliance-handbook",
+      "destination": "/pages/resources-compliance-handbook.html",
+      "permanent": false
+    },
+    {
+      "source": "/compliance-handbook/",
+      "destination": "/pages/resources-compliance-handbook.html",
+      "permanent": false
+    },
+    {
+      "source": "/legal-compliance-handbook",
+      "destination": "/pages/resources-compliance-handbook.html",
+      "permanent": false
+    },
+    {
+      "source": "/legal-compliance-handbook/",
+      "destination": "/pages/resources-compliance-handbook.html",
+      "permanent": false
+    },
+    {
+      "source": "/guidance",
+      "destination": "/pages/resources-guidance.html",
+      "permanent": false
+    },
+    {
+      "source": "/guidance/",
+      "destination": "/pages/resources-guidance.html",
+      "permanent": false
+    },
+    {
+      "source": "/guidanceontax",
+      "destination": "/pages/resources-guidance-tax.html",
+      "permanent": false
+    },
+    {
+      "source": "/guidanceontax/",
+      "destination": "/pages/resources-guidance-tax.html",
+      "permanent": false
+    },
+    {
+      "source": "/disclosures",
+      "destination": "/pages/resources-disclosures.html",
+      "permanent": false
+    },
+    {
+      "source": "/disclosures/",
+      "destination": "/pages/resources-disclosures.html",
+      "permanent": false
+    },
+    {
+      "source": "/publications",
+      "destination": "/pages/resources-publications.html",
+      "permanent": false
+    },
+    {
+      "source": "/publications/",
+      "destination": "/pages/resources-publications.html",
+      "permanent": false
+    },
+    {
+      "source": "/marketing-and-communication-resources",
+      "destination": "/pages/resources-marketing.html",
+      "permanent": false
+    },
+    {
+      "source": "/marketing-and-communication-resources/",
+      "destination": "/pages/resources-marketing.html",
+      "permanent": false
+    },
+    {
+      "source": "/tech-resources",
+      "destination": "/pages/resources-tech.html",
+      "permanent": false
+    },
+    {
+      "source": "/tech-resources/",
+      "destination": "/pages/resources-tech.html",
+      "permanent": false
+    },
+    {
+      "source": "/ondc-academy",
+      "destination": "/pages/resources-academy.html",
+      "permanent": false
+    },
+    {
+      "source": "/ondc-academy/",
+      "destination": "/pages/resources-academy.html",
+      "permanent": false
+    },
+    {
+      "source": "/financial-services",
+      "destination": "/pages/resources-financial-services.html",
+      "permanent": false
+    },
+    {
+      "source": "/financial-services/",
+      "destination": "/pages/resources-financial-services.html",
+      "permanent": false
+    },
+    {
+      "source": "/investor-corner",
+      "destination": "/pages/resources-investor-corner.html",
+      "permanent": false
+    },
+    {
+      "source": "/investor-corner/",
+      "destination": "/pages/resources-investor-corner.html",
+      "permanent": false
+    },
+    {
+      "source": "/mobility",
+      "destination": "/pages/resources-mobility.html",
+      "permanent": false
+    },
+    {
+      "source": "/mobility/",
+      "destination": "/pages/resources-mobility.html",
+      "permanent": false
+    },
+    {
+      "source": "/services",
+      "destination": "/pages/resources-services.html",
+      "permanent": false
+    },
+    {
+      "source": "/services/",
+      "destination": "/pages/resources-services.html",
+      "permanent": false
+    },
+    {
+      "source": "/network-participant-agreement",
+      "destination": "/pages/resources-np-agreement.html",
+      "permanent": false
+    },
+    {
+      "source": "/network-participant-agreement/",
+      "destination": "/pages/resources-np-agreement.html",
+      "permanent": false
+    },
+    {
+      "source": "/ondc-policies",
+      "destination": "/pages/resources-policies.html",
+      "permanent": false
+    },
+    {
+      "source": "/ondc-policies/",
+      "destination": "/pages/resources-policies.html",
+      "permanent": false
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/pages/privacy-policy.html",
+      "permanent": false
+    },
+    {
+      "source": "/privacy-policy/",
+      "destination": "/pages/privacy-policy.html",
+      "permanent": false
+    },
+    {
+      "source": "/cookie-policy",
+      "destination": "/pages/cookie-policy.html",
+      "permanent": false
+    },
+    {
+      "source": "/cookie-policy/",
+      "destination": "/pages/cookie-policy.html",
+      "permanent": false
+    },
+    {
+      "source": "/terms-and-conditions",
+      "destination": "/pages/terms-and-conditions.html",
+      "permanent": false
+    },
+    {
+      "source": "/terms-and-conditions/",
+      "destination": "/pages/terms-and-conditions.html",
+      "permanent": false
+    },
+    {
+      "source": "/about",
+      "destination": "/pages/about-us.html",
+      "permanent": false
+    },
+    {
+      "source": "/about/",
+      "destination": "/pages/about-us.html",
+      "permanent": false
+    },
+    {
+      "source": "/about-us",
+      "destination": "/pages/about-us.html",
+      "permanent": false
+    },
+    {
+      "source": "/about-us/",
+      "destination": "/pages/about-us.html",
+      "permanent": false
+    },
+    {
+      "source": "/network-participants",
+      "destination": "/pages/network-participants.html",
+      "permanent": false
+    },
+    {
+      "source": "/network-participants/",
+      "destination": "/pages/network-participants.html",
+      "permanent": false
+    },
+    {
+      "source": "/ecosystem-participants",
+      "destination": "/pages/ecosystem-participants.html",
+      "permanent": false
+    },
+    {
+      "source": "/ecosystem-participants/",
+      "destination": "/pages/ecosystem-participants.html",
+      "permanent": false
+    },
+    {
+      "source": "/payment-assurance-program",
+      "destination": "/pages/payment-assurance-program.html",
+      "permanent": false
+    },
+    {
+      "source": "/payment-assurance-program/",
+      "destination": "/pages/payment-assurance-program.html",
+      "permanent": false
+    }
+  ]
+}

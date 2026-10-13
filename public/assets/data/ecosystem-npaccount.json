@@ -1,0 +1,58 @@
+[
+    {
+        "bankname": "Axis Bank",
+        "contact": "Abhishek Tare",
+        "email": "Abhishek.Tare@axisbank.com",
+        "contactno": "Pan India",
+        "zone": "+91 8770339899",
+        "link": ""
+    },
+    {
+        "bankname": "HSBC Bank",
+        "contact": "Tej Rajani</br>Goutham Bharadhwaj</br>Tania Verma",
+        "email": "tej.rajani@hsbc.co.in</br>goutham.bharadhwaj@hsbc.co.in</br>tania.verma@hsbc.co.in",
+        "contactno": "Pan India",
+        "zone": "",
+        "link": ""
+    },
+    {
+        "bankname": "ICICI Bank",
+        "contact": "Pranali Sarang<br>Nithya Nandini<br>Vishrut Trivedi<br>Vishal Pawar",
+        "email": "pranali.sarang@icicibank.com<br>nithya.nandini@icicibank.com<br>vishrut.trivedi@icicibank.com<br>vishal.pawar1@icicibank.com",
+        "contactno": "Pan India",
+        "zone": "+917977714651<br>+918978778933<br>+918320308507<br>+918097862106",
+        "link": ""
+    },
+    {
+        "bankname": "IDFC FIRST Bank",
+        "contact": "Harshad Sawant</br>Jatin Dev</br>Amit Jaiswal",
+        "email": "harshad.sawant@idfcfirstbank.com</br>jatin.dev@idfcfirstbank.com</br>amit.jaiswal@idfcfirstbank.com",
+        "contactno": "West</br>North & East</br>South",
+        "zone": "9833650714</br>9930860369</br>9930030432",
+        "link": "</br></br></br>"
+    },
+    {
+        "bankname": "IndusInd Bank",
+        "contact": "Mohit Saxena",
+        "email": "mohit.saxena@indusind.com",
+        "contactno": "Pan India",
+        "zone": "9599928079",
+        "link": ""
+    },
+    {
+        "bankname": "RBL BANK",
+        "contact": "Prathamesh Shirodkar,</br> Nafisul Khan,</br> Gagan Thukral,</br> Bharthi Chajjed, Seema Sirajuddin",
+        "email": "Prathamesh.Shirodkar@rblbank.com,</br> NafisulAnwar.Khan@rblbank.com,</br> Gagan.Thukral@rblbank.com,</br> bharathi.chajjed@rblbank.com, Seema.Sirajuddin@rblbank.com",
+        "contactno": "Pan India,</br> West,</br> North,</br> South",
+        "zone": "9619272753,</br> 9769039870,</br> 9899377797,</br> 7760700888, 9886060701",
+        "link": ""
+    },
+    {
+        "bankname": "Yes Bank",
+        "contact": "Sachet Parida</br>Jalesh Parekh",
+        "email": "sachet.parida@yesbank.in</br>jalesh.parekh1@yesbank.in",
+        "zone": "9124004948</br>9323832925",
+        "contactno": "Pan India</br>",
+        "link": ""
+    }
+]

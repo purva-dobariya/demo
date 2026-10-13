@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- @dsCard group="UI Kit --- Website" name="ONDC marketing site" subtitle="Full pixel-faithful homepage recreation — carousel, DPI band, social proof, signup modal" viewport="1280x900" -->
+<html lang="en">
+
+<head>
+  <script src="src/scripts/analytics.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open Network for Digital Commerce (ONDC)</title>
+  <meta name="description"
+    content="ONDC is an initiative by the Government of India's Department for Promotion of Industry and Internal Trade (DPIIT) designed as population-scale digital infrastructure. ONDC is enabling broader participation across Retail, Logistics, MTT (Mobility, Transit and Travel), and Financial services.">
+  <link rel="icon" href="/public/assets/ondc_top_logo_transparent.png" type="image/png">
+
+  <link rel="stylesheet" href="src/styles/styles.css">
+  <link rel="stylesheet" href="src/styles/fx.css">
+  <link rel="stylesheet" href="src/styles/hero.css">
+  <link rel="stylesheet" href="src/styles/scale.css">
+  <!-- First carousel slide only. The page is client-rendered, so without this
+       the photo request cannot start until React and Babel have both booted. -->
+  <link rel="preload" as="image" href="public/assets/hero/d2c-brands.jpg" fetchpriority="high">
+  <link rel="preload" href="public/fonts/space-grotesk-latin-600-normal.woff2" as="font" type="font/woff2"
+    crossorigin="anonymous">
+  <link rel="preload" href="public/fonts/space-grotesk-latin-700-normal.woff2" as="font" type="font/woff2"
+    crossorigin="anonymous">
+
+<!-- Mobile layer. Must load last: every rule is inside a max-width
+     query, and several of them intentionally override earlier files. -->
+<link rel="stylesheet" href="src/styles/mobile.css">
+</head>
+
+<!-- `home` scopes the homepage's Beckn section layer (fx.css) so those rules
+     cannot reach the 44 static pages that share this stylesheet. -->
+<body class="home">
+  <div id="root"></div>
+
+  <script src="src/scripts/fx.js" defer></script>
+  <script src="src/scripts/hero-map.js" defer></script>
+  <script src="src/scripts/home-network.js" defer></script>
+  <!-- Prebuilt: React 18.3.1 + the eight src/components/*.jsx in load order,
+       compiled once by `npm run build:home` (scripts/build-home.mjs). Rebuild
+       after editing any component. -->
+  <script src="public/app.js" defer></script>
+  <script src="src/scripts/intro.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<!-- @dsCard group="UI Kit, Website" name="Payment Assurance Program" subtitle="The Programme as a readable Notification that ends in a register" -->
+<!--
+  STAGED — NOT THE LIVE PAGE.
+
+  "-approved" names the version to publish WHEN approval lands; it does not
+  mean this has been approved. Until then pages/payment-assurance-program.html
+  holds the URL with a Coming Soon page and this file waits here, unchanged and
+  still covered by the test suite so it stays launch-ready.
+
+  To go live:  node scripts/payment-assurance-golive.js
+-->
+<html lang="en">
+
+<head>
+  <script src="../src/scripts/analytics.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Assurance Program · ONDC Network</title>
+  <link rel="icon" href="/public/assets/ondc_top_logo_transparent.png" type="image/png">
+  <meta name="robots" content="noindex">
+  <meta name="description"
+    content="A voluntary ONDC program under which Buyer Network Participants place a refundable Payment Assurance Security Deposit and carry the Payment Assurance Badge, giving Seller Network Participants greater assurance in defined payment-dispute exceptions.">
+  <link rel="stylesheet" href="../src/styles/category-chrome.css">
+  <link rel="stylesheet" href="../src/styles/fx.css">
+  <link rel="stylesheet" href="../src/styles/scale.css">
+  <link rel="stylesheet" href="../src/styles/type-boost.css">
+  <link rel="stylesheet" href="../src/styles/beckn.css">
+  <!-- .bk-rv starts at opacity 0 and waits for beckn.js to reveal it. With the
+       content now authored in the markup, the one thing still standing between
+       a no-JS reader and the page is that opacity, so give it back. -->
+  <noscript>
+    <style>.bk-rv { opacity: 1; transform: none; }</style>
+  </noscript>
+  <script src="../src/scripts/fx.js" defer></script>
+  <script src="../src/scripts/beckn.js" defer></script>
+<!-- Mobile layer. Must load last: every rule is inside a max-width
+     query, and several of them intentionally override earlier files. -->
+<link rel="stylesheet" href="../src/styles/mobile.css">
+</head>
+
+<body>
+
+<!--
+  THESIS: A voluntary deposit programme read as the Notification's readable
+  companion, ending in the register it exists to publish. Refuses the
+  icon-tiled feature-card marketing page the source comp reached for.
+  OWN-WORLD: The site's beckn canvas, unchanged — Space Grotesk on the 32px
+  dotted #f7f8f8 ground, one blue (#2151F5), hairlines not boxes, reversed
+  <em> emphasis, zero icons. Green/amber status is refused: Active is a filled
+  blue node, On Hold the same node hollow and breathing.
+  STORY: An SNP learns which BNPs have money behind their settlements and can
+  read the register; a BNP learns what placing it costs, buys, and requires.
+  FIRST VIEWPORT: Centred text hero on the dotted canvas — programme name,
+  display headline with one light phrase, the lead, two actions. No imagery,
+  no card. The at-a-glance ledger follows on a white panel.
+  FORM: Reading instrument + register; candidate 5 of 7 on the ranked list;
+  surface seed key 3a050646.
+  FINISH: unreviewed and undocumented is unfinished; this build ends with the
+  finish review, the verdict, DESIGN.md, and every shipping raster carrying
+  its provenance.
+-->
+
+  <!-- SCROLL PROGRESS -->
+  <div class="scroll-progress" aria-hidden="true"><span id="progBar"></span></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" data-screen-label="Navbar">
+    <div class="container">
+      <a href="../index.html#site-top" class="nav-logo">
+        <img src="../public/assets/ondc-logo.svg" alt="ONDC — Open Network for Digital Commerce" class="nav-logo-img">
+      </a>
+      <div class="nav-links">
+        <a href="../index.html#site-top" class="nav-link">Home</a>
+        <a href="about-us.html" class="nav-link">About</a>
+
+        <a href="../index.html#find-your-place" class="nav-link">Roles You Can Play</a>
+        <a href="https://portal.ondc.org/" class="nav-link" target="_blank" rel="noopener">How To Join</a>
+        <a href="resources.html" class="nav-link">Resources</a>
+        <a href="complaint.html" class="nav-link">Complaints</a>
+        <details class="nav-drop">
+          <summary class="nav-link">ONDC Participants
+            <svg class="nav-drop-chev" width="8" height="5" viewBox="0 0 8 5" fill="none" stroke="currentColor"
+              stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M1 1l3 3 3-3"></path>
+            </svg>
+          </summary>
+          <div class="nav-drop-menu">
+            <a href="network-participants.html">Network Participants</a>
+            <a href="ecosystem-participants.html">Ecosystem Participants</a>
+          </div>
+        </details>
+        <a href="rfp.html" class="nav-link">RFPs/RFQs</a>
+        <a href="contact-us.html" class="nav-link">Contact</a>
+        <a href="careers.html" class="nav-link">Careers</a>
+      </div>
+      <div class="nav-right">
+        <button class="nav-cta" onclick="ONDCSignup.open('buyer')">Sign up</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="bk">
+
+    <!-- ═══ HERO ═══════════════════════════════════════════════════════════ -->
+    <section class="bk-hero bk-hero-about" aria-labelledby="pap-hero-title">
+      <div class="bk-hero-body">
+        <div class="bk-eyebrow" data-bk-intro>Payment Assurance Program</div>
+        <h1 id="pap-hero-title" data-bk-intro>Settlement discipline, made <em>visible on the network</em></h1>
+        <p class="bk-hero-sub" data-bk-intro>A voluntary program for Buyer Network Participants (BNPs). Place a
+          refundable Payment Assurance Security Deposit, carry the Payment Assurance Badge, and give Seller Network
+          Participants (SNPs) greater assurance when defined payment-dispute exceptions arise.</p>
+        <div class="bk-hero-actions" data-bk-intro>
+          <a class="bk-btn bk-btn-solid" href="#buyers">Enrol as a BNP</a>
+          <a class="bk-btn bk-btn-ghost" href="#lists">View Badge &amp; Mandate Lists</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ AT A GLANCE — the seven facts, as a ledger not as icon tiles ═══ -->
+    <section class="bk-panel bk-numbers" id="glance" aria-labelledby="pap-glance-title">
+      <div class="bk-numbers-head bk-rv">
+        <h2 class="bk-h2" id="pap-glance-title">At a <em>glance</em></h2>
+      </div>
+      <div class="bk-barriers bk-inset bk-pap-cascade" id="papGlance">
+        <div class="bk-barrier bk-rv">
+        <div class="bk-barrier-n">01</div>
+        <div class="bk-barrier-t">
+        <b>Voluntary.</b> BNPs choose whether to enrol, domain by domain.</div>
+        </div>
+        <div class="bk-barrier bk-rv">
+        <div class="bk-barrier-n">02</div>
+        <div class="bk-barrier-t">
+        <b>Refundable.</b> The Security Deposit is returned on withdrawal, with accrued interest for escrow balances.</div>
+        </div>
+        <div class="bk-barrier bk-rv">
+        <div class="bk-barrier-n">03</div>
+        <div class="bk-barrier-t">
+        <b>Domain-specific.</b> Determined using multiple factors such as transaction volumes, settlement timelines, average order values and reconciliation timelines.</div>
+        </div>
+        <div class="bk-barrier bk-rv">
+        <div class="bk-barrier-n">04</div>
+        <div class="bk-barrier-t">
+        <b>Escrow or Bank Guarantee.</b> Either instrument may be used to place the required Security Deposit.</div>
+        </div>
+        <div class="bk-barrier bk-rv">
+        <div class="bk-barrier-n">05</div>
+        <div class="bk-barrier-t">
+        <b>Published.</b> Enrolled BNPs carry the Badge and are shown in the Badge Holder List on this page.</div>
+        </div>
+        <div class="bk-barrier bk-rv">
+        <div class="bk-barrier-n">06</div>
+        <div class="bk-barrier-t">
+        <b>Applicable domain.</b> Currently being rolled out for Metro; additional domains may be added and this page will be updated.</div>
+        </div>
+        <div class="bk-barrier bk-rv">
+        <div class="bk-barrier-n">07</div>
+        <div class="bk-barrier-t">
+        <b>Used only for exceptions.</b> The Security Deposit is used only after a payment dispute is resolved and the liable enrolled BNP still does not pay within the defined timeline.</div>
+        </div>
+      </div>
+      <p class="bk-note bk-inset" style="margin-top:26px"><b>Normal settlements do not change.</b> The Program is a
+        backstop for defined payment-dispute exceptions, not a new settlement mechanism for every transaction.</p>
+    </section>
+
+    <!-- ═══ THE DOCUMENT ══════════════════════════════════════════════════
+       The legal-document frame, but the right-hand column is an instrument:
+       a ruled ledger, two step sequences, two registers and an accordion.
+    ═══════════════════════════════════════════════════════════════════════ -->
+    <section class="bk-legal-body bk-pap-body" aria-label="The Payment Assurance Program in detail">
+
+      <aside class="bk-doc-index bk-pap-index" id="papIndex" aria-label="On this page">
+        <span class="bk-pap-gauge" id="papGauge" aria-hidden="true"></span>
+        <a class="bk-doc-index-link" href="#why">Why it is needed</a>
+        <a class="bk-doc-index-link" href="#buyers">For BNPs</a>
+        <a class="bk-doc-index-link" href="#sellers">For SNPs</a>
+        <a class="bk-doc-index-link" href="#disputes">Payment disputes</a>
+        <a class="bk-doc-index-link" href="#badge">The Badge</a>
+        <a class="bk-doc-index-link" href="#lists">Badge &amp; Mandate Lists</a>
+        <a class="bk-doc-index-link" href="#faqs">FAQs</a>
+        <a class="bk-doc-index-link" href="#documents">Documents</a>
+        <a class="bk-doc-index-link" href="#help">Need help?</a>
+      </aside>
+
+      <div class="bk-clauses" id="papDoc">
+
+        <!-- ── 01 · WHY IT IS NEEDED ─────────────────────────────────────── -->
+        <article class="bk-clause bk-rv" id="why">
+          <span class="bk-clause-num" aria-hidden="true">01</span>
+          <div class="bk-eyebrow">Why Payment Assurance is needed</div>
+          <h2>Building greater payment <em>confidence</em> on an open network</h2>
+          <p>BNPs and SNPs can transact without a prior bilateral relationship. When a payment dispute remains
+            unresolved, uncertainty over payout can reduce an SNP's willingness to transact freely. The Payment
+            Assurance Program creates a common Network-level backstop for these exceptions.</p>
+          <div class="bk-requirements bk-pap-cascade" id="papWhy">
+            <article class="bk-requirement bk-rv">
+            <h3>Delayed payouts</h3>
+            <p>Payment disputes can leave settlement pending even after the underlying transaction has completed.</p>
+            </article>
+            <article class="bk-requirement bk-rv">
+            <h3>Limited visibility</h3>
+            <p>SNPs need a clear, published signal of which BNPs have placed a Network-level Payment Assurance Security Deposit.</p>
+            </article>
+            <article class="bk-requirement bk-rv">
+            <h3>Network trust</h3>
+            <p>A common assurance mechanism can reduce the need for fragmented bilateral arrangements and strengthen confidence to transact.</p>
+            </article>
+          </div>
+        </article>
+
+        <!-- ── 02 · FOR BNPs ─────────────────────────────────────────────── -->
+        <article class="bk-clause bk-rv" id="buyers">
+          <span class="bk-clause-num" aria-hidden="true">02</span>
+          <div class="bk-eyebrow">For BNPs</div>
+          <h2>Why enrol — and what <em>enrolment involves</em></h2>
+          <p>Enrolment is voluntary and operates per applicable domain. The Program is currently being rolled out for
+            Metro; additional domains may be added subsequently and this page will be updated accordingly.</p>
+
+          <div class="bk-pap-cols">
+            <div class="bk-pap-col">
+              <h3>What you get</h3>
+              <ul>
+                <li>A Payment Assurance Badge displayed against your name in the applicable domain</li>
+                <li>Greater visibility and confidence with SNPs that prefer or mandate Badge-holding BNPs</li>
+                <li>One standardized Network-level assurance mechanism instead of multiple bilateral deposit
+                  arrangements</li>
+                <li>Interest earned on escrow balances is credited back to you as per the applicable banking
+                  arrangement</li>
+              </ul>
+            </div>
+            <div class="bk-pap-col bk-pap-col-quiet">
+              <h3>What the Program asks of you</h3>
+              <ul>
+                <li>Place the required refundable Payment Assurance Security Deposit through Escrow or a Bank
+                  Guarantee</li>
+                <li>Maintain the Security Deposit at or above the required level as it is periodically recalibrated
+                </li>
+                <li>Recoup any shortfall within the defined timeline after notification</li>
+                <li>Share required reconciliation and transaction data for payment-dispute resolution</li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="bk-clause-sub">How to enrol · From application to a live Badge</p>
+          <div class="bk-shop-steps" id="papEnrol">
+            <div class="bk-shop-step">
+            <div class="bk-shop-step-num" aria-hidden="true">01</div>
+            <div>
+            <h3>Apply</h3>
+            <p>Fill the enrolment form with NP and SPOC details, domain, preferred mode of deposit and other required information.</p>
+            </div>
+            </div>
+            <div class="bk-shop-step">
+            <div class="bk-shop-step-num" aria-hidden="true">02</div>
+            <div>
+            <h3>Deposit computed</h3>
+            <p>ONDC determines the required Security Deposit using applicable transaction and domain parameters.</p>
+            </div>
+            </div>
+            <div class="bk-shop-step">
+            <div class="bk-shop-step-num" aria-hidden="true">03</div>
+            <div>
+            <h3>Fund / submit</h3>
+            <p>Fund the escrow account or complete the Bank Guarantee submission, based on the mode selected in the form.</p>
+            </div>
+            </div>
+            <div class="bk-shop-step">
+            <div class="bk-shop-step-num" aria-hidden="true">04</div>
+            <div>
+            <h3>Badge live</h3>
+            <p>Your Badge status is displayed in the Badge Holder List on this page.</p>
+            </div>
+            </div>
+          </div>
+
+          <div class="bk-clause-note">
+            <p class="bk-clause-sub" style="margin-top:0">Program requirement</p>
+            <p><b>Enrolment is voluntary; compliance after enrolment is required.</b> A BNP may need to recoup its
+              Security Deposit if the required threshold increases or if the deposit is used for a dispute payout. If
+              the shortfall is not restored within the defined number of days, the Badge is put on hold and the BNP is
+              marked inactive on the Network until the requirement is fulfilled. This is different from not enrolling
+              or formally disenrolling.</p>
+          </div>
+
+          <div class="bk-pap-actions">
+            <span class="bk-btn bk-btn-solid" aria-disabled="true">Submit enrolment form</span>
+            <span class="bk-pap-pending">Form link — TBC</span>
+            <a class="bk-btn bk-btn-ghost" href="#documents">Read the terms</a>
+          </div>
+        </article>
+
+        <!-- ── 03 · FOR SNPs ─────────────────────────────────────────────── -->
+        <article class="bk-clause bk-rv" id="sellers">
+          <span class="bk-clause-num" aria-hidden="true">03</span>
+          <div class="bk-eyebrow">For SNPs</div>
+          <h2>Choose whether to <em>mandate</em> the Program</h2>
+          <p>SNPs do not enrol and do not place a Payment Assurance Security Deposit. An SNP may choose to require the
+            Payment Assurance Badge from the BNPs it transacts with in a domain. If it chooses to mandate the Program,
+            it can submit that intent to ONDC for publication in the Mandate List on this page.</p>
+
+          <p class="bk-clause-sub">Payout assurance</p>
+          <p>In exception cases only, the Payment Assurance Security Deposit provides a defined payout backstop if a
+            covered dispute with a Badge-holding BNP is resolved and the liable BNP still does not pay.</p>
+
+          <p class="bk-clause-sub">Right of refusal, always</p>
+          <p>You decide which BNPs to transact with. The Badge is additional information, and an SNP may choose whether
+            or not to mandate participation.</p>
+
+          <p class="bk-clause-sub">Mandate &amp; be listed</p>
+          <p>Submit the prescribed form for the domain(s) in which you mandate the Program. ONDC will publish your name
+            in the Mandate List on this page.</p>
+
+          <div class="bk-pap-actions">
+            <span class="bk-btn bk-btn-solid" aria-disabled="true">Submit mandate form</span>
+            <span class="bk-pap-pending">Form link — TBC</span>
+          </div>
+        </article>
+
+        <!-- ── 04 · PAYMENT DISPUTES — the page's scroll-tracked path ────── -->
+        <article class="bk-clause bk-rv" id="disputes" data-bk-relay>
+          <span class="bk-clause-num" aria-hidden="true">04</span>
+          <div class="bk-eyebrow">Payment disputes &amp; payout assurance</div>
+          <h2>The Security Deposit is the <em>last step</em>, not the first</h2>
+          <p>Everyday transactions continue to settle directly between BNPs and SNPs. The Program is used only when a
+            defined payment dispute remains unresolved through the prescribed resolution process.</p>
+          <div class="bk-pap-path" id="papPath">
+            <div class="bk-pap-step">
+            <span class="bk-pap-step-no">01</span>
+            <div>
+            <h3>Raise on ONDC CARE</h3>
+            <p>The SNP raises the payment issue with complete order and reconciliation details.</p>
+            </div>
+            </div>
+            <div class="bk-pap-step">
+            <span class="bk-pap-step-no">02</span>
+            <div>
+            <h3>Mutual resolution</h3>
+            <p>The NPs first attempt to resolve the issue directly.</p>
+            </div>
+            </div>
+            <div class="bk-pap-step">
+            <span class="bk-pap-step-no">03</span>
+            <div>
+            <h3>Escalate</h3>
+            <p>If unresolved, the matter is escalated to ONDC.</p>
+            </div>
+            </div>
+            <div class="bk-pap-step">
+            <span class="bk-pap-step-no">04</span>
+            <div>
+            <h3>Resolution issued</h3>
+            <p>ONDC issues a resolution within the defined timeline.</p>
+            </div>
+            </div>
+            <div class="bk-pap-step">
+            <span class="bk-pap-step-no">05</span>
+            <div>
+            <h3>Payout assured</h3>
+            <p>If the liable enrolled BNP still does not pay within the defined period, payout is made from its available Security Deposit.</p>
+            </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── 05 · THE BADGE ────────────────────────────────────────────── -->
+        <article class="bk-clause bk-rv" id="badge">
+          <span class="bk-clause-num" aria-hidden="true">05</span>
+          <div class="bk-eyebrow">The Badge</div>
+          <h2>What the Badge tells you — and <em>what it does not</em></h2>
+          <p>The Badge indicates that the BNP has enrolled in the Program and maintains the required Payment Assurance
+            Security Deposit; it is not a broader assessment of the participant.</p>
+
+          <div class="bk-pap-cols">
+            <div class="bk-pap-col">
+              <h3>What it tells you</h3>
+              <ul>
+                <li>The BNP is enrolled in that domain and maintained the required Payment Assurance Security Deposit
+                  as at the date shown</li>
+                <li>Where a payment dispute is resolved against that NP and it does not pay, the amount can be met from
+                  its available Security Deposit</li>
+                <li>Status is published per domain and updated on every change</li>
+              </ul>
+            </div>
+            <div class="bk-pap-col bk-pap-col-quiet">
+              <h3>What it does not</h3>
+              <ul>
+                <li>It is not a certification of the NP's solvency, or of any matter beyond this Program</li>
+                <li>Cover is limited to the amount determined in the dispute resolution and the Security Deposit
+                  available at that time</li>
+                <li>It applies only to rare settlement disputes arising from ONDC Network transactions; payouts are
+                  governed by the applicable Transaction Level Contract (TLC)</li>
+                <li>Offline or bilateral contracts between BNPs and SNPs are outside the Program and must be settled
+                  bilaterally</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bk-clause-note">
+            <p class="bk-clause-sub" style="margin-top:0">
+              <span class="bk-pap-status bk-pap-status-hold"><span class="bk-pap-node" aria-hidden="true"></span>On
+                Hold</span>
+            </p>
+            <p><b>A BNP may appear as &ldquo;On Hold&rdquo; in the Badge Holder List.</b> This means its Security
+              Deposit is below the required level and was not restored within the defined timeline. The BNP remains
+              inactive on the Network until the shortfall is recouped. SNPs should check the Badge Holder List on the
+              ONDC website for the latest Badge status.</p>
+          </div>
+        </article>
+
+        <!-- ── 06 · THE REGISTER ─────────────────────────────────────────── -->
+        <article class="bk-clause bk-rv" id="lists">
+          <span class="bk-clause-num" aria-hidden="true">06</span>
+          <div class="bk-eyebrow">Badge &amp; Mandate Lists</div>
+          <h2>Who holds the Badge — and <em>who mandates it</em></h2>
+          <p>Two lists are published on this page: BNPs holding the Payment Assurance Badge and SNPs that have
+            mandated the Program. The current rollout is for Metro; additional applicable domains will be added here
+            as the Program expands. Refer to the &ldquo;last updated on&rdquo; date before relying on either list.</p>
+
+          <div class="bk-pap-register bk-pap-register-empty" id="badgeRegister">
+            <div class="bk-pap-register-head">
+              <div>
+                <div class="bk-pap-tally">0</div>
+                <p class="bk-pap-tally-label" id="badgeRegisterLabel">BNPs holding the Badge</p>
+                <p class="bk-pap-updated">Not yet published</p>
+              </div>
+              <div class="bk-pap-controls">
+                <select class="bk-directory-select" id="badgeDomain" aria-label="Filter BNPs by domain">
+                  <option value="">All domains</option>
+                  <option value="Metro">Metro</option>
+                </select>
+                <input type="search" class="bk-directory-input" id="badgeSearch" placeholder="Search BNPs"
+                  aria-label="Search BNPs by name" autocomplete="off">
+              </div>
+            </div>
+            <dl class="bk-pap-legend">
+              <dt><span class="bk-pap-status"><span class="bk-pap-node" aria-hidden="true"></span>Active</span></dt>
+              <dd>Enrolled in the domain, with the required Payment Assurance Security Deposit in place.</dd>
+              <dt><span class="bk-pap-status bk-pap-status-hold"><span class="bk-pap-node" aria-hidden="true"></span>On Hold</span></dt>
+              <dd>Deposit below the required level and not restored within the defined timeline.</dd>
+            </dl>
+            <div class="bk-np-table-wrap">
+              <table class="bk-np-table" aria-labelledby="badgeRegisterLabel">
+                <thead>
+                  <tr>
+                    <th scope="col">S.No.</th>
+                    <th scope="col">BNP</th>
+                    <th scope="col">Domain</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Enrolled on</th>
+                  </tr>
+                </thead>
+                <tbody id="badgeBody">
+                  <tr>
+                    <td class="np-empty" colspan="5">No BNPs have been published yet.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="bk-note" style="padding-top:18px">A Badge is granted per domain, so the same NP may appear more
+              than once.</p>
+          </div>
+
+          <div class="bk-pap-register bk-pap-register-empty" id="mandateRegister">
+            <div class="bk-pap-register-head">
+              <div>
+                <div class="bk-pap-tally">0</div>
+                <p class="bk-pap-tally-label" id="mandateRegisterLabel">SNPs mandating the Program</p>
+                <p class="bk-pap-updated">Not yet published</p>
+              </div>
+              <div class="bk-pap-controls">
+                <select class="bk-directory-select" id="mandateDomain" aria-label="Filter SNPs by domain">
+                  <option value="">All domains</option>
+                  <option value="Metro">Metro</option>
+                </select>
+                <input type="search" class="bk-directory-input" id="mandateSearch" placeholder="Search SNPs"
+                  aria-label="Search SNPs by name" autocomplete="off">
+              </div>
+            </div>
+            <div class="bk-np-table-wrap">
+              <table class="bk-np-table" aria-labelledby="mandateRegisterLabel">
+                <thead>
+                  <tr>
+                    <th scope="col">S.No.</th>
+                    <th scope="col">SNP</th>
+                    <th scope="col">Domain</th>
+                    <th scope="col">Mandated on</th>
+                  </tr>
+                </thead>
+                <tbody id="mandateBody">
+                  <tr>
+                    <td class="np-empty" colspan="4">No SNPs have been published yet.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="bk-note" style="padding-top:18px">SNPs listed here have mandated the Payment Assurance Program for the
+              domains shown and have submitted that intent to ONDC for publication.</p>
+          </div>
+        </article>
+
+        <!-- ── 07 · FAQs ─────────────────────────────────────────────────── -->
+        <article class="bk-clause bk-rv" id="faqs">
+          <span class="bk-clause-num" aria-hidden="true">07</span>
+          <div class="bk-eyebrow">Frequently Asked Questions</div>
+          <h2>Common <em>questions</em> about the Program</h2>
+          <div class="bk-seat-ledger" id="papFaq" style="margin-top:30px">
+            <details class="bk-seat" name="pap-faq" open="">
+            <summary class="bk-seat-row">
+            <span class="bk-seat-node" aria-hidden="true">
+            </span>
+            <span class="bk-seat-title">What kind of dispute does this Program cover?</span>
+            </summary>
+            <div class="bk-seat-jd">
+            <p>Payment disputes only — where a settlement due from a BNP to an SNP is unpaid or delayed beyond the expected timeline and the NPs are unable to resolve it themselves.</p>
+            </div>
+            </details>
+            <details class="bk-seat" name="pap-faq">
+            <summary class="bk-seat-row">
+            <span class="bk-seat-node" aria-hidden="true">
+            </span>
+            <span class="bk-seat-title">Does this change ordinary settlement between a BNP and an SNP?</span>
+            </summary>
+            <div class="bk-seat-jd">
+            <p>No. Normal transactions continue to settle directly between BNP and SNP. The Program is used only for defined exception cases.</p>
+            </div>
+            </details>
+            <details class="bk-seat" name="pap-faq">
+            <summary class="bk-seat-row">
+            <span class="bk-seat-node" aria-hidden="true">
+            </span>
+            <span class="bk-seat-title">Are cancellations, returns, delivery failures or quality issues covered?</span>
+            </summary>
+            <div class="bk-seat-jd">
+            <p>Not on their own. These follow the existing order and issue-resolution processes. The Program applies only when such a matter results in an unpaid settlement obligation from a BNP to an SNP.</p>
+            </div>
+            </details>
+            <details class="bk-seat" name="pap-faq">
+            <summary class="bk-seat-row">
+            <span class="bk-seat-node" aria-hidden="true">
+            </span>
+            <span class="bk-seat-title">When is the Payment Assurance Security Deposit used?</span>
+            </summary>
+            <div class="bk-seat-jd">
+            <p>Only after the defined dispute process is completed and the liable BNP still does not pay within the applicable timeline. It is a backstop, not the first step.</p>
+            </div>
+            </details>
+            <details class="bk-seat" name="pap-faq">
+            <summary class="bk-seat-row">
+            <span class="bk-seat-node" aria-hidden="true">
+            </span>
+            <span class="bk-seat-title">Is participation in the Program mandatory?</span>
+            </summary>
+            <div class="bk-seat-jd">
+            <p>No. BNP enrolment is voluntary. However, once enrolled, the BNP must continue to meet the Program requirements until it formally disenrols.</p>
+            </div>
+            </details>
+            <details class="bk-seat" name="pap-faq">
+            <summary class="bk-seat-row">
+            <span class="bk-seat-node" aria-hidden="true">
+            </span>
+            <span class="bk-seat-title">What if a BNP does not recoup a shortfall in time?</span>
+            </summary>
+            <div class="bk-seat-jd">
+            <p>ONDC will notify the BNP and provide the defined period to recoup. If the shortfall is not restored in time, the Badge is put On Hold and the BNP is marked inactive on the Network until the required level is restored.</p>
+            </div>
+            </details>
+            <details class="bk-seat" name="pap-faq">
+            <summary class="bk-seat-row">
+            <span class="bk-seat-node" aria-hidden="true">
+            </span>
+            <span class="bk-seat-title">Does a BNP lose its Security Deposit if it leaves the Program?</span>
+            </summary>
+            <div class="bk-seat-jd">
+            <p>No. The Payment Assurance Security Deposit is refundable and adjustable in accordance with the Program terms; it is not a fee.</p>
+            </div>
+            </details>
+            <details class="bk-seat" name="pap-faq">
+            <summary class="bk-seat-row">
+            <span class="bk-seat-node" aria-hidden="true">
+            </span>
+            <span class="bk-seat-title">Can a BNP resume transacting after being marked inactive?</span>
+            </summary>
+            <div class="bk-seat-jd">
+            <p>Yes. Once the required shortfall is recouped, the BNP can be reinstated and its Badge status restored in accordance with the Program process.</p>
+            </div>
+            </details>
+          </div>
+        </article>
+
+        <!-- ── 08 · DOCUMENTS ────────────────────────────────────────────── -->
+        <article class="bk-clause bk-rv" id="documents">
+          <span class="bk-clause-num" aria-hidden="true">08</span>
+          <div class="bk-eyebrow">The detail</div>
+          <h2>Program <em>documents</em></h2>
+          <p>The Notification is the binding document. It sets out the computation of the Payment Assurance Security
+            Deposit, the dispute resolution process and all applicable timelines.</p>
+          <div class="bk-pap-rows">
+            <div class="bk-pap-row">
+              <div>
+                <div class="bk-pap-row-title">Program Notification</div>
+                <p>The full terms, including computation parameters and timelines.</p>
+              </div>
+              <span class="bk-pap-pending">Link — TBC</span>
+            </div>
+            <div class="bk-pap-row">
+              <div>
+                <div class="bk-pap-row-title">Overview deck</div>
+                <p>A summary of the Program for teams evaluating participation.</p>
+              </div>
+              <a class="bk-ul"
+                href="https://docs.google.com/presentation/d/11KU7_ZLJaGVaoV7JRbomvLDMgi1J2YPF/preview"
+                target="_blank" rel="noopener">View the deck</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── 09 · NEED HELP ────────────────────────────────────────────── -->
+        <article class="bk-clause bk-rv" id="help">
+          <span class="bk-clause-num" aria-hidden="true">09</span>
+          <div class="bk-eyebrow">Support</div>
+          <h2>Need <em>help</em>?</h2>
+          <p>Enrolment and Badge queries are handled by the Program team. Payment issues against a counterparty NP are
+            raised on ONDC CARE.</p>
+          <div class="bk-pap-rows">
+            <div class="bk-pap-row">
+              <div>
+                <div class="bk-pap-row-title">Program queries</div>
+                <p>Enrolment, the Security Deposit, the Badge and the published lists.</p>
+              </div>
+              <a class="bk-ul" href="mailto:team@ondc.org">Write to team@ondc.org</a>
+            </div>
+            <div class="bk-pap-row">
+              <div>
+                <div class="bk-pap-row-title">Payment issues</div>
+                <p>Raise a dispute for another Network Participant on ONDC CARE.</p>
+              </div>
+              <a class="bk-ul" href="https://portal.ondc.org/issue-form" target="_blank" rel="noopener">Raise dispute
+                for Other Participant</a>
+            </div>
+            <div class="bk-pap-row">
+              <div>
+                <div class="bk-pap-row-title">The full terms</div>
+                <p>The Notification, its Schedules, and the overview deck.</p>
+              </div>
+              <a class="bk-ul" href="#documents">View documents</a>
+            </div>
+          </div>
+
+          <p class="bk-note" style="margin-top:44px;padding-bottom:0">ONDC is a network enabler. It is not a party to
+            any transaction between participants or between buyers and sellers, does not act as a marketplace,
+            merchant, payment aggregator, payment gateway or settlement system, and takes on no payment obligation of
+            its own. This page is a summary — the Program Notification and its Schedules are the binding terms, and
+            the Network Participant Agreement prevails in case of conflict. Participation in the Payment Assurance
+            Program is voluntary.</p>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="../public/assets/ondc-logo.svg" alt="ONDC — Open Network for Digital Commerce"
+            class="footer-logo-img">
+          <p>India's open network for commerce — not an app, not a platform. Infrastructure for everyone.</p>
+        </div>
+        <div>
+          <div class="footer-col-head">About ONDC</div>
+          <a class="footer-link" href="about-us.html">Overview</a>
+          <a class="footer-link" href="about-us.html#board-of-directors">Board Of Directors</a>
+          <a class="footer-link" href="careers.html">Careers</a>
+          <a class="footer-link" href="https://ondc-static-web-bucket.s3.ap-south-1.amazonaws.com/res/daea2fs3n/image/upload/ondc-website/files/ONDCStrategyPaper_ucvfjm/1659889490.pdf" target="_blank" rel="noopener">Download the Strategy Paper</a>
+          <a class="footer-link" href="https://ondc-static-web-bucket.s3.ap-south-1.amazonaws.com/res/daea2fs3n/image/upload/ondc-website/files/ONDC_Building_Trust_Consultation_Vf_utbodw/1664541553.pdf" target="_blank" rel="noopener">Download the Public Consultation Paper</a>
+          <a class="footer-link" href="../public/assets/newsletters/ondc-fy25-26-in-focus.pdf" target="_blank" rel="noopener">Annual Newsletter — FY25-26 in Focus</a>
+          <a class="footer-link" href="../public/assets/newsletters/ondc-pulse-2026-27-q1.pdf" target="_blank" rel="noopener">Quarterly Newsletter — ONDC Pulse FY26-27 Q1</a>
+        </div>
+
+        <div>
+          <div class="footer-col-head">Roles you can play</div>
+          <a class="footer-link" href="buyer-network-participants.html">Buyer Network Participant</a>
+          <a class="footer-link" href="seller-network-participants.html">Seller Network Participant</a>
+          <a class="footer-link" href="gateway.html">Gateway</a>
+          <a class="footer-link" href="technology-service-provider.html">Technology Service Provider</a>
+        </div>
+        <div>
+          <div class="footer-col-head">Help &amp; Support</div>
+          <a class="footer-link" href="resources.html">Resources</a>
+          <a class="footer-link" href="contact-us.html">Contact Us</a>
+          <a class="footer-link" href="complaint.html">Complaint</a>
+          <a class="footer-link" href="network-participants.html">Network Participants</a>
+          <a class="footer-link" href="ecosystem-participants.html">Ecosystem Participants</a>
+          <a class="footer-link" href="payment-assurance-program.html">Payment Assurance Program</a>
+          <a class="footer-link" href="rfp.html">RFPs/RFQs</a>
+          <a class="footer-link" href="privacy-policy.html">Privacy Policy</a>
+          <a class="footer-link" href="cookie-policy.html">Cookie Policy</a>
+          <a class="footer-link" href="terms-and-conditions.html">Terms and Conditions</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">&#169; 2026 ONDC</div>
+        <div class="footer-social">
+          <a class="footer-social-link" href="https://www.linkedin.com/company/open-network-for-digital-commerce" target="_blank" rel="noopener noreferrer" aria-label="ONDC on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <a class="footer-social-link" href="https://www.instagram.com/ondc_official/" target="_blank" rel="noopener noreferrer" aria-label="ONDC on Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.741 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.741 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.259 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06L12 2.16zm0 3.678a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm7.846-10.405a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/></svg></a>
+          <a class="footer-social-link" href="https://www.youtube.com/@ondc1300" target="_blank" rel="noopener noreferrer" aria-label="ONDC on YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+          <a class="footer-social-link" href="https://www.facebook.com/profile.php?id=100076520217598" target="_blank" rel="noopener noreferrer" aria-label="ONDC on Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a class="footer-social-link" href="https://x.com/ONDC_Official" target="_blank" rel="noopener noreferrer" aria-label="ONDC on X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+     REGISTER FILTERING — the rows themselves are authored in the markup
+     above, so the lists survive with JavaScript off; this only narrows
+     what is already there. Both registers currently ship empty: paste the
+     live published export into the tbody and everything else follows.
+  ═══════════════════════════════════════════════════════════════════ -->
+  <script>
+    (function () {
+      // One filter, two ledgers. The empty state is a row rather than a
+      // vanished table, so the header never hangs over nothing.
+      function register(bodyId, searchId, domainId, noun) {
+        const body = document.getElementById(bodyId);
+        const search = document.getElementById(searchId);
+        const domain = document.getElementById(domainId);
+        const rows = [].slice.call(body.querySelectorAll('tr[data-row]'));
+
+        // An empty register has nothing to filter, and its controls are hidden
+        // in the markup so the state holds without JavaScript. Dropping the
+        // marker class here means pasting in the live export is the only edit
+        // anyone has to make — the controls come back on their own.
+        const shell = body.closest('.bk-pap-register');
+        if (!rows.length) return;
+        shell.classList.remove('bk-pap-register-empty');
+
+        const cols = rows[0].children.length;
+
+        const empty = document.createElement('tr');
+        empty.hidden = true;
+        empty.innerHTML = '<td class=\"np-empty\" colspan=\"' + cols + '\">No ' + noun +
+          ' match that search.</td>';
+        body.appendChild(empty);
+
+        function draw() {
+          const q = search.value.trim().toLowerCase();
+          const d = domain.value;
+          let shown = 0;
+          rows.forEach(function (r) {
+            const hit = (!q || r.dataset.name.indexOf(q) > -1) && (!d || r.dataset.domain === d);
+            r.hidden = !hit;
+            if (hit) {
+              shown++;
+              // The serial number counts what is on screen, not what was authored.
+              r.firstElementChild.textContent = String(shown).padStart(2, '0');
+            }
+          });
+          empty.hidden = shown > 0;
+        }
+
+        search.addEventListener('input', draw);
+        domain.addEventListener('change', draw);
+      }
+
+      register('badgeBody', 'badgeSearch', 'badgeDomain', 'BNPs');
+      register('mandateBody', 'mandateSearch', 'mandateDomain', 'SNPs');
+    })();
+  </script>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+     BEHAVIOUR — the sticky index (which clause is in view) and the gauge
+     (how far down the document the reader is). The gauge is this page's
+     one authored move: the index rail is redrawn in blue as a level.
+  ═══════════════════════════════════════════════════════════════════ -->
+  <script>
+    (function () {
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Sticky index — the clause currently in view takes the blue.
+      const links = [].slice.call(document.querySelectorAll('.bk-doc-index-link'));
+      if (links.length && 'IntersectionObserver' in window) {
+        const byId = {};
+        links.forEach(function (l) { byId[l.getAttribute('href').slice(1)] = l; });
+        const io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            const link = byId[e.target.id];
+            if (link) link.classList.toggle('bk-doc-index-active', e.isIntersecting);
+          });
+        }, { rootMargin: '-15% 0px -70% 0px' });
+        Object.keys(byId).forEach(function (id) {
+          const s = document.getElementById(id);
+          if (s) io.observe(s);
+        });
+      }
+
+      // The gauge. Under reduced motion the stylesheet holds it full and this
+      // never runs, so the index still reads as a complete rail.
+      const index = document.getElementById('papIndex');
+      const doc = document.getElementById('papDoc');
+      if (!reduced && index && doc) {
+        let queued = false;
+        const tick = function () {
+          queued = false;
+          const r = doc.getBoundingClientRect();
+          if (!r.height) return;
+          const p = (window.innerHeight * 0.5 - r.top) / r.height;
+          index.style.setProperty('--bk-pap-read', Math.max(0, Math.min(1, p)).toFixed(4));
+        };
+        const onScroll = function () {
+          if (queued) return;
+          queued = true;
+          requestAnimationFrame(tick);
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+        tick();
+      }
+    })();
+
+    // Scroll progress bar.
+    (function () {
+      var bar = document.getElementById('progBar');
+      if (!bar) return;
+      var doc = document.documentElement;
+      window.addEventListener('scroll', function () {
+        var max = doc.scrollHeight - window.innerHeight;
+        bar.style.transform = 'scaleX(' + (max > 0 ? window.scrollY / max : 0) + ')';
+      }, { passive: true });
+    })();
+  </script>
+
+  <script src="../src/scripts/signup.js"></script>
+</body>
+
+</html>

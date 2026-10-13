@@ -1,0 +1,38 @@
+[
+    {
+        "name_of_csp":"Ongrid",
+        "spoc_name":"Mukul Sirohi",
+        "contact_number":"76780 29108",
+        "contact_email":"mukul.sirohi@ongrid.in",
+        "categories":"",
+        "credentials":"",
+        "technical_doc":""
+    },
+    {
+        "name_of_csp":"BDO",
+        "spoc_name":"Roshni Date",
+        "contact_number":"72086 89636",
+        "contact_email":"roshnidate@bdo.in",
+        "categories":"",
+        "credentials":"",
+        "technical_doc":""
+    },
+    {
+        "name_of_csp":"Signzy",
+        "spoc_name":"Gaurav Gupta",
+        "contact_number":"99105 77157",
+        "contact_email":"gaurav.gupta@signzy.com",
+        "categories":"",
+        "credentials":"",
+        "technical_doc":""
+    },
+    {
+        "name_of_csp":"Dun & Bradstreet",
+        "spoc_name":"Sanatan Shende",
+        "contact_number":"88888 21334",
+        "contact_email":"shendesa@dnb.com",
+        "categories":"",
+        "credentials":"",
+        "technical_doc":""
+    }
+]

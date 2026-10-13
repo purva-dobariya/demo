@@ -1,0 +1,11 @@
+{
+  "name": "ondc-careers-page-mcp",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Minimal MCP server that exposes only the ONDC Careers page design — nothing else.",
+  "bin": { "ondc-careers-page-mcp": "server.js" },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0"
+  }
+}

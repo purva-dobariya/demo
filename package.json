@@ -1,0 +1,23 @@
+{
+  "name": "ondc-web",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve -l 8000 .",
+    "build:home": "node scripts/build-home.mjs",
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "test:visual": "playwright test tests/e2e/visual.spec.js",
+    "test:perf": "playwright test tests/e2e/perf.spec.js"
+  },
+  "dependencies": {
+    "axios": "^1.18.1",
+    "cheerio": "^1.2.0"
+  },
+  "devDependencies": {
+    "@fontsource/inter": "^5.3.0",
+    "@playwright/test": "^1.62.1",
+    "esbuild": "^0.28.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sharp": "^0.35.4"
+  }
+}

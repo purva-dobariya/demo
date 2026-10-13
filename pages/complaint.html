@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<!-- @dsCard group="UI Kit, Website" name="Complaint" subtitle="Grievance resolution — the escalation ladder as the spine" -->
+<html lang="en">
+
+<head>
+  <script src="../src/scripts/analytics.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complaints · ONDC Network</title>
+  <link rel="icon" href="/public/assets/ondc_top_logo_transparent.png" type="image/png">
+  <link rel="stylesheet" href="../src/styles/category-chrome.css">
+  <link rel="stylesheet" href="../src/styles/fx.css">
+  <link rel="stylesheet" href="../src/styles/scale.css">
+  <link rel="stylesheet" href="../src/styles/type-boost.css">
+  <link rel="stylesheet" href="../src/styles/beckn.css">
+  <script src="../src/scripts/fx.js" defer></script>
+  <script src="../src/scripts/beckn.js" defer></script>
+  <script src="../src/scripts/logo-fallback.js"></script>
+<!-- Mobile layer. Must load last: every rule is inside a max-width
+     query, and several of them intentionally override earlier files. -->
+<link rel="stylesheet" href="../src/styles/mobile.css">
+</head>
+
+<body>
+
+  <!-- SCROLL PROGRESS -->
+  <div class="scroll-progress" aria-hidden="true"><span id="progBar"></span></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" data-screen-label="Navbar">
+    <div class="container">
+      <a href="../index.html#site-top" class="nav-logo">
+        <img src="../public/assets/ondc-logo.svg" alt="ONDC — Open Network for Digital Commerce" class="nav-logo-img">
+      </a>
+      <div class="nav-links">
+        <a href="../index.html#site-top" class="nav-link">Home</a>
+        <a href="about-us.html" class="nav-link">About</a>
+
+        <a href="../index.html#find-your-place" class="nav-link">Roles You Can Play</a>
+        <a href="https://portal.ondc.org/" class="nav-link" target="_blank" rel="noopener">How To Join</a>
+        <a href="resources.html" class="nav-link">Resources</a>
+        <a href="complaint.html" class="nav-link active">Complaints</a>
+        <details class="nav-drop">
+          <summary class="nav-link">ONDC Participants
+            <svg class="nav-drop-chev" width="8" height="5" viewBox="0 0 8 5" fill="none" stroke="currentColor"
+              stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M1 1l3 3 3-3"></path>
+            </svg>
+          </summary>
+          <div class="nav-drop-menu">
+            <a href="network-participants.html">Network Participants</a>
+            <a href="ecosystem-participants.html">Ecosystem Participants</a>
+          </div>
+        </details>
+        <a href="rfp.html" class="nav-link">RFPs/RFQs</a>
+        <a href="contact-us.html" class="nav-link">Contact</a>
+        <a href="careers.html" class="nav-link">Careers</a>
+      </div>
+      <div class="nav-right">
+        <button class="nav-cta" onclick="ONDCSignup.open('buyer')">Sign up</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="bk">
+
+    <!-- ═══ HERO ═══════════════════════════════════════════════════════════ -->
+    <section class="bk-hero bk-hero-about" aria-labelledby="complaint-hero-title">
+      <div class="bk-hero-body">
+        <div class="bk-eyebrow" data-bk-intro>Complaints</div>
+        <h1 id="complaint-hero-title" data-bk-intro>Empowering customers through <em>effective grievance
+            resolution</em></h1>
+        <p class="bk-hero-sub" data-bk-intro>Something wrong with an order you placed on the ONDC network? Start with
+          the app you ordered from — and if it stalls, bring it to us. This page shows you both routes, and every
+          contact you need.</p>
+        <div class="bk-hero-actions" data-bk-intro>
+          <a class="bk-btn bk-btn-solid" href="#escalate">Escalate to ONDC</a>
+          <a class="bk-btn bk-btn-ghost" href="#buyer-apps">Find my Buyer App</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ HOW TO GET HELP — the escalation ladder as the spine ═══════════ -->
+    <section class="bk-mech" id="bk-mech" aria-labelledby="help-title">
+      <div class="bk-mech-head bk-rv">
+        <h2 class="bk-h2" id="help-title">How to get <em>help</em></h2>
+        <p class="bk-hero-sub" style="margin-left:0">Every complaint on the network starts with the app you ordered
+          from. Here is the whole path, start to finish.</p>
+      </div>
+
+      <div class="bk-spine">
+        <div class="bk-spine-track" aria-hidden="true"></div>
+        <div class="bk-spine-fill" id="bk-spine-fill" aria-hidden="true"></div>
+        <div id="helpSteps"><!-- rendered from HELP_STEPS by renderHelp() --></div>
+      </div>
+
+      <div class="bk-seat-ledger" id="detailList" aria-label="Longer answers"><!-- rendered from DETAIL_SECTIONS by renderDetails() --></div>
+    </section>
+
+    <!-- ═══ ESCALATE TO ONDC — the spine's terminal node ═══════════════════ -->
+    <section class="bk-escalate-panel" id="escalate" aria-labelledby="escalate-title">
+      <div class="bk-rv">
+        <h2 class="bk-h2" id="escalate-title">Still unresolved? <em>Escalate to ONDC.</em></h2>
+        <p class="bk-escalate-lede">Bring it to us if any one of these is true after you have already complained to
+          the Buyer App:</p>
+        <div class="bk-escalate-list" id="escalateList"><!-- rendered from ESCALATE_TRIGGERS by renderEscalate() --></div>
+        <div class="bk-escalate-actions">
+          <a class="bk-btn bk-btn-solid" href="https://portal.ondc.org/complaints" target="_blank"
+            rel="noopener">Raise complaint to ONDC</a>
+          <a class="bk-btn bk-btn-ghost" href="https://portal.ondc.org/complaints/track" target="_blank"
+            rel="noopener">Track your complaints</a>
+        </div>
+        <p class="bk-escalate-note">Keep your Buyer App ticket number handy — you will be asked for it. Once raised,
+          check the status any time with the button above; you will also get email updates if you registered an
+          address.</p>
+      </div>
+      <aside class="bk-escalate-aside bk-rv bk-rv-d1">
+        <div class="bk-ec-row">
+          <b>48 hours</b>
+          <span>The longest the Buyer App may take to respond to you, by law.</span>
+        </div>
+        <div class="bk-ec-row">
+          <b>30 days</b>
+          <span>The longest it may take to resolve, under the Consumer Protection (E-commerce) Rules 2020.</span>
+        </div>
+        <a class="bk-ul bk-escalate-doc"
+          href="https://ondc-static-website-media.s3.ap-south-1.amazonaws.com/res/daea2fs3n/image/upload/ondc-website/grm_public_note.pdf"
+          target="_blank" rel="noopener">Read the full note on consumer grievance redress</a>
+      </aside>
+    </section>
+
+    <!-- ═══ BUYER APPS DIRECTORY ═════════════════════════════════════════ -->
+    <section class="bk-directory" id="buyer-apps" aria-labelledby="buyerapps-title">
+      <div class="bk-directory-heading bk-rv">
+        <h2 class="bk-h2" id="buyerapps-title">Find your <em>Buyer App</em></h2>
+        <p>Support and grievance-officer contacts for every Buyer App on the network. Apps with more than 10,000
+          orders are listed first, then everyone else alphabetically.</p>
+      </div>
+
+      <div class="bk-ba-toolbar bk-rv bk-rv-d1">
+        <p class="bk-ba-count" id="buyerAppsCount" aria-live="polite"></p>
+        <input type="search" class="bk-directory-input bk-ba-search" id="buyerAppSearch"
+          placeholder="Search by app or company name" aria-label="Search Buyer Applications" autocomplete="off">
+      </div>
+
+      <div class="bk-ba-grid" id="buyerAppsGrid" role="list"><!-- rendered by renderBuyerAppsCells() --></div>
+
+      <div class="bk-ba-pagination" id="buyerAppsPagination"><!-- rendered by renderBuyerAppsPagination() --></div>
+    </section>
+
+    <!-- ═══ FAQ ═══════════════════════════════════════════════════════════ -->
+    <section class="bk-panel bk-inset" aria-labelledby="faq-title">
+      <div class="bk-nl-head bk-rv">
+        <div class="bk-eyebrow">FAQ</div>
+        <h2 class="bk-h2" id="faq-title">Questions people <em>ask us most</em></h2>
+      </div>
+      <div class="bk-seat-ledger" id="faqList"><!-- rendered from FAQ_ITEMS by renderFAQ() --></div>
+    </section>
+
+    <!-- ═══ STATS — real figures, honestly earned display size ═══════════ -->
+    <section class="bk-panel bk-numbers" aria-labelledby="stats-title">
+      <div class="bk-numbers-head bk-rv">
+        <h2 id="stats-title">Status of <em>complaints</em></h2>
+        <p class="bk-note" id="statsAsOf"></p>
+      </div>
+      <p class="bk-note bk-statgrid-label" id="statsYearsLabel">Complaints reported, by year</p>
+      <div class="bk-statgrid bk-statgrid-auto bk-rv bk-rv-d1" id="statsGridYears" role="group" aria-labelledby="statsYearsLabel"><!-- rendered from count.json by renderStats() --></div>
+      <p class="bk-note bk-statgrid-label" id="statsStandLabel">Where those complaints stand — 2026 to date</p>
+      <div class="bk-statgrid bk-rv bk-rv-d2" id="statsGrid" role="group" aria-labelledby="statsStandLabel"><!-- rendered from count.json by renderStats() --></div>
+      <div class="bk-barriers bk-numbers-legend" id="statsLegend"><!-- rendered from count.json by renderStats() --></div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="../public/assets/ondc-logo.svg" alt="ONDC — Open Network for Digital Commerce"
+            class="footer-logo-img">
+          <p>India's open network for commerce — not an app, not a platform. Infrastructure for everyone.</p>
+        </div>
+        <div>
+          <div class="footer-col-head">About ONDC</div>
+          <a class="footer-link" href="about-us.html">Overview</a>
+          <a class="footer-link" href="about-us.html#board-of-directors">Board Of Directors</a>
+          <a class="footer-link" href="careers.html">Careers</a>
+          <a class="footer-link" href="https://ondc-static-web-bucket.s3.ap-south-1.amazonaws.com/res/daea2fs3n/image/upload/ondc-website/files/ONDCStrategyPaper_ucvfjm/1659889490.pdf" target="_blank" rel="noopener">Download the Strategy Paper</a>
+          <a class="footer-link" href="https://ondc-static-web-bucket.s3.ap-south-1.amazonaws.com/res/daea2fs3n/image/upload/ondc-website/files/ONDC_Building_Trust_Consultation_Vf_utbodw/1664541553.pdf" target="_blank" rel="noopener">Download the Public Consultation Paper</a>
+          <a class="footer-link" href="../public/assets/newsletters/ondc-fy25-26-in-focus.pdf" target="_blank" rel="noopener">Annual Newsletter — FY25-26 in Focus</a>
+          <a class="footer-link" href="../public/assets/newsletters/ondc-pulse-2026-27-q1.pdf" target="_blank" rel="noopener">Quarterly Newsletter — ONDC Pulse FY26-27 Q1</a>
+        </div>
+
+        <div>
+          <div class="footer-col-head">Roles you can play</div>
+          <a class="footer-link" href="buyer-network-participants.html">Buyer Network Participant</a>
+          <a class="footer-link" href="seller-network-participants.html">Seller Network Participant</a>
+          <a class="footer-link" href="gateway.html">Gateway</a>
+          <a class="footer-link" href="technology-service-provider.html">Technology Service Provider</a>
+        </div>
+        <div>
+          <div class="footer-col-head">Help &amp; Support</div>
+          <a class="footer-link" href="resources.html">Resources</a>
+          <a class="footer-link" href="contact-us.html">Contact Us</a>
+          <a class="footer-link" href="complaint.html">Complaint</a>
+          <a class="footer-link" href="network-participants.html">Network Participants</a>
+          <a class="footer-link" href="ecosystem-participants.html">Ecosystem Participants</a>
+          <a class="footer-link" href="payment-assurance-program.html">Payment Assurance Program</a>
+          <a class="footer-link" href="rfp.html">RFPs/RFQs</a>
+          <a class="footer-link" href="privacy-policy.html">Privacy Policy</a>
+          <a class="footer-link" href="cookie-policy.html">Cookie Policy</a>
+          <a class="footer-link" href="terms-and-conditions.html">Terms and Conditions</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">&#169; 2026 ONDC</div>
+        <div class="footer-social">
+          <a class="footer-social-link" href="https://www.linkedin.com/company/open-network-for-digital-commerce" target="_blank" rel="noopener noreferrer" aria-label="ONDC on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <a class="footer-social-link" href="https://www.instagram.com/ondc_official/" target="_blank" rel="noopener noreferrer" aria-label="ONDC on Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.741 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.741 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.259 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06L12 2.16zm0 3.678a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm7.846-10.405a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/></svg></a>
+          <a class="footer-social-link" href="https://www.youtube.com/@ondc1300" target="_blank" rel="noopener noreferrer" aria-label="ONDC on YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+          <a class="footer-social-link" href="https://www.facebook.com/profile.php?id=100076520217598" target="_blank" rel="noopener noreferrer" aria-label="ONDC on Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a class="footer-social-link" href="https://x.com/ONDC_Official" target="_blank" rel="noopener noreferrer" aria-label="ONDC on X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Complaint figures are fetched live from the complaints team's Google
+       Sheet via the gviz endpoint (reads the sheet directly, no "Publish to
+       web" snapshot delay). Sheet must stay shared as "Anyone with the link
+       — Viewer". The complaints team edits the sheet; nothing here changes. -->
+  <script>
+    const GRIEVANCE_STATS_URL = 'https://docs.google.com/spreadsheets/d/15zxCNh_fFYnG-zQQBOFftcnbOlQghZasxttexlMyl24/gviz/tq?tqx=out:csv&gid=0';
+
+    const GRIEVANCE_STATUS_NOTES = [
+      { term: 'Work in progress', desc: 'Complaints are being worked upon in coordination with Buyer app' },
+      { term: 'Pending at customer', desc: 'Missing information awaited from customer for complaint resolution' },
+      { term: 'Resolved', desc: 'Complaints closed with resolution or due to unavailability of required information for 15 days' },
+    ];
+
+    // The whole route, summarised. DETAIL_SECTIONS below carries the long form.
+    const HELP_STEPS = [
+      { title: 'File with the Buyer App',
+        desc: 'Raise the issue with the app or website you ordered from — the "Buyer App". Its support and grievance contacts are in the <a class="bk-ul" href="#buyer-apps">directory below</a>.' },
+      { title: 'Collect your ticket number',
+        desc: 'The Buyer App must come back to you within 48 hours with a ticket number and a promised resolution time. You will need that number to escalate later.' },
+      { title: 'The network goes to work',
+        desc: 'The Buyer App coordinates with the seller, the Seller App and the delivery partners to resolve the issue inside the time it promised you.' },
+      { title: 'Send anything they ask for',
+        desc: 'Photos, screenshots or order details close a complaint faster. Watch your app, email, messages and phone for the request.' },
+      { title: 'Escalate to ONDC if it stalls',
+        desc: 'No response in 48 hours, a missed promise, or still open past 30 days — <a class="bk-ul" href="#escalate">bring it to ONDC</a> and we will take it up.' },
+    ];
+
+    // The long-form detail, kept out of the way until asked for.
+    const DETAIL_SECTIONS = [
+      { title: 'How to file a complaint with the Buyer App',
+        bullets: [
+          'File a complaint with the app / website through which you placed your order (hereafter called the "Buyer App"). If you haven’t already filed a complaint, you can use the contact details of the Buyer Apps from the directory below.',
+          'Upon filing a complaint, the Buyer App will provide you with a ticket number for your complaint, and an estimated time to resolve your complaint.',
+          'The Buyer App will then work with the seller and other parties to resolve your issue within that promised time.',
+          'You may be asked to provide some additional information (such as photos or screenshots) in order for your complaint to get resolved quickly. So be sure to check your app / email / messages / phone-calls for the same.',
+        ] },
+      { title: 'How will the Buyer App resolve my complaint?',
+        bullets: [
+          'When you file a complaint, the Buyer App will first acknowledge your complaint, and contact the seller and the platform that the seller uses (known as the Seller App), and give you a promised time to resolve the complaint. By law (under the E-commerce Rules 2020), the Buyer App must provide you with this response within 48 hours from you filing the complaint.',
+          'The Buyer App will then work with the seller, Seller App and other parties such as the delivery partners, to try to resolve your issue within the promised time.',
+          'Typically, in the case of product or delivery related issues, the seller or Seller App will be responsible for resolving your complaint, while the Buyer App only facilitates the coordination and information exchange for complaints resolution.',
+          'If your complaint pertains to a defective / damaged / wrong product or deficient service, typically, any refund or replacement that you are offered may depend on the seller and/or Seller App and/or delivery agent performing their own independent investigation into the matter.',
+          'As far as possible, the seller and Seller App will not reach out to you directly. All their communication with you will be through the Buyer App, unless there is a specific reason for them to contact you directly.',
+          'In any case, by law (under the E-commerce Rules 2020), your complaint has to be resolved within 30 days from you filing it. So if the Buyer App has not communicated a resolution or closure to you within 30 days, you can escalate the complaint to ONDC.',
+        ] },
+    ];
+
+    const ESCALATE_TRIGGERS = [
+      'The Buyer App has not responded to your issue for more than 48 hours since you filed the complaint.',
+      'The timeline the Buyer App committed to has passed and your issue is still unresolved.',
+      'Your complaint has remained unresolved for more than 30 days.',
+    ];
+
+    // Real FAQ content from the ONDC Complaints page.
+    const FAQ_ITEMS = [
+      { q: 'How can I raise an issue to ONDC?',
+        a: 'You can raise your complaint on the <a href="https://portal.ondc.org/complaints" target="_blank" rel="noopener">ONDC Grievance Portal</a>. Please ensure that you provide the ticket number issued by the Buyer App along with the complaint. Alternatively, you can file a ticket through the National Consumer Helpline. Please make sure you include the name of the Buyer App in your complaint.' },
+      { q: 'Where can I find the issue Ticket Number?',
+        a: 'When you file a complaint with the Buyer App, they will issue a ticket number (sometimes called complaint number) to you. That number has to be quoted in your complaint to ONDC. All Buyer Apps are mandated to issue ticket numbers for complaints according to the ONDC Network Policy.' },
+      { q: 'Can I file a complaint directly with ONDC without first raising it with the respective Buyer App?',
+        a: 'Since you placed your order through the Buyer App, you must first raise the complaint with the Buyer App, and give it (and other parties involved) an opportunity to investigate and resolve the issue. The ONDC Network Policy mandates the Buyer App to convey clear resolution timelines once you’ve filed a complaint. If you don’t receive resolution within the promised timeline, the issue can be raised to ONDC for closure.' },
+      { q: 'The Buyer App has responded to my grievance and provided me with a resolution, but I am not satisfied with the resolution? What should I do next?',
+        a: 'You can raise the complaint to ONDC through the <a href="https://portal.ondc.org/complaints" target="_blank" rel="noopener">ONDC Grievance Portal</a>. ONDC will then work with the Buyer App, Seller App and seller to get your complaint resolved. If you’re still unhappy after this, you may approach any of the empanelled ODR service providers listed on the ONDC website, or the consumer courts.' },
+      { q: 'The promised timeline for the Buyer App to resolve the complaint is too high. Can my resolution be faster?',
+        a: 'All Network Participants must resolve complaints within the timelines specified by applicable law. Under the Consumer Protection (E-commerce) Rules 2020, the maximum time to respond is 48 hours, and to resolve is 30 days. If the Buyer App has given a longer timeline than the law allows, you can file a complaint with ONDC, which will work with the Buyer App to bring it within the legal limits.' },
+      { q: 'I am not satisfied with the Resolution provided by the Buyer app and will approach the Consumer court to provide me with a better resolution. Can ONDC help?',
+        a: 'The grievance process ONDC provides does not diminish your right to seek relief through the courts or alternative dispute resolution (mediation or arbitration). ONDC also lists empanelled Online Dispute Resolution service providers if you’d prefer mediation, conciliation or arbitration over going to court.' },
+    ];
+
+    function statTile(s) {
+      return '<div class="bk-stat"><div class="bk-stat-fill" aria-hidden="true"></div>' +
+        '<div class="bk-stat-num"><b><span data-bk-count="' + s.num + '">' + s.num + '</span></b></div>' +
+        '<p class="bk-stat-desc">' + s.lbl + '</p></div>';
+    }
+
+    // The sheet is one header row + one data row: date, total_grievances, open,
+    // more_information_awaited_from_consumer, resolved, year_2024, year_2025, ...
+    // Values arrive as strings. The complaints team edits the sheet; nothing here changes.
+    function parseStatsCSV(text) {
+      var rows = text.trim().split('\n').map(function (r) {
+        return r.split(',').map(function (c) { return c.trim().replace(/^"|"$/g, ''); });
+      });
+      var headers = rows[0], values = rows[1], obj = {};
+      headers.forEach(function (h, i) { obj[h] = values[i]; });
+      return obj;
+    }
+
+    async function renderStats() {
+      try {
+        var res = await fetch(GRIEVANCE_STATS_URL + '&t=' + Date.now());
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        var d = parseStatsCSV(await res.text());
+      } catch (err) {
+        console.error('Error loading complaint stats:', err);
+        return;
+      }
+      const n = k => parseInt(d[k], 10) || 0;
+      const years = Object.keys(d).filter(k => /^year_\d{4}$/.test(k)).sort();
+      const latest = years[years.length - 1].slice(5);
+      const [dd, mm, yyyy] = d.date.split('-');
+      const asOf = +dd + ' ' + 'Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec'.split(' ')[mm - 1] + ' ' + yyyy;
+
+      document.getElementById('statsGridYears').innerHTML = years
+        .map(k => ({ num: n(k), lbl: k.slice(5) }))
+        .concat({ num: n('total_grievances'), lbl: 'Total' })
+        .map(statTile).join('');
+      document.getElementById('statsGrid').innerHTML = [
+        { num: n('open'), lbl: 'Work in Progress' },
+        { num: n('more_information_awaited_from_consumer'), lbl: 'Pending at Customer' },
+        { num: n('resolved'), lbl: 'Resolved' },
+      ].map(statTile).join('');
+      document.getElementById('statsStandLabel').textContent = 'Where those complaints stand — ' + latest + ' to date';
+      document.getElementById('statsLegend').innerHTML = GRIEVANCE_STATUS_NOTES.map((s, i) => `
+        <div class="bk-barrier">
+          <span class="bk-barrier-n">${String(i + 1).padStart(2, '0')}</span>
+          <span class="bk-barrier-t"><b>${s.term}.</b> ${s.desc}</span>
+        </div>`).join('');
+      document.getElementById('statsAsOf').textContent =
+        'Last updated on ' + asOf + '.';
+    }
+
+    function renderHelp() {
+      document.getElementById('helpSteps').innerHTML = HELP_STEPS.map((s, i) => `
+        <div class="bk-step bk-rv">
+          <div class="bk-step-node" aria-hidden="true"></div>
+          <div class="bk-step-ghost" aria-hidden="true">${String(i + 1).padStart(2, '0')}</div>
+          <div class="bk-step-body${i % 2 ? ' bk-indent' : ''}">
+            <div class="bk-step-title">${s.title}</div>
+            <div class="bk-step-desc">${s.desc}</div>
+          </div>
+        </div>`).join('');
+    }
+
+    function renderDetails() {
+      document.getElementById('detailList').innerHTML = DETAIL_SECTIONS.map((s, i) => `
+        <details class="bk-seat" name="bk-detail"${i === 0 ? ' open' : ''}>
+          <summary class="bk-seat-row">
+            <span class="bk-seat-node" aria-hidden="true"></span>
+            <span class="bk-seat-title">${s.title}</span>
+          </summary>
+          <div class="bk-seat-jd">
+            <ul>${s.bullets.map(b => `<li>${b}</li>`).join('')}</ul>
+          </div>
+        </details>`).join('');
+    }
+
+    function renderEscalate() {
+      document.getElementById('escalateList').innerHTML = ESCALATE_TRIGGERS.map(t => `
+        <div class="bk-escalate-item"><span class="bk-dot">&middot;</span><span>${t}</span></div>`).join('');
+    }
+
+    function renderFAQ() {
+      document.getElementById('faqList').innerHTML = FAQ_ITEMS.map((f, i) => `
+        <details class="bk-seat" name="bk-faq"${i === 0 ? ' open' : ''}>
+          <summary class="bk-seat-row">
+            <span class="bk-seat-node" aria-hidden="true"></span>
+            <span class="bk-seat-title">${f.q}</span>
+          </summary>
+          <div class="bk-seat-jd"><p>${f.a}</p></div>
+        </details>`).join('');
+    }
+
+    renderStats();
+    renderHelp();
+    renderDetails();
+    renderEscalate();
+    renderFAQ();
+  </script>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+     BUYER APPS DIRECTORY — fetched at runtime from a local snapshot of
+     the public ONDC buyer-apps directory (the same data the real
+     complaints page loads from ondc.org/content/files/theme/json/
+     complaints.json), pre-sorted the same way: apps with 10K+ orders
+     first (alphabetical), then everyone else (alphabetical).
+═══════════════════════════════════════════════════════════════════ -->
+  <script>
+    let buyerAppsData = [];
+    let buyerAppsFiltered = [];
+    let buyerAppsPage = 1;
+    let buyerAppsPerPage = 24;
+    let buyerAppsQuery = '';
+
+    const $grid = () => document.getElementById('buyerAppsGrid');
+    const $pag = () => document.getElementById('buyerAppsPagination');
+    const $count = () => document.getElementById('buyerAppsCount');
+
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    }
+
+    // Only the listed schemes reach an href, so a bad value in the snapshot
+    // renders as nothing instead of becoming a javascript: link.
+    function safeHref(url, schemes) {
+      try {
+        const u = new URL(url, location.href);
+        return schemes.includes(u.protocol) ? escapeHtml(u.href) : null;
+      } catch { return null; }
+    }
+
+    function row(label, href, schemes, text) {
+      const h = safeHref(href, schemes);
+      if (!h) return '';
+      const ext = /^https?:/.test(h) ? ' target="_blank" rel="noopener"' : '';
+      return '<dt>' + label + '</dt><dd><a href="' + h + '"' + ext + '>' + escapeHtml(text) + '</a></dd>';
+    }
+
+    function renderBuyerAppsCells() {
+      const start = (buyerAppsPage - 1) * buyerAppsPerPage;
+      const pageItems = buyerAppsFiltered.slice(start, start + buyerAppsPerPage);
+
+      if (pageItems.length === 0) {
+        $grid().innerHTML = `
+          <div class="bk-ba-span">
+            <div class="bk-directory-state">
+              <div class="bk-directory-state-inner">
+                <h3>No Buyer App matches &ldquo;${escapeHtml(buyerAppsQuery)}&rdquo;.</h3>
+                <button type="button" class="bk-btn bk-btn-ghost" id="buyerAppsClear">Clear search</button>
+              </div>
+            </div>
+          </div>`;
+        document.getElementById('buyerAppsClear').addEventListener('click', () => {
+          const input = document.getElementById('buyerAppSearch');
+          input.value = '';
+          filterBuyerApps('');
+          input.focus();
+        });
+      } else {
+        $grid().innerHTML = pageItems.map(app => {
+          const name = escapeHtml(app.name);
+          const org = escapeHtml(app.org || '');
+          // A missing file falls back to the same initial tile as a logo-less
+          // app rather than leaving the card summary without a leading mark.
+          const logo = app.logo
+            ? window.npLogo.img(app.logo, app.name, { alt: '', className: 'bk-ba-logo', monogramClass: 'bk-ba-logo-fallback' })
+            : window.npLogo.monogram(app.name, 'bk-ba-logo-fallback');
+
+          const trim = v => String(v).trim();
+          const rows = [
+            row('Website Link', app.website, ['http:', 'https:'], trim(app.websiteText || app.website || '')),
+            app.supportEmail ? row('Customer Support Email Id', 'mailto:' + trim(app.supportEmail), ['mailto:'], trim(app.supportEmail)) : '',
+            app.supportLink ? row('Customer Support Link', app.supportLink, ['http:', 'https:'], trim(app.supportLink)) : '',
+            app.supportPhone ? row('Customer Support Phone Number', 'tel:' + String(app.supportPhone).replace(/\s/g, ''), ['tel:'], trim(app.supportPhone)) : '',
+            app.groEmail ? row('Grievance Redressal Officer(GRO) Email', 'mailto:' + trim(app.groEmail), ['mailto:'], trim(app.groEmail)) : ''
+          ].filter(Boolean).join('');
+
+          return `
+            <details class="bk-ba-card" role="listitem">
+              <summary>
+                ${logo}
+                <div class="bk-ba-names">
+                  <h3 class="bk-ba-name">${name}</h3>
+                  ${org ? `<p class="bk-ba-org">${org}</p>` : ''}
+                </div>
+              </summary>
+              <dl class="bk-ba-detail">${rows || '<dd class="bk-ba-nodetail">No contact details published for this app.</dd>'}</dl>
+            </details>`;
+        }).join('');
+      }
+
+      renderBuyerAppsPagination();
+    }
+
+    function renderBuyerAppsPagination() {
+      const total = buyerAppsFiltered.length;
+      const totalPages = Math.max(1, Math.ceil(total / buyerAppsPerPage));
+      if (buyerAppsPage > totalPages) buyerAppsPage = totalPages;
+      const start = total === 0 ? 0 : (buyerAppsPage - 1) * buyerAppsPerPage + 1;
+      const end = Math.min(buyerAppsPage * buyerAppsPerPage, total);
+
+      $count().textContent = total === 0
+        ? 'No matches'
+        : `Showing ${start}–${end} of ${total} Buyer App${total === 1 ? '' : 's'}`;
+
+      $pag().innerHTML = total === 0 ? '' : `
+        <label class="bk-ba-perpage">
+          <span>Per page</span>
+          <select id="buyerAppsPerPage" aria-label="Buyer Apps per page">
+            ${[24, 48, 96].map(n => `<option value="${n}"${n === buyerAppsPerPage ? ' selected' : ''}>${n}</option>`).join('')}
+          </select>
+        </label>
+        <div class="bk-ba-pagebtns">
+          <button type="button" class="bk-btn bk-btn-ghost" id="buyerAppsPrev" ${buyerAppsPage <= 1 ? 'disabled' : ''}>&larr; Prev</button>
+          <span class="bk-ba-pageinfo">Page ${buyerAppsPage} of ${totalPages}</span>
+          <button type="button" class="bk-btn bk-btn-ghost" id="buyerAppsNext" ${buyerAppsPage >= totalPages ? 'disabled' : ''}>Next &rarr;</button>
+        </div>`;
+
+      if (total === 0) return;
+
+      document.getElementById('buyerAppsPerPage').addEventListener('change', e => {
+        buyerAppsPerPage = parseInt(e.target.value, 10);
+        buyerAppsPage = 1;
+        renderBuyerAppsCells();
+      });
+      const step = delta => {
+        buyerAppsPage += delta;
+        renderBuyerAppsCells();
+        document.getElementById('buyer-apps').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
+      document.getElementById('buyerAppsPrev').addEventListener('click', () => { if (buyerAppsPage > 1) step(-1); });
+      document.getElementById('buyerAppsNext').addEventListener('click', () => { if (buyerAppsPage < totalPages) step(1); });
+    }
+
+    function filterBuyerApps(query) {
+      buyerAppsQuery = query.trim();
+      const q = buyerAppsQuery.toLowerCase();
+      buyerAppsFiltered = q
+        ? buyerAppsData.filter(a => a.name.toLowerCase().includes(q) || (a.org || '').toLowerCase().includes(q))
+        : buyerAppsData;
+      buyerAppsPage = 1;
+      renderBuyerAppsCells();
+    }
+
+    async function loadBuyerApps() {
+      $count().textContent = 'Loading the directory…';
+      try {
+        const res = await fetch('../public/assets/data/buyer-apps.json');
+        if (!res.ok) throw new Error(res.status);
+        buyerAppsData = await res.json();
+      } catch (err) {
+        $grid().innerHTML = `
+          <div class="bk-ba-span">
+            <div class="bk-directory-state">
+              <div class="bk-directory-state-inner">
+                <h3>We could not load the Buyer App directory right now.</h3>
+                <p>Reload the page, or go straight to the
+                  <a class="bk-ul" href="https://portal.ondc.org/complaints" target="_blank" rel="noopener">ONDC Grievance Portal</a>.</p>
+              </div>
+            </div>
+          </div>`;
+        $count().textContent = '';
+        $pag().innerHTML = '';
+        return;
+      }
+      buyerAppsFiltered = buyerAppsData;
+      renderBuyerAppsCells();
+      document.getElementById('buyerAppSearch').addEventListener('input', e => filterBuyerApps(e.target.value));
+    }
+
+    loadBuyerApps();
+  </script>
+
+  <script>
+    (function () {
+      var bar = document.getElementById('progBar');
+      var doc = document.documentElement;
+      window.addEventListener('scroll', function () {
+        var max = doc.scrollHeight - window.innerHeight;
+        bar.style.transform = 'scaleX(' + (max > 0 ? window.scrollY / max : 0) + ')';
+      }, { passive: true });
+    })();
+  </script>
+
+  <script src="../src/scripts/signup.js"></script>
+</body>
+
+</html>

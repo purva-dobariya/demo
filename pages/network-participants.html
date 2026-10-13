@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<!-- @dsCard group="UI Kit, Website" name="Network Participants" subtitle="Live participant ledger — a ruled table, not a card grid" -->
+<html lang="en">
+
+<head>
+  <script src="../src/scripts/analytics.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Network Participants · ONDC Network</title>
+  <link rel="icon" href="/public/assets/ondc_top_logo_transparent.png" type="image/png">
+  <link rel="stylesheet" href="../src/styles/category-chrome.css">
+  <link rel="stylesheet" href="../src/styles/fx.css">
+  <link rel="stylesheet" href="../src/styles/scale.css">
+  <link rel="stylesheet" href="../src/styles/type-boost.css">
+  <link rel="stylesheet" href="../src/styles/beckn.css">
+  <script src="../src/scripts/fx.js" defer></script>
+  <script src="../src/scripts/beckn.js" defer></script>
+  <script src="../src/scripts/logo-fallback.js"></script>
+  <script src="../src/scripts/participant-csv.js"></script>
+<!-- Mobile layer. Must load last: every rule is inside a max-width
+     query, and several of them intentionally override earlier files. -->
+<link rel="stylesheet" href="../src/styles/mobile.css">
+</head>
+
+<body>
+
+  <!-- SCROLL PROGRESS -->
+  <div class="scroll-progress" aria-hidden="true"><span id="progBar"></span></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" data-screen-label="Navbar">
+    <div class="container">
+      <a href="../index.html#site-top" class="nav-logo">
+        <img src="../public/assets/ondc-logo.svg" alt="ONDC — Open Network for Digital Commerce" class="nav-logo-img">
+      </a>
+      <div class="nav-links">
+        <a href="../index.html#site-top" class="nav-link">Home</a>
+        <a href="about-us.html" class="nav-link">About</a>
+
+        <a href="../index.html#find-your-place" class="nav-link">Roles You Can Play</a>
+        <a href="https://portal.ondc.org/" class="nav-link" target="_blank" rel="noopener">How To Join</a>
+        <a href="resources.html" class="nav-link">Resources</a>
+        <a href="complaint.html" class="nav-link">Complaints</a>
+        <details class="nav-drop">
+          <summary class="nav-link active">ONDC Participants
+            <svg class="nav-drop-chev" width="8" height="5" viewBox="0 0 8 5" fill="none" stroke="currentColor"
+              stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M1 1l3 3 3-3"></path>
+            </svg>
+          </summary>
+          <div class="nav-drop-menu">
+            <a href="network-participants.html">Network Participants</a>
+            <a href="ecosystem-participants.html">Ecosystem Participants</a>
+          </div>
+        </details>
+        <a href="rfp.html" class="nav-link">RFPs/RFQs</a>
+        <a href="contact-us.html" class="nav-link">Contact</a>
+        <a href="careers.html" class="nav-link">Careers</a>
+      </div>
+      <div class="nav-right">
+        <button class="nav-cta" onclick="ONDCSignup.open('participant')">Join the Network</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="bk bk-role-page bk-np-page">
+
+    <!-- ═══ HERO ═════════════════════════════════════════════════════════ -->
+    <!-- No live count. It was a ruled panel, then a sentence at figure weight,
+         and now nothing: the result count above the results states the same
+         total where a reader is already looking, and the hero was paying for a
+         second copy of it in the most expensive space on the page. -->
+    <section class="bk-role-hero" aria-labelledby="np-hero-title">
+      <div>
+        <h1 id="np-hero-title" data-bk-intro>Building a <em>strong ecosystem</em></h1>
+        <p class="bk-role-hero-copy" data-bk-intro>Uncover a world of possibilities. Meet the participants powering
+          the ONDC Network.</p>
+        <div class="bk-role-hero-actions" data-bk-intro>
+          <button type="button" class="bk-btn bk-btn-solid" onclick="ONDCSignup.open('participant')">Join the
+            Network</button>
+          <a class="bk-btn bk-btn-ghost" href="#participant-roles">Browse participants</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ DIRECTORY ═══════════════════════════════════════════════════ -->
+    <!-- The section used to open with a second headline and a line of copy
+         that said nothing the h1 above had not. Both are gone: a directory
+         announces itself by being one. -->
+    <section class="bk-directory" id="participant-roles" aria-label="Participant directory">
+      <div class="bk-np-toolbar">
+        <div class="bk-tabs bk-np-toplevel-tabs" role="tablist" aria-label="Participant directories">
+          <a href="network-participants.html" class="bk-tab active" role="tab" aria-selected="true">Network
+            Participants</a>
+          <a href="ecosystem-participants.html" class="bk-tab" role="tab" aria-selected="false">Ecosystem
+            Participants</a>
+        </div>
+
+        <button type="button" class="bk-btn bk-btn-ghost" id="npExportCsv">Export CSV</button>
+      </div>
+
+      <div class="bk-np-layout">
+        <!-- The category tree is the official ONDC taxonomy from
+             public/assets/data/filters-ondc-participants-sheet.csv, narrowed
+             to what the active tab actually holds. Every listed category
+             expands in place to its sub-categories, so the taxonomy is
+             legible without opening anything. A category with nothing behind
+             it on this tab is left out rather than listed and greyed: greyed
+             out asserted "no participants", when the truth was "none in this
+             list". Role left this column: two to four toggles belong beside
+             the results, not inside the taxonomy. -->
+        <aside class="bk-np-filters" aria-label="Filter by category">
+          <div class="bk-np-filter-group">
+            <div class="bk-eyebrow">Category</div>
+            <div id="npCatTree"></div>
+          </div>
+        </aside>
+
+        <div class="bk-np-results">
+          <input type="search" class="bk-directory-input" id="npSearch" aria-label="Search participants"
+            placeholder="Search by name, category, contact or website">
+
+          <!-- Two long labels side by side ate the results row and wrapped at
+               390px. One trigger carrying the current list, opening to both,
+               says the same thing in a third of the width. -->
+          <details class="bk-np-listdrop" id="npTabGroup">
+            <summary aria-label="Participant list"><span id="npTabLabel">Key Network Participants</span>
+              <svg class="nav-drop-chev" width="8" height="5" viewBox="0 0 8 5" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M1 1l3 3 3-3"></path>
+              </svg>
+            </summary>
+            <div class="bk-np-listdrop-menu">
+              <button type="button" class="np-tab active" data-tab="key" aria-current="true">Key Network Participants</button>
+              <button type="button" class="np-tab" data-tab="integrated">Integrated Network Participants</button>
+            </div>
+          </details>
+          <p class="bk-np-tabnote" id="npTabNote"></p>
+
+          <div class="bk-np-filterbar">
+            <div class="bk-np-rolebar" id="npRoleFilters" role="group" aria-label="Filter by role"></div>
+            <p class="bk-directory-summary" id="npCaption" role="status"></p>
+          </div>
+
+          <div class="bk-np-chips" id="npChips" hidden aria-label="Active filters"></div>
+
+          <!-- Column labels are the ledger's own, not the sheet's: the sheet's
+               "Brand Logo" and "Link" are not facts a reader looks up, they are
+               parts of Participant and Contact. The export keeps the sheet's
+               wording; see COLUMNS below. -->
+          <div class="bk-np-table-wrap">
+            <table class="bk-np-table">
+              <colgroup id="npTableCols"></colgroup>
+              <thead id="npTableHead"></thead>
+              <tbody id="npTableBody"></tbody>
+            </table>
+          </div>
+
+          <div class="bk-np-pagination" id="npPagination"></div>
+        </div>
+      </div>
+
+      <p class="bk-note" style="margin-top:32px">Disclaimer: The list provided here is for information purposes only.
+        ONDC does not endorse any of the participants listed. ONDC does not offer any terms or make any
+        representations or warranties regarding the participants or services provided by them.</p>
+    </section>
+
+    <!-- ═══ ONDC PARTICIPANT PORTAL ═════════════════════════════════════ -->
+    <section class="bk-role-close" aria-labelledby="np-close-title">
+      <h2 class="bk-h2 bk-rv" id="np-close-title">ONDC Participant <em>Portal</em></h2>
+      <p class="bk-rv bk-rv-d1">Begin and efficiently manage your journey on ONDC Network.</p>
+      <a class="bk-btn bk-btn-solid bk-rv bk-rv-d1" href="https://portal.ondc.org/" target="_blank"
+        rel="noopener">Go to Participant Portal</a>
+    </section>
+  </main>
+
+  <nav class="more-sectors" aria-label="Explore other sectors">
+    <div class="container">
+      <div class="more-lbl">Explore other sectors</div>
+      <div class="pill-row">
+        <a class="pill" href="d2c-retail.html">D2C Retail</a>
+        <a class="pill" href="digidukaan.html">DigiDukaan</a>
+        <a class="pill" href="food-and-beverages.html">Food &amp; Beverages</a>
+        <a class="pill" href="impact-retail.html">Amazing India</a>
+        <a class="pill" href="hyperlocal-logistics.html">Hyperlocal Logistics</a>
+        <a class="pill" href="public-transport.html">Public Transport</a>
+        <a class="pill" href="shared-mobility.html">Shared Mobility</a>
+        <a class="pill" href="tourism.html">Tourism</a>
+        <a class="pill" href="investments.html">Investments</a>
+        <a class="pill" href="coming-soon.html#insurance">Insurance</a>
+        <a class="pill" href="about-us.html">About ONDC</a>
+        <a class="pill pill-life" href="careers.html">Life@ONDC</a>
+      </div>
+    </div>
+  </nav>
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="../public/assets/ondc-logo.svg" alt="ONDC — Open Network for Digital Commerce" class="footer-logo-img">
+          <p>India's open network for commerce — not an app, not a platform. Infrastructure for everyone.</p>
+        </div>
+        <div>
+          <div class="footer-col-head">About ONDC</div>
+          <a class="footer-link" href="about-us.html">Overview</a>
+          <a class="footer-link" href="about-us.html#board-of-directors">Board Of Directors</a>
+          <a class="footer-link" href="careers.html">Careers</a>
+          <a class="footer-link" href="https://ondc-static-web-bucket.s3.ap-south-1.amazonaws.com/res/daea2fs3n/image/upload/ondc-website/files/ONDCStrategyPaper_ucvfjm/1659889490.pdf" target="_blank" rel="noopener">Download the Strategy Paper</a>
+          <a class="footer-link" href="https://ondc-static-web-bucket.s3.ap-south-1.amazonaws.com/res/daea2fs3n/image/upload/ondc-website/files/ONDC_Building_Trust_Consultation_Vf_utbodw/1664541553.pdf" target="_blank" rel="noopener">Download the Public Consultation Paper</a>
+          <a class="footer-link" href="../public/assets/newsletters/ondc-fy25-26-in-focus.pdf" target="_blank" rel="noopener">Annual Newsletter — FY25-26 in Focus</a>
+          <a class="footer-link" href="../public/assets/newsletters/ondc-pulse-2026-27-q1.pdf" target="_blank" rel="noopener">Quarterly Newsletter — ONDC Pulse FY26-27 Q1</a>
+        </div>
+
+        <div>
+          <div class="footer-col-head">Roles you can play</div>
+          <a class="footer-link" href="buyer-network-participants.html">Buyer Network Participant</a>
+          <a class="footer-link" href="seller-network-participants.html">Seller Network Participant</a>
+          <a class="footer-link" href="gateway.html">Gateway</a>
+          <a class="footer-link" href="technology-service-provider.html">Technology Service Provider</a>
+        </div>
+        <div>
+          <div class="footer-col-head">Help &amp; Support</div>
+          <a class="footer-link" href="resources.html">Resources</a>
+          <a class="footer-link" href="contact-us.html">Contact Us</a>
+          <a class="footer-link" href="complaint.html">Complaint</a>
+          <a class="footer-link" href="network-participants.html">Network Participants</a>
+          <a class="footer-link" href="ecosystem-participants.html">Ecosystem Participants</a>
+          <a class="footer-link" href="payment-assurance-program.html">Payment Assurance Program</a>
+          <a class="footer-link" href="rfp.html">RFPs/RFQs</a>
+          <a class="footer-link" href="privacy-policy.html">Privacy Policy</a>
+          <a class="footer-link" href="cookie-policy.html">Cookie Policy</a>
+          <a class="footer-link" href="terms-and-conditions.html">Terms and Conditions</a>
+        </div>
+
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">&#169; 2026 ONDC</div>
+        <div class="footer-social">
+          <a class="footer-social-link" href="https://www.linkedin.com/company/open-network-for-digital-commerce" target="_blank" rel="noopener noreferrer" aria-label="ONDC on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <a class="footer-social-link" href="https://www.instagram.com/ondc_official/" target="_blank" rel="noopener noreferrer" aria-label="ONDC on Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.741 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.741 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.259 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06L12 2.16zm0 3.678a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm7.846-10.405a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/></svg></a>
+          <a class="footer-social-link" href="https://www.youtube.com/@ondc1300" target="_blank" rel="noopener noreferrer" aria-label="ONDC on YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+          <a class="footer-social-link" href="https://www.facebook.com/profile.php?id=100076520217598" target="_blank" rel="noopener noreferrer" aria-label="ONDC on Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a class="footer-social-link" href="https://x.com/ONDC_Official" target="_blank" rel="noopener noreferrer" aria-label="ONDC on X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+     DIRECTORY DATA — renders the two participant directories straight from
+     the CSVs the participants team maintains under
+     public/assets/ondc-participants/. Both files plus the logo map are
+     fetched once up front (≈95 KB total), so switching tabs is an array
+     swap rather than a round trip, and the logos are in hand before the
+     first paint instead of appearing a beat later.
+═══════════════════════════════════════════════════════════════════ -->
+  <script>
+    const CSV_SOURCES = {
+      key: '../public/assets/ondc-participants/Key_network_participants.csv',
+      integrated: '../public/assets/ondc-participants/integrated_network_particpants.csv',
+    };
+    const LOGO_MAP_URL = '../public/assets/data/np-logo-map.json';
+
+    /* Worded exactly as the CSV header cells, in CSV order. This array is the
+       EXPORT shape and the search index, not the table: the download stays the
+       sheet verbatim, and typing a full role name or a URL fragment still
+       finds its row even though neither is printed in full. `Comments ` is
+       deliberately absent: it carries internal editorial notes. */
+    const COLUMNS = ['Brand Logo', 'Brand Name', 'Role', 'Live Categories',
+      'Technology Service Provider', 'Contact', 'Link'];
+
+    const CATEGORY_FIELD = 'Live Categories';
+
+    /* What the reader sees. Seven equal columns gave the logo, the raw URL and
+       a column empty in 123 of 150 rows the same standing as the participant's
+       name, and wrapped "Technology Service Provider (TSP)-Seller" into rows
+       eight lines tall. The ledger joins logo to name, turns contact and
+       website into one row of actions, and draws a `field` column only when
+       some row actually fills it — so a column of dashes is never a column.
+       `w` is a share rather than a percentage: the widths are renormalised
+       over whichever columns survive. */
+    const VIEW = [
+      { key: 'participant', label: 'Participant', w: 29 },
+      { key: 'role', label: 'Role', w: 12 },
+      { key: 'categories', label: 'Categories', w: 31 },
+      { key: 'contact', label: 'Contact', w: 28 },
+    ];
+
+    /* Drawn under the participant name when the row carries it. As a column of
+       its own it was a dash in 123 of 150 rows — 17 of the 20 on the first
+       screen — which is a column that reports its own emptiness. */
+    const SUB = { field: 'Technology Service Provider', label: 'Enabled by' };
+
+    function npColumns() {
+      return VIEW.filter(c => !c.field ||
+        npState.rows.some(r => String(r[c.field] || '').trim()));
+    }
+
+    const TAB_NOTES = {
+      key: 'Key Network Participants are ranked by order volume over the last three months, and refreshed monthly.',
+      integrated: 'Every Network Participant live on the ONDC Network, including the Key Network Participants, in alphabetical order.',
+    };
+
+    const npState = {
+      tab: 'key',
+      data: { key: [], integrated: [] },
+      logos: {},
+      rows: [],
+      filtered: [],
+      page: 1,
+      rowsPerPage: 20,
+      /* Selections live here rather than being read back out of the DOM: the
+         tree and the role row are both rebuilt on a tab switch, and a
+         DOM-derived selection would silently lose whatever that rebuild took
+         off the page. */
+      sel: { role: new Set(), cat: new Set(), sub: new Set() },
+      /* Which category branches are expanded. View state only: it never
+         changes which rows show, and it survives a tab switch. */
+      open: new Set(),
+      counts: { parents: {}, children: {} },
+    };
+
+    function npEsc(str) {
+      return String(str ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    }
+
+    /* The hero counts Integrated, not the visible tab: that is the whole set
+       live on the network, and a figure that jumped on a tab click would read
+       as a bug. Key is a subset of it — verified, zero Key brands are absent
+    /* ── filters ─────────────────────────────────────────────────────── */
+
+    /* Which checkbox class belongs to which selection set. Role is not here:
+       it is a row of toggle buttons above the results, not a checkbox. */
+    const GROUPS = { npCat: 'cat', npSub: 'sub' };
+
+    /* The tree is the official taxonomy narrowed to what the active tab holds,
+       in sheet order. A category with nothing behind it on this tab is left
+       out rather than listed and greyed: greyed out read as "no participants",
+       when the truth is "none in this list" — and the two tabs genuinely carry
+       different sets, so the list has to be allowed to differ between them. */
+    function npRenderFilters() {
+      npState.counts = window.npCsv.countCategories(npState.rows, CATEGORY_FIELD);
+
+      const nodes = window.npCsv.TAXONOMY
+        .filter(node => npState.counts.parents[node.name])
+        .map(node => ({
+          name: node.name,
+          count: npState.counts.parents[node.name],
+          checked: npState.sel.cat.has(node.name),
+          open: npState.open.has(node.name),
+          children: node.children
+            .filter(child => npState.counts.children[child])
+            .map(child => ({
+              cls: 'npSub', value: child, parent: node.name,
+              count: npState.counts.children[child],
+              checked: npState.sel.sub.has(child),
+            })),
+        }));
+
+      /* Switching tabs can drop a category that is currently ticked. Left in
+         the set it would go on filtering the table from a checkbox the reader
+         can no longer see to untick — an empty result with no way back. */
+      const liveCat = new Set(nodes.map(n => n.name));
+      const liveSub = new Set(nodes.flatMap(n => n.children.map(c => c.value)));
+      npState.sel.cat.forEach(v => { if (!liveCat.has(v)) npState.sel.cat.delete(v); });
+      npState.sel.sub.forEach(v => { if (!liveSub.has(v)) npState.sel.sub.delete(v); });
+
+      document.getElementById('npCatTree').innerHTML = window.npCsv.tree(nodes);
+    }
+
+    /* Role has two to four values, so it belongs above the results as a row of
+       toggles rather than buried in the taxonomy column. The pill carries the
+       key and the words together, which is what earns the table the right to
+       print the key alone. */
+    function npRenderRoles() {
+      const roles = window.npCsv.countValues(npState.rows, 'Role');
+      document.getElementById('npRoleFilters').innerHTML =
+        Object.keys(roles).sort().map(v => {
+          const k = window.npCsv.roleKey(v);
+          return '<button type="button" class="bk-np-role" data-role="' + npEsc(v) + '"' +
+            ' aria-pressed="' + npState.sel.role.has(v) + '">' +
+            (k.key === k.full ? '' : '<span class="bk-np-key">' + npEsc(k.key) + '</span>') +
+            '<span class="bk-np-role-t">' + npEsc(k.pill) + '</span>' +
+            '<span class="bk-np-role-n">' + roles[v] + '</span></button>';
+        }).join('');
+    }
+
+    /* Expanding is a view state, not a filter: it survives a tab switch and a
+       re-render, and it never changes which rows show. */
+    function npSetOpen(cat, open) {
+      const branch = document.querySelector('.bk-np-cat[data-cat="' + CSS.escape(cat) + '"]');
+      if (!branch) return;
+      /* A category this list has no sub-categories for has no kids box and no
+         toggle button -- its label is the checkbox's. Nothing to open, and the
+         ticking path calls through here, so bailing quietly is the whole job. */
+      const kids = branch.querySelector('.bk-np-cat-kids');
+      if (!kids) return;
+      if (open) npState.open.add(cat); else npState.open.delete(cat);
+      branch.classList.toggle('is-open', open);
+      branch.querySelector('.bk-np-cat-toggle').setAttribute('aria-expanded', String(open));
+      kids.hidden = !open;
+    }
+
+    /* Unticking a Category drops the sub-categories that sat under it: they are
+       about to leave the panel, and a tick nobody can see must not go on
+       filtering the table. */
+    function npToggle(key, value, on) {
+      if (on) npState.sel[key].add(value);
+      else npState.sel[key].delete(value);
+      if (key === 'cat' && !on) {
+        [...npState.sel.sub].forEach(sub => {
+          if (window.npCsv.sectorOf(sub) === value) npState.sel.sub.delete(sub);
+        });
+      }
+    }
+
+    function npClearAll() {
+      npState.sel.role.clear();
+      npState.sel.cat.clear();
+      npState.sel.sub.clear();
+    }
+
+    /* Delegated, so the handlers survive every re-render of the tree. */
+    function npBindFilters() {
+      const aside = document.querySelector('.bk-np-filters');
+
+      aside.addEventListener('change', e => {
+        const input = e.target;
+        if (!input.matches || !input.matches('input[type="checkbox"]')) return;
+        const cls = Object.keys(GROUPS).find(c => input.classList.contains(c));
+        if (!cls) return;
+        npToggle(GROUPS[cls], input.value, input.checked);
+        /* Ticking a category opens it, so what that one tick just selected is
+           visible rather than implied. */
+        if (GROUPS[cls] === 'cat' && input.checked) npSetOpen(input.value, true);
+        npApplyFilters();
+      });
+
+      aside.addEventListener('click', e => {
+        const toggle = e.target.closest('.bk-np-cat-toggle');
+        if (!toggle) return;
+        const cat = toggle.closest('.bk-np-cat').dataset.cat;
+        npSetOpen(cat, !npState.open.has(cat));
+      });
+
+      document.getElementById('npRoleFilters').addEventListener('click', e => {
+        const btn = e.target.closest('.bk-np-role');
+        if (!btn) return;
+        const on = btn.getAttribute('aria-pressed') !== 'true';
+        btn.setAttribute('aria-pressed', String(on));
+        npToggle('role', btn.dataset.role, on);
+        npApplyFilters();
+      });
+
+      document.getElementById('npChips').addEventListener('click', e => {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+        if (btn.dataset.clear === 'all') npClearAll();
+        else npToggle(btn.dataset.group, btn.dataset.value, false);
+        npRenderFilters();            // the tree has to lose its ticks too
+        npRenderRoles();              // and so does the role row
+        npApplyFilters();
+      });
+
+      /* A participant live on seven categories shows three and a +N. The rest
+         are already in the row, hidden — no fetch, no second render. */
+      document.getElementById('npTableBody').addEventListener('click', e => {
+        const btn = e.target.closest('.bk-np-more');
+        if (!btn) return;
+        const cell = btn.closest('td');
+        const open = btn.getAttribute('aria-expanded') !== 'true';
+        btn.setAttribute('aria-expanded', String(open));
+        cell.classList.toggle('is-expanded', open);
+        cell.querySelector('.bk-np-cat-rest').hidden = !open;
+      });
+    }
+
+    function npRenderChips() {
+      const items = [];
+      npState.sel.role.forEach(v => items.push({ group: 'role', value: v, label: window.npCsv.roleKey(v).pill }));
+      npState.sel.cat.forEach(v => items.push({ group: 'cat', value: v }));
+      npState.sel.sub.forEach(v => items.push({ group: 'sub', value: v }));
+      const wrap = document.getElementById('npChips');
+      wrap.innerHTML = window.npCsv.chips(items);
+      wrap.hidden = items.length === 0;
+    }
+
+    function npMatchesRole(row) {
+      const sel = npState.sel.role;
+      if (!sel.size) return true;
+      return window.npCsv.splitList(row.Role).some(r => sel.has(r));
+    }
+
+    /* A Category on its own means "everything under it"; tick sub-categories of
+       that same Category and only those count. Built once per pass rather than
+       per row. */
+    function npCategoryMatcher() {
+      const { cat, sub } = npState.sel;
+      if (!cat.size && !sub.size) return () => true;
+      const narrowed = new Set();
+      sub.forEach(s => narrowed.add(window.npCsv.sectorOf(s)));
+      return row => window.npCsv.splitList(row[CATEGORY_FIELD]).some(raw => {
+        if (window.npCsv.isIgnored(raw)) return false;
+        const c = window.npCsv.canonCategory(raw);
+        if (sub.has(c)) return true;
+        const parent = window.npCsv.sectorOf(c);
+        return cat.has(parent) && !narrowed.has(parent);
+      });
+    }
+
+    /* Searched against the source columns, not the rendered ones: "Technology
+       Service Provider (TSP)-Seller" and a full URL are both typeable even
+       though the table prints a key and the word "Website". */
+    function npMatchesSearch(row) {
+      const q = document.getElementById('npSearch').value.trim().toLowerCase();
+      if (!q) return true;
+      return COLUMNS.some(col => col !== 'Brand Logo' && String(row[col] || '').toLowerCase().includes(q));
+    }
+
+    function npApplyFilters() {
+      const matchesCategory = npCategoryMatcher();
+      npState.filtered = npState.rows.filter(row =>
+        npMatchesRole(row) && matchesCategory(row) && npMatchesSearch(row)
+      );
+      npState.page = 1;
+      npRenderChips();
+      npRenderTable();
+    }
+
+    /* ── rendering ───────────────────────────────────────────────────── */
+
+    function npCell(row, col) {
+      const brand = row['Brand Name'];
+      switch (col.key) {
+        /* Logo and name are one fact about one organisation, so they are one
+           cell. npLogo.img falls back to an initials monogram for an empty
+           value, so an unmapped brand costs no failed request. */
+        case 'participant':
+          return '<td class="bk-np-who" data-label="Participant"><span class="bk-np-whoin">' +
+            window.npLogo.img(npState.logos[brand] || '', brand, { alt: '' }) +
+            '<span class="bk-np-name">' + npEsc(brand) + npSubLine(row) + '</span></span></td>';
+        case 'role':
+          return '<td class="bk-np-roles" data-label="Role">' +
+            window.npCsv.roleKeys(row.Role) + '</td>';
+        case 'categories':
+          return '<td class="bk-np-cats" data-label="Categories">' +
+            window.npCsv.categoryChips(row[CATEGORY_FIELD]) + '</td>';
+        case 'contact':
+          return '<td class="bk-np-contact" data-label="Contact">' +
+            window.npCsv.contactCompact(row.Contact, row.Link, brand) + '</td>';
+        default:
+          return '<td data-label="' + npEsc(col.label) + '">' +
+            (String(row[col.field] || '').trim() ? npEsc(row[col.field]) : window.npCsv.none()) + '</td>';
+      }
+    }
+
+    function npSubLine(row) {
+      const v = String(row[SUB.field] || '').trim();
+      return v ? '<span class="bk-np-enabled">' + npEsc(SUB.label) + ' ' + npEsc(v) + '</span>' : '';
+    }
+
+    function npRenderHead() {
+      const cols = npColumns();
+      const total = cols.reduce((n, c) => n + c.w, 0);
+      document.getElementById('npTableCols').innerHTML =
+        cols.map(c => '<col style="width:' + (c.w / total * 100).toFixed(2) + '%">').join('');
+      document.getElementById('npTableHead').innerHTML =
+        '<tr>' + cols.map(c => '<th scope="col">' + npEsc(c.label) + '</th>').join('') + '</tr>';
+    }
+
+    function npRenderPagination(pageCount) {
+      const wrap = document.getElementById('npPagination');
+      const p = npState.page;
+      const nums = [1];
+      if (p > 3) nums.push('…');
+      for (let i = Math.max(2, p - 1); i <= Math.min(pageCount - 1, p + 1); i++) nums.push(i);
+      if (p < pageCount - 2) nums.push('…');
+      if (pageCount > 1) nums.push(pageCount);
+
+      /* The range and the total live in the caption above the table, where a
+         reader is already looking. Repeating them here was two counts to keep
+         in step, one of them off-screen. */
+      var html = '<div class="bk-np-rpp"><label for="npRppSelect">Rows per page</label>' +
+        '<select id="npRppSelect">' +
+        [20, 30, 50, 100].map(function (n) {
+          return '<option value="' + n + '"' + (n === npState.rowsPerPage ? ' selected' : '') + '>' + n + '</option>';
+        }).join('') +
+        '</select></div><div class="bk-np-pagenums">' +
+        '<button type="button" data-p="' + (p - 1) + '"' + (p <= 1 ? ' disabled' : '') + ' aria-label="Previous page">‹</button>' +
+        nums.map(function (n) {
+          if (n === '…') return '<span class="bk-np-ellipsis">…</span>';
+          return '<button type="button" data-p="' + n + '" class="' + (n === p ? 'active' : '') + '"' +
+            (n === p ? ' aria-current="page"' : '') + '>' + n + '</button>';
+        }).join('') +
+        '<button type="button" data-p="' + (p + 1) + '"' + (p >= pageCount ? ' disabled' : '') + ' aria-label="Next page">›</button></div>';
+      wrap.innerHTML = html;
+
+      document.getElementById('npRppSelect').addEventListener('change', e => {
+        npState.rowsPerPage = parseInt(e.target.value, 10);
+        npState.page = 1;
+        npRenderTable();
+      });
+      wrap.querySelectorAll('button[data-p]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const n = parseInt(btn.dataset.p, 10);
+          if (n >= 1 && n <= pageCount) { npState.page = n; npRenderTable(); }
+        });
+      });
+    }
+
+    function npRenderTable() {
+      const cols = npColumns();
+      const total = npState.filtered.length;
+      const perPage = npState.rowsPerPage;
+      const pageCount = Math.max(1, Math.ceil(total / perPage));
+      if (npState.page > pageCount) npState.page = pageCount;
+      const startIdx = (npState.page - 1) * perPage;
+      const pageRows = npState.filtered.slice(startIdx, startIdx + perPage);
+
+      document.getElementById('npTableBody').innerHTML = pageRows.length
+        ? pageRows.map(row => '<tr>' + cols.map(col => npCell(row, col)).join('') + '</tr>').join('')
+        : '<tr><td colspan="' + cols.length + '" class="np-empty">No participants match these filters. ' +
+          'Remove one above to widen the search.</td></tr>';
+
+      document.getElementById('npCaption').textContent = total === 0
+        ? 'No participants match these filters'
+        : total.toLocaleString() + ' participant' + (total === 1 ? '' : 's') + ' · showing ' +
+          (startIdx + 1).toLocaleString() + '–' + Math.min(total, startIdx + perPage).toLocaleString();
+
+      document.getElementById('npExportCsv').disabled = total === 0;
+      npRenderPagination(pageCount);
+    }
+
+    /* ── export ──────────────────────────────────────────────────────── */
+
+    function npCsvCell(v) {
+      return '"' + (v ?? '').toString().replace(/"/g, '""') + '"';
+    }
+
+    /* The export is the sheet, not the ledger: every source column in source
+       order, including the ones the table folds together or leaves undrawn. */
+    function npExportCsv() {
+      const lines = [COLUMNS.map(npCsvCell).join(',')];
+      npState.filtered.forEach(row => {
+        lines.push(COLUMNS.map(col =>
+          npCsvCell(col === 'Brand Logo' ? (npState.logos[row['Brand Name']] || '') : row[col])
+        ).join(','));
+      });
+      const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'ondc-' + npState.tab + '-network-participants.csv';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    /* ── boot ────────────────────────────────────────────────────────── */
+
+    function npSwitchTab(tab) {
+      npState.tab = tab;
+      document.querySelectorAll('.np-tab').forEach(b => {
+        const on = b.dataset.tab === tab;
+        b.classList.toggle('active', on);
+        if (on) {
+          b.setAttribute('aria-current', 'true');
+          document.getElementById('npTabLabel').textContent = b.textContent;
+        } else {
+          b.removeAttribute('aria-current');
+        }
+      });
+      document.getElementById('npTabGroup').open = false;  // picking a list closes the menu
+      document.getElementById('npTabNote').textContent = TAB_NOTES[tab];
+      npState.rows = npState.data[tab];
+      npRenderHead();               // the two tabs need not carry the same columns
+      npRenderFilters();
+      npRenderRoles();
+      npApplyFilters();
+    }
+
+    async function npInit() {
+      npRenderHead();
+      document.getElementById('npTableBody').innerHTML =
+        '<tr><td colspan="' + VIEW.length + '" class="np-empty">Loading participants…</td></tr>';
+
+      const [key, integrated, logoMap] = await Promise.all([
+        window.npCsv.load(CSV_SOURCES.key),
+        window.npCsv.load(CSV_SOURCES.integrated),
+        /* Same no-store as the CSVs: the map is regenerated on the same monthly
+           cadence, and a cached copy shows last month's logos -- or a monogram for
+           a brand that has since gained one. */
+        fetch(LOGO_MAP_URL, { cache: 'no-store' }).then(r => r.ok ? r.json() : []).catch(() => []),
+      ]);
+
+      /* Key rows stay in file order — that sequence is the transaction-volume
+         ranking and is the entire point of the tab. */
+      npState.data.key = key.rows;
+      npState.data.integrated = integrated.rows
+        .slice()
+        .sort((a, b) => a['Brand Name'].localeCompare(b['Brand Name'], 'en', { sensitivity: 'base' }));
+      logoMap.forEach(e => { npState.logos[e.brand] = e.brand_logo; });
+
+      document.querySelectorAll('.np-tab').forEach(btn => {
+        btn.addEventListener('click', () => npSwitchTab(btn.dataset.tab));
+      });
+      /* <details> stays open on an outside click; the navbar dropdowns close
+         the same way (see closeNavDropdowns in fx.js). */
+      document.addEventListener('click', e => {
+        const drop = document.getElementById('npTabGroup');
+        if (drop.open && !drop.contains(e.target)) drop.open = false;
+      });
+      document.getElementById('npExportCsv').addEventListener('click', npExportCsv);
+      npBindFilters();
+      let searchTimer;
+      document.getElementById('npSearch').addEventListener('input', () => {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(npApplyFilters, 220);
+      });
+
+      npSwitchTab('key');
+    }
+
+    npInit();
+  </script>
+
+  <script>
+    (function () {
+      var bar = document.getElementById('progBar');
+      var doc = document.documentElement;
+      window.addEventListener('scroll', function () {
+        var max = doc.scrollHeight - window.innerHeight;
+        bar.style.transform = 'scaleX(' + (max > 0 ? window.scrollY / max : 0) + ')';
+      }, { passive: true });
+    })();
+  </script>
+
+  <script src="../src/scripts/signup.js"></script>
+</body>
+
+</html>
